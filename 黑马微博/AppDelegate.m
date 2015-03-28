@@ -16,7 +16,21 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    // 设置状态栏不隐藏
+    application.statusBarHidden = NO;
+    
+    // 1.创建窗口
+    self.window = [[UIWindow alloc] init];
+    self.window.frame = [UIScreen mainScreen].bounds;
+    
+    // 2.设置窗口的根控制器
+    UITabBarController *tabbarVc = [[UITabBarController alloc] init];
+    self.window.rootViewController = tabbarVc;
+    
+    // 3.显示窗口
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
