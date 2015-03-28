@@ -7,10 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7D62650B1AC664240075F1B6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D62650A1AC664240075F1B6 /* main.m */; };
-		7D62650E1AC664250075F1B6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D62650D1AC664250075F1B6 /* AppDelegate.m */; };
 		7D6265161AC664250075F1B6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D6265151AC664250075F1B6 /* Images.xcassets */; };
 		7D6265251AC664250075F1B6 /* ____Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D6265241AC664250075F1B6 /* ____Tests.m */; };
+		7DC4544A1AC68CE900ED9410 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC4543D1AC68CE900ED9410 /* AppDelegate.m */; };
+		7DC4544B1AC68CE900ED9410 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC4543E1AC68CE900ED9410 /* main.m */; };
+		7DC454501AC68EF200ED9410 /* JHTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC4544F1AC68EF200ED9410 /* JHTabBarViewController.m */; };
+		7DC454531AC68F5F00ED9410 /* JHDiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC454521AC68F5F00ED9410 /* JHDiscoverViewController.m */; };
+		7DC454561AC68F8600ED9410 /* JHHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC454551AC68F8600ED9410 /* JHHomeViewController.m */; };
+		7DC454591AC68FBE00ED9410 /* JHMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC454581AC68FBE00ED9410 /* JHMessageViewController.m */; };
+		7DC4545C1AC68FDF00ED9410 /* JHProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC4545B1AC68FDF00ED9410 /* JHProfileViewController.m */; };
+		7DC454631AC69F7D00ED9410 /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC454621AC69F7D00ED9410 /* UIImage+Extension.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,13 +32,26 @@
 /* Begin PBXFileReference section */
 		7D6265051AC664240075F1B6 /* 黑马微博.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "黑马微博.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D6265091AC664240075F1B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7D62650A1AC664240075F1B6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		7D62650C1AC664250075F1B6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		7D62650D1AC664250075F1B6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		7D6265151AC664250075F1B6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		7D62651E1AC664250075F1B6 /* 黑马微博Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "黑马微博Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D6265231AC664250075F1B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7D6265241AC664250075F1B6 /* ____Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "____Tests.m"; sourceTree = "<group>"; };
+		7DC4543C1AC68CE900ED9410 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		7DC4543D1AC68CE900ED9410 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		7DC4543E1AC68CE900ED9410 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		7DC4544E1AC68EF200ED9410 /* JHTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHTabBarViewController.h; sourceTree = "<group>"; };
+		7DC4544F1AC68EF200ED9410 /* JHTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHTabBarViewController.m; sourceTree = "<group>"; };
+		7DC454511AC68F5F00ED9410 /* JHDiscoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHDiscoverViewController.h; sourceTree = "<group>"; };
+		7DC454521AC68F5F00ED9410 /* JHDiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHDiscoverViewController.m; sourceTree = "<group>"; };
+		7DC454541AC68F8600ED9410 /* JHHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHHomeViewController.h; sourceTree = "<group>"; };
+		7DC454551AC68F8600ED9410 /* JHHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHHomeViewController.m; sourceTree = "<group>"; };
+		7DC454571AC68FBE00ED9410 /* JHMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHMessageViewController.h; sourceTree = "<group>"; };
+		7DC454581AC68FBE00ED9410 /* JHMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHMessageViewController.m; sourceTree = "<group>"; };
+		7DC4545A1AC68FDF00ED9410 /* JHProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHProfileViewController.h; sourceTree = "<group>"; };
+		7DC4545B1AC68FDF00ED9410 /* JHProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHProfileViewController.m; sourceTree = "<group>"; };
+		7DC4545D1AC691F700ED9410 /* jinheng.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jinheng.pch; sourceTree = "<group>"; };
+		7DC454611AC69F7D00ED9410 /* UIImage+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extension.h"; sourceTree = "<group>"; };
+		7DC454621AC69F7D00ED9410 /* UIImage+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extension.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,8 +93,7 @@
 		7D6265071AC664240075F1B6 /* 黑马微博 */ = {
 			isa = PBXGroup;
 			children = (
-				7D62650C1AC664250075F1B6 /* AppDelegate.h */,
-				7D62650D1AC664250075F1B6 /* AppDelegate.m */,
+				7DC4542E1AC68CE900ED9410 /* Classes */,
 				7D6265151AC664250075F1B6 /* Images.xcassets */,
 				7D6265081AC664240075F1B6 /* Supporting Files */,
 			);
@@ -86,7 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				7D6265091AC664240075F1B6 /* Info.plist */,
-				7D62650A1AC664240075F1B6 /* main.m */,
+				7DC4545D1AC691F700ED9410 /* jinheng.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -106,6 +124,204 @@
 				7D6265231AC664250075F1B6 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7DC4542E1AC68CE900ED9410 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				7DC4542F1AC68CE900ED9410 /* Discover(发现) */,
+				7DC454331AC68CE900ED9410 /* Home(首页) */,
+				7DC454371AC68CE900ED9410 /* Main(主要) */,
+				7DC454401AC68CE900ED9410 /* Message(消息) */,
+				7DC454441AC68CE900ED9410 /* Profile(我) */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		7DC4542F1AC68CE900ED9410 /* Discover(发现) */ = {
+			isa = PBXGroup;
+			children = (
+				7DC454301AC68CE900ED9410 /* Controller */,
+				7DC454311AC68CE900ED9410 /* Model */,
+				7DC454321AC68CE900ED9410 /* View */,
+			);
+			path = "Discover(发现)";
+			sourceTree = "<group>";
+		};
+		7DC454301AC68CE900ED9410 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7DC454511AC68F5F00ED9410 /* JHDiscoverViewController.h */,
+				7DC454521AC68F5F00ED9410 /* JHDiscoverViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7DC454311AC68CE900ED9410 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7DC454321AC68CE900ED9410 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7DC454331AC68CE900ED9410 /* Home(首页) */ = {
+			isa = PBXGroup;
+			children = (
+				7DC454341AC68CE900ED9410 /* Controller */,
+				7DC454351AC68CE900ED9410 /* Model */,
+				7DC454361AC68CE900ED9410 /* View */,
+			);
+			path = "Home(首页)";
+			sourceTree = "<group>";
+		};
+		7DC454341AC68CE900ED9410 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7DC454541AC68F8600ED9410 /* JHHomeViewController.h */,
+				7DC454551AC68F8600ED9410 /* JHHomeViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7DC454351AC68CE900ED9410 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7DC454361AC68CE900ED9410 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7DC454371AC68CE900ED9410 /* Main(主要) */ = {
+			isa = PBXGroup;
+			children = (
+				7DC454381AC68CE900ED9410 /* Category */,
+				7DC454391AC68CE900ED9410 /* Controller */,
+				7DC4543A1AC68CE900ED9410 /* Model */,
+				7DC4543B1AC68CE900ED9410 /* Other */,
+				7DC4543F1AC68CE900ED9410 /* View */,
+			);
+			path = "Main(主要)";
+			sourceTree = "<group>";
+		};
+		7DC454381AC68CE900ED9410 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				7DC454611AC69F7D00ED9410 /* UIImage+Extension.h */,
+				7DC454621AC69F7D00ED9410 /* UIImage+Extension.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		7DC454391AC68CE900ED9410 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7DC4544E1AC68EF200ED9410 /* JHTabBarViewController.h */,
+				7DC4544F1AC68EF200ED9410 /* JHTabBarViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7DC4543A1AC68CE900ED9410 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7DC4543B1AC68CE900ED9410 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				7DC4543C1AC68CE900ED9410 /* AppDelegate.h */,
+				7DC4543D1AC68CE900ED9410 /* AppDelegate.m */,
+				7DC4543E1AC68CE900ED9410 /* main.m */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		7DC4543F1AC68CE900ED9410 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7DC454401AC68CE900ED9410 /* Message(消息) */ = {
+			isa = PBXGroup;
+			children = (
+				7DC454411AC68CE900ED9410 /* Controller */,
+				7DC454421AC68CE900ED9410 /* Model */,
+				7DC454431AC68CE900ED9410 /* View */,
+			);
+			path = "Message(消息)";
+			sourceTree = "<group>";
+		};
+		7DC454411AC68CE900ED9410 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7DC454571AC68FBE00ED9410 /* JHMessageViewController.h */,
+				7DC454581AC68FBE00ED9410 /* JHMessageViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7DC454421AC68CE900ED9410 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7DC454431AC68CE900ED9410 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7DC454441AC68CE900ED9410 /* Profile(我) */ = {
+			isa = PBXGroup;
+			children = (
+				7DC4544D1AC68D5C00ED9410 /* Controller */,
+				7DC454481AC68CE900ED9410 /* Model */,
+				7DC454491AC68CE900ED9410 /* View */,
+			);
+			path = "Profile(我)";
+			sourceTree = "<group>";
+		};
+		7DC454481AC68CE900ED9410 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7DC454491AC68CE900ED9410 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7DC4544D1AC68D5C00ED9410 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7DC4545A1AC68FDF00ED9410 /* JHProfileViewController.h */,
+				7DC4545B1AC68FDF00ED9410 /* JHProfileViewController.m */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -206,8 +422,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7D62650E1AC664250075F1B6 /* AppDelegate.m in Sources */,
-				7D62650B1AC664240075F1B6 /* main.m in Sources */,
+				7DC454561AC68F8600ED9410 /* JHHomeViewController.m in Sources */,
+				7DC454501AC68EF200ED9410 /* JHTabBarViewController.m in Sources */,
+				7DC454531AC68F5F00ED9410 /* JHDiscoverViewController.m in Sources */,
+				7DC454591AC68FBE00ED9410 /* JHMessageViewController.m in Sources */,
+				7DC4545C1AC68FDF00ED9410 /* JHProfileViewController.m in Sources */,
+				7DC454631AC69F7D00ED9410 /* UIImage+Extension.m in Sources */,
+				7DC4544B1AC68CE900ED9410 /* main.m in Sources */,
+				7DC4544A1AC68CE900ED9410 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,6 +533,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/黑马微博/jinheng.pch";
 				INFOPLIST_FILE = "黑马微博/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -323,6 +547,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/黑马微博/jinheng.pch";
 				INFOPLIST_FILE = "黑马微博/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -383,6 +609,7 @@
 				7D62652A1AC664250075F1B6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7D62652B1AC664250075F1B6 /* Build configuration list for PBXNativeTarget "黑马微博Tests" */ = {
 			isa = XCConfigurationList;
@@ -391,6 +618,7 @@
 				7D62652D1AC664250075F1B6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

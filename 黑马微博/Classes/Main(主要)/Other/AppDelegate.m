@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "JHTabBarViewController.h"
 
 @interface AppDelegate ()
 
@@ -25,8 +26,7 @@
     self.window.frame = [UIScreen mainScreen].bounds;
     
     // 2.设置窗口的根控制器
-    UITabBarController *tabbarVc = [[UITabBarController alloc] init];
-    self.window.rootViewController = tabbarVc;
+    self.window.rootViewController = [[JHTabBarViewController alloc] init];
     
     // 3.显示窗口
     [self.window makeKeyAndVisible];
