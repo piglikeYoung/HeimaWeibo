@@ -45,7 +45,8 @@
  */
 - (void)addOneChlildVc:(UIViewController *)childVc title:(NSString *)title imageName:(NSString *)imageName selectedImageName:(NSString *)selectedImageName
 {
-    childVc.view.backgroundColor = JHRandomColor;
+    
+
     // 设置标题
     // 相当于同时设置了tabBarItem.title和navigationItem.title
     childVc.title = title;
