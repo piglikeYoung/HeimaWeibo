@@ -49,11 +49,14 @@
  */
 + (void)setupNavigationBarTheme
 {
+    
     //通过设置appearance对象，能够修改整个项目中所有UINavigationBar的样式
     UINavigationBar *appearance=[UINavigationBar appearance];
     
     //设置导航栏的背景
     if (!iOS7) {
+        // 设置状态栏的颜色
+        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleBlackOpaque;
         [appearance setBackgroundImage:[UIImage imageWithName:@"navigationbar_background"] forBarMetrics:UIBarMetricsDefault];
     }
     
