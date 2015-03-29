@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7D6265161AC664250075F1B6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D6265151AC664250075F1B6 /* Images.xcassets */; };
 		7D6265251AC664250075F1B6 /* ____Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D6265241AC664250075F1B6 /* ____Tests.m */; };
+		7D672EB71AC77B90004B5B4C /* JHNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D672EB61AC77B90004B5B4C /* JHNavigationController.m */; };
 		7DC4544A1AC68CE900ED9410 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC4543D1AC68CE900ED9410 /* AppDelegate.m */; };
 		7DC4544B1AC68CE900ED9410 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC4543E1AC68CE900ED9410 /* main.m */; };
 		7DC454501AC68EF200ED9410 /* JHTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC4544F1AC68EF200ED9410 /* JHTabBarViewController.m */; };
@@ -36,6 +37,8 @@
 		7D62651E1AC664250075F1B6 /* 黑马微博Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "黑马微博Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D6265231AC664250075F1B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7D6265241AC664250075F1B6 /* ____Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "____Tests.m"; sourceTree = "<group>"; };
+		7D672EB51AC77B90004B5B4C /* JHNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHNavigationController.h; sourceTree = "<group>"; };
+		7D672EB61AC77B90004B5B4C /* JHNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHNavigationController.m; sourceTree = "<group>"; };
 		7DC4543C1AC68CE900ED9410 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7DC4543D1AC68CE900ED9410 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		7DC4543E1AC68CE900ED9410 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -230,6 +233,8 @@
 			children = (
 				7DC4544E1AC68EF200ED9410 /* JHTabBarViewController.h */,
 				7DC4544F1AC68EF200ED9410 /* JHTabBarViewController.m */,
+				7D672EB51AC77B90004B5B4C /* JHNavigationController.h */,
+				7D672EB61AC77B90004B5B4C /* JHNavigationController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -429,6 +434,7 @@
 				7DC4545C1AC68FDF00ED9410 /* JHProfileViewController.m in Sources */,
 				7DC454631AC69F7D00ED9410 /* UIImage+Extension.m in Sources */,
 				7DC4544B1AC68CE900ED9410 /* main.m in Sources */,
+				7D672EB71AC77B90004B5B4C /* JHNavigationController.m in Sources */,
 				7DC4544A1AC68CE900ED9410 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

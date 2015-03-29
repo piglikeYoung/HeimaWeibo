@@ -11,6 +11,7 @@
 #import "JHMessageViewController.h"
 #import "JHDiscoverViewController.h"
 #import "JHProfileViewController.h"
+#import "JHNavigationController.h"
 
 @interface JHTabBarViewController ()
 
@@ -46,7 +47,10 @@
 {
     childVc.view.backgroundColor = JHRandomColor;
     // 设置标题
-    childVc.tabBarItem.title = title;
+    // 相当于同时设置了tabBarItem.title和navigationItem.title
+    childVc.title = title;
+    //    childVc.tabBarItem.title = title; // tabbar标签上
+    //    childVc.navigationItem.title  = title; // 导航栏
     // 设置图标
     childVc.tabBarItem.image = [UIImage imageWithName:imageName];
     // 设置选中的图标
@@ -61,7 +65,8 @@
     childVc.tabBarItem.selectedImage = selectedImage;
     
     // 添加为tabbar控制器的子控制器
-    [self addChildViewController:childVc];
+    JHNavigationController *nav = [[JHNavigationController alloc] initWithRootViewController:childVc];
+    [self addChildViewController:nav];
 }
 
 
