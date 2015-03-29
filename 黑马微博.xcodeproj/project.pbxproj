@@ -10,6 +10,8 @@
 		7D6265161AC664250075F1B6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D6265151AC664250075F1B6 /* Images.xcassets */; };
 		7D6265251AC664250075F1B6 /* ____Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D6265241AC664250075F1B6 /* ____Tests.m */; };
 		7D672EB71AC77B90004B5B4C /* JHNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D672EB61AC77B90004B5B4C /* JHNavigationController.m */; };
+		7D672EBA1AC78608004B5B4C /* UIBarButtonItem+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D672EB91AC78608004B5B4C /* UIBarButtonItem+Extension.m */; };
+		7D672EBD1AC7871C004B5B4C /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D672EBC1AC7871C004B5B4C /* UIView+Extension.m */; };
 		7DC4544A1AC68CE900ED9410 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC4543D1AC68CE900ED9410 /* AppDelegate.m */; };
 		7DC4544B1AC68CE900ED9410 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC4543E1AC68CE900ED9410 /* main.m */; };
 		7DC454501AC68EF200ED9410 /* JHTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC4544F1AC68EF200ED9410 /* JHTabBarViewController.m */; };
@@ -39,6 +41,10 @@
 		7D6265241AC664250075F1B6 /* ____Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "____Tests.m"; sourceTree = "<group>"; };
 		7D672EB51AC77B90004B5B4C /* JHNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHNavigationController.h; sourceTree = "<group>"; };
 		7D672EB61AC77B90004B5B4C /* JHNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHNavigationController.m; sourceTree = "<group>"; };
+		7D672EB81AC78608004B5B4C /* UIBarButtonItem+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Extension.h"; sourceTree = "<group>"; };
+		7D672EB91AC78608004B5B4C /* UIBarButtonItem+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Extension.m"; sourceTree = "<group>"; };
+		7D672EBB1AC7871C004B5B4C /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
+		7D672EBC1AC7871C004B5B4C /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 		7DC4543C1AC68CE900ED9410 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7DC4543D1AC68CE900ED9410 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		7DC4543E1AC68CE900ED9410 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -224,6 +230,10 @@
 			children = (
 				7DC454611AC69F7D00ED9410 /* UIImage+Extension.h */,
 				7DC454621AC69F7D00ED9410 /* UIImage+Extension.m */,
+				7D672EB81AC78608004B5B4C /* UIBarButtonItem+Extension.h */,
+				7D672EB91AC78608004B5B4C /* UIBarButtonItem+Extension.m */,
+				7D672EBB1AC7871C004B5B4C /* UIView+Extension.h */,
+				7D672EBC1AC7871C004B5B4C /* UIView+Extension.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -429,8 +439,10 @@
 			files = (
 				7DC454561AC68F8600ED9410 /* JHHomeViewController.m in Sources */,
 				7DC454501AC68EF200ED9410 /* JHTabBarViewController.m in Sources */,
+				7D672EBD1AC7871C004B5B4C /* UIView+Extension.m in Sources */,
 				7DC454531AC68F5F00ED9410 /* JHDiscoverViewController.m in Sources */,
 				7DC454591AC68FBE00ED9410 /* JHMessageViewController.m in Sources */,
+				7D672EBA1AC78608004B5B4C /* UIBarButtonItem+Extension.m in Sources */,
 				7DC4545C1AC68FDF00ED9410 /* JHProfileViewController.m in Sources */,
 				7DC454631AC69F7D00ED9410 /* UIImage+Extension.m in Sources */,
 				7DC4544B1AC68CE900ED9410 /* main.m in Sources */,

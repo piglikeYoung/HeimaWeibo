@@ -10,6 +10,14 @@
 #define _____jinheng_pch
 
 #import "UIImage+Extension.h"
+#import "UIView+Extension.h"
+#import "UIBarButtonItem+Extension.h"
+
+#ifdef DEBUG // 调试状态, 打开LOG功能
+#define JHLog(...) NSLog(__VA_ARGS__)
+#else // 发布状态, 关闭LOG功能
+#define JHLog(...)
+#endif
 
 // 随机色
 #define JHRandomColor [UIColor colorWithRed:arc4random_uniform(256)/255.0 green:arc4random_uniform(256)/255.0 blue:arc4random_uniform(256)/255.0 alpha:1.0]
