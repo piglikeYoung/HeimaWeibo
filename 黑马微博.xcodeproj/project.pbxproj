@@ -20,6 +20,7 @@
 		7DC454591AC68FBE00ED9410 /* JHMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC454581AC68FBE00ED9410 /* JHMessageViewController.m */; };
 		7DC4545C1AC68FDF00ED9410 /* JHProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC4545B1AC68FDF00ED9410 /* JHProfileViewController.m */; };
 		7DC454631AC69F7D00ED9410 /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC454621AC69F7D00ED9410 /* UIImage+Extension.m */; };
+		7DC932D91AC913850025291B /* JHSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC932D81AC913850025291B /* JHSearchBar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,8 @@
 		7DC4545D1AC691F700ED9410 /* jinheng.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jinheng.pch; sourceTree = "<group>"; };
 		7DC454611AC69F7D00ED9410 /* UIImage+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extension.h"; sourceTree = "<group>"; };
 		7DC454621AC69F7D00ED9410 /* UIImage+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extension.m"; sourceTree = "<group>"; };
+		7DC932D71AC913850025291B /* JHSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHSearchBar.h; sourceTree = "<group>"; };
+		7DC932D81AC913850025291B /* JHSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHSearchBar.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +179,8 @@
 		7DC454321AC68CE900ED9410 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7DC932D71AC913850025291B /* JHSearchBar.h */,
+				7DC932D81AC913850025291B /* JHSearchBar.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -441,6 +446,7 @@
 				7DC454501AC68EF200ED9410 /* JHTabBarViewController.m in Sources */,
 				7D672EBD1AC7871C004B5B4C /* UIView+Extension.m in Sources */,
 				7DC454531AC68F5F00ED9410 /* JHDiscoverViewController.m in Sources */,
+				7DC932D91AC913850025291B /* JHSearchBar.m in Sources */,
 				7DC454591AC68FBE00ED9410 /* JHMessageViewController.m in Sources */,
 				7D672EBA1AC78608004B5B4C /* UIBarButtonItem+Extension.m in Sources */,
 				7DC4545C1AC68FDF00ED9410 /* JHProfileViewController.m in Sources */,
