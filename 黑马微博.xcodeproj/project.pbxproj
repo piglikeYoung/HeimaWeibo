@@ -20,6 +20,8 @@
 		7DC454591AC68FBE00ED9410 /* JHMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC454581AC68FBE00ED9410 /* JHMessageViewController.m */; };
 		7DC4545C1AC68FDF00ED9410 /* JHProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC4545B1AC68FDF00ED9410 /* JHProfileViewController.m */; };
 		7DC454631AC69F7D00ED9410 /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC454621AC69F7D00ED9410 /* UIImage+Extension.m */; };
+		7DC634161AC9443B00F64008 /* JHTitleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC634151AC9443B00F64008 /* JHTitleButton.m */; };
+		7DC634191AC9461A00F64008 /* JHPopMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC634181AC9461A00F64008 /* JHPopMenu.m */; };
 		7DC932D91AC913850025291B /* JHSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC932D81AC913850025291B /* JHSearchBar.m */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +64,10 @@
 		7DC4545D1AC691F700ED9410 /* jinheng.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jinheng.pch; sourceTree = "<group>"; };
 		7DC454611AC69F7D00ED9410 /* UIImage+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extension.h"; sourceTree = "<group>"; };
 		7DC454621AC69F7D00ED9410 /* UIImage+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extension.m"; sourceTree = "<group>"; };
+		7DC634141AC9443B00F64008 /* JHTitleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHTitleButton.h; sourceTree = "<group>"; };
+		7DC634151AC9443B00F64008 /* JHTitleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHTitleButton.m; sourceTree = "<group>"; };
+		7DC634171AC9461A00F64008 /* JHPopMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHPopMenu.h; sourceTree = "<group>"; };
+		7DC634181AC9461A00F64008 /* JHPopMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHPopMenu.m; sourceTree = "<group>"; };
 		7DC932D71AC913850025291B /* JHSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHSearchBar.h; sourceTree = "<group>"; };
 		7DC932D81AC913850025291B /* JHSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHSearchBar.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -214,6 +220,10 @@
 		7DC454361AC68CE900ED9410 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7DC634141AC9443B00F64008 /* JHTitleButton.h */,
+				7DC634151AC9443B00F64008 /* JHTitleButton.m */,
+				7DC634171AC9461A00F64008 /* JHPopMenu.h */,
+				7DC634181AC9461A00F64008 /* JHPopMenu.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -443,6 +453,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7DC454561AC68F8600ED9410 /* JHHomeViewController.m in Sources */,
+				7DC634161AC9443B00F64008 /* JHTitleButton.m in Sources */,
 				7DC454501AC68EF200ED9410 /* JHTabBarViewController.m in Sources */,
 				7D672EBD1AC7871C004B5B4C /* UIView+Extension.m in Sources */,
 				7DC454531AC68F5F00ED9410 /* JHDiscoverViewController.m in Sources */,
@@ -453,6 +464,7 @@
 				7DC454631AC69F7D00ED9410 /* UIImage+Extension.m in Sources */,
 				7DC4544B1AC68CE900ED9410 /* main.m in Sources */,
 				7D672EB71AC77B90004B5B4C /* JHNavigationController.m in Sources */,
+				7DC634191AC9461A00F64008 /* JHPopMenu.m in Sources */,
 				7DC4544A1AC68CE900ED9410 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

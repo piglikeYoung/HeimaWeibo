@@ -25,4 +25,8 @@
 // 是否为iOS7
 #define iOS7 ([[UIDevice currentDevice].systemVersion doubleValue] >= 7.0)
 
+// 导航栏标题的字体
+#define JHNavigationTitleFont [UIFont boldSystemFontOfSize:20]
+
+
 #endif

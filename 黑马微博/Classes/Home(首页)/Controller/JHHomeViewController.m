@@ -7,53 +7,98 @@
 //
 
 #import "JHHomeViewController.h"
+#import "JHTitleButton.h"
 
 @interface JHHomeViewController ()
+
+@property (assign , nonatomic) BOOL down;
 
 @end
 
 @implementation JHHomeViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // 设置导航栏按钮
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithImageName:@"navigationbar_friendsearch" highImageName:@"navigationbar_friendsearch_highlighted" target:self action:@selector(friendSearch)];
+    
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithImageName:@"navigationbar_pop" highImageName:@"navigationbar_pop_highlighted" target:self action:@selector(pop)];
+    
+    
+    // 设置导航栏中间的标题按钮
+    JHTitleButton *titleButton = [[JHTitleButton alloc] init];
+    // 设置文字
+    [titleButton setTitle:@"首页" forState:UIControlStateNormal];
+    
+    
+    // 设置图标
+    [titleButton setImage:[UIImage imageWithName:@"navigationbar_arrow_down"] forState:UIControlStateNormal];
+    
+    // 设置尺寸
+    titleButton.width = 100;
+    titleButton.height = 35;
+    
+    // 设置背景
+    [titleButton setBackgroundImage:[UIImage resizedImage:@"navigationbar_filter_background_highlighted"] forState:UIControlStateHighlighted];
+
+    // 监听按钮点击
+    [titleButton addTarget:self action:@selector(titleClick:) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.navigationItem.titleView = titleButton;
 }
 
-#pragma mark - Table view data source
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return 20;
-}
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+/**
+ *  第一种方案，提供成员变量作为判断条件
+ 
+- (void)titleClick:(UIButton *)titleButton
 {
-    static NSString *ID = @"cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
+    if (self.down) {
+        self.down = NO;
+        // 换成箭头向上
+        [titleButton setImage:[UIImage imageWithName:@"navigationbar_arrow_up"] forState:UIControlStateNormal];
+    } else {
+        self.down = YES;
+        // 换成箭头向上
+        [titleButton setImage:[UIImage imageWithName:@"navigationbar_arrow_down"] forState:UIControlStateNormal];
     }
-    cell.textLabel.text = [NSString stringWithFormat:@"%d----首页测试数据", indexPath.row];
-    return cell;
 }
+ */
 
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+/**
+ * 第二种方案，使用tag的方式，但这种方式不好，别人不知道tag的意思
+ 
+- (void)titleClick:(UIButton *)titleButton
 {
-    //点击cell的时候，跳到下一个界面
-    UIViewController *newVc = [[UIViewController alloc] init];
-    newVc.view.backgroundColor = [UIColor redColor];
-    newVc.title = @"新控制器";
-    [self.navigationController pushViewController:newVc animated:YES];
+    if (titleButton.tag == 0) {
+        titleButton.tag = 10;
+        // 换成箭头向上
+        [titleButton setImage:[UIImage imageWithName:@"navigationbar_arrow_up"] forState:UIControlStateNormal];
+    } else{
+        titleButton.tag = 0;
+        // 换成箭头向上
+        [titleButton setImage:[UIImage imageWithName:@"navigationbar_arrow_down"] forState:UIControlStateNormal];
+    }
 }
+ */
 
+/**
+ * 第三种方案，获取当前图片来判断，推荐使用这种
+ */
+- (void)titleClick:(UIButton *)titleButton
+{
+    UIImage *downImage = [UIImage imageWithName:@"navigationbar_arrow_down"];
+    if (titleButton.currentImage == downImage) {
+        // 换成箭头向上
+        [titleButton setImage:[UIImage imageWithName:@"navigationbar_arrow_up"] forState:UIControlStateNormal];
+    } else{
+        // 换成箭头向上
+        [titleButton setImage:downImage forState:UIControlStateNormal];
+    }
+}
+ 
 
 @end
