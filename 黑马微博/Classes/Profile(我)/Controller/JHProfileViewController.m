@@ -7,6 +7,7 @@
 //
 
 #import "JHProfileViewController.h"
+#import "JHPopMenu.h"
 
 @interface JHProfileViewController ()
 
@@ -17,11 +18,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"设置" style:UIBarButtonItemStylePlain target:self action:@selector(setting)];
+}
+
+- (void) setting
+{
+    UITableView *tableView = [[UITableView alloc] init];
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    tableView.backgroundColor = [UIColor redColor];
+    
+    JHPopMenu *menu = [JHPopMenu popMenuWithContentView:tableView];
+    CGFloat menuW = 100;
+    CGFloat menuH = 200;
+    CGFloat menuY = 55;
+    CGFloat menuX = self.view.width - menuW - 20;
+    menu.dimBackground = YES;
+    menu.arrowPosition = JHPopMenuArrowPositionRight;
+    [menu showInRect:CGRectMake(menuX, menuY, menuW, menuH)];
 }
 
 

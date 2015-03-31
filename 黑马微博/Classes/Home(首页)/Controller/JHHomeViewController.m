@@ -8,10 +8,9 @@
 
 #import "JHHomeViewController.h"
 #import "JHTitleButton.h"
+#import "JHPopMenu.h"
 
-@interface JHHomeViewController ()
-
-@property (assign , nonatomic) BOOL down;
+@interface JHHomeViewController ()<JHPopMenuDelegate>
 
 @end
 
@@ -52,53 +51,42 @@
 
 
 /**
- *  第一种方案，提供成员变量作为判断条件
- 
+ * 点击显示弹出框
+ */
 - (void)titleClick:(UIButton *)titleButton
 {
-    if (self.down) {
-        self.down = NO;
-        // 换成箭头向上
-        [titleButton setImage:[UIImage imageWithName:@"navigationbar_arrow_up"] forState:UIControlStateNormal];
-    } else {
-        self.down = YES;
-        // 换成箭头向上
-        [titleButton setImage:[UIImage imageWithName:@"navigationbar_arrow_down"] forState:UIControlStateNormal];
-    }
+    // 换成箭头向上
+    [titleButton setImage:[UIImage imageWithName:@"navigationbar_arrow_up"] forState:UIControlStateNormal];
+    
+    // 弹出菜单
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeContactAdd];
+    button.backgroundColor = [UIColor redColor];
+    
+    JHPopMenu *menu = [[JHPopMenu alloc] initWithContentView:button];
+    menu.delegate = self;
+    // 设置弹出框突起的位置
+    menu.arrowPosition = JHPopMenuArrowPositionCenter;
+    // 是否开启遮罩效果
+    menu.dimBackground = YES;
+    [menu showInRect:CGRectMake(100, 100, 100, 100)];
 }
- */
 
-/**
- * 第二种方案，使用tag的方式，但这种方式不好，别人不知道tag的意思
- 
-- (void)titleClick:(UIButton *)titleButton
-{
-    if (titleButton.tag == 0) {
-        titleButton.tag = 10;
-        // 换成箭头向上
-        [titleButton setImage:[UIImage imageWithName:@"navigationbar_arrow_up"] forState:UIControlStateNormal];
-    } else{
-        titleButton.tag = 0;
-        // 换成箭头向上
-        [titleButton setImage:[UIImage imageWithName:@"navigationbar_arrow_down"] forState:UIControlStateNormal];
-    }
+#pragma mark - 弹出菜单协议
+- (void)popMenuDidDismissed:(JHPopMenu *)popMenu{
+    JHTitleButton *titleButton = (JHTitleButton *)self.navigationItem.titleView;
+    [titleButton setImage:[UIImage imageWithName:@"navigationbar_arrow_down"] forState:UIControlStateNormal];
 }
- */
 
-/**
- * 第三种方案，获取当前图片来判断，推荐使用这种
- */
-- (void)titleClick:(UIButton *)titleButton
+
+- (void)pop
 {
-    UIImage *downImage = [UIImage imageWithName:@"navigationbar_arrow_down"];
-    if (titleButton.currentImage == downImage) {
-        // 换成箭头向上
-        [titleButton setImage:[UIImage imageWithName:@"navigationbar_arrow_up"] forState:UIControlStateNormal];
-    } else{
-        // 换成箭头向上
-        [titleButton setImage:downImage forState:UIControlStateNormal];
-    }
+    JHLog(@"pop---");
 }
- 
+
+- (void)friendSearch
+{
+    JHLog(@"friendSearch---");
+    
+}
 
 @end
