@@ -12,8 +12,9 @@
 #import "JHDiscoverViewController.h"
 #import "JHProfileViewController.h"
 #import "JHNavigationController.h"
+#import "JHTabBar.h"
 
-@interface JHTabBarViewController ()
+@interface JHTabBarViewController ()<UITabBarControllerDelegate>
 
 @end
 
@@ -33,7 +34,27 @@
     [self addOneChlildVc:discover title:@"发现" imageName:@"tabbar_discover" selectedImageName:@"tabbar_discover_selected"];
     
     JHProfileViewController *profile = [[JHProfileViewController alloc] init];
-    [self addOneChlildVc:profile title:@"我" imageName:@"tabbar_profile" selectedImageName:@"tabbar_profile_selected"];}
+    [self addOneChlildVc:profile title:@"我" imageName:@"tabbar_profile" selectedImageName:@"tabbar_profile_selected"];
+    
+    // 调整TabBar
+    JHTabBar *customTabBar = [[JHTabBar alloc] init];
+    customTabBar.backgroundImage = [UIImage imageWithName:@"tabbar_background"];
+    customTabBar.selectionIndicatorImage = [UIImage imageWithName:@"navigationbar_button_background"];
+    customTabBar.frame = self.tabBar.bounds;
+    // 更换系统自带的tabbar
+    [self setValue:customTabBar forKeyPath:@"tabBar"];
+    
+    // 设置代理（监听控制器的切换， 控制器一旦切换了子控制器，就会调用代理的tabBarController:didSelectViewController:）
+    self.delegate = self;
+    
+}
+
+
+- (void) tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
+{
+    // 强制重新布局子控件（内部会调用layouSubviews）
+    [self.tabBar setNeedsLayout];
+}
 
 /**
  *  添加一个子控制器

@@ -22,6 +22,7 @@
 		7DC454631AC69F7D00ED9410 /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC454621AC69F7D00ED9410 /* UIImage+Extension.m */; };
 		7DC634161AC9443B00F64008 /* JHTitleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC634151AC9443B00F64008 /* JHTitleButton.m */; };
 		7DC634191AC9461A00F64008 /* JHPopMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC634181AC9461A00F64008 /* JHPopMenu.m */; };
+		7DC8D1191ACA669600A78DF6 /* JHTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC8D1181ACA669600A78DF6 /* JHTabBar.m */; };
 		7DC932D91AC913850025291B /* JHSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC932D81AC913850025291B /* JHSearchBar.m */; };
 /* End PBXBuildFile section */
 
@@ -68,6 +69,8 @@
 		7DC634151AC9443B00F64008 /* JHTitleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHTitleButton.m; sourceTree = "<group>"; };
 		7DC634171AC9461A00F64008 /* JHPopMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHPopMenu.h; sourceTree = "<group>"; };
 		7DC634181AC9461A00F64008 /* JHPopMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHPopMenu.m; sourceTree = "<group>"; };
+		7DC8D1171ACA669600A78DF6 /* JHTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHTabBar.h; sourceTree = "<group>"; };
+		7DC8D1181ACA669600A78DF6 /* JHTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHTabBar.m; sourceTree = "<group>"; };
 		7DC932D71AC913850025291B /* JHSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHSearchBar.h; sourceTree = "<group>"; };
 		7DC932D81AC913850025291B /* JHSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHSearchBar.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -284,6 +287,8 @@
 		7DC4543F1AC68CE900ED9410 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7DC8D1171ACA669600A78DF6 /* JHTabBar.h */,
+				7DC8D1181ACA669600A78DF6 /* JHTabBar.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -458,6 +463,7 @@
 				7D672EBD1AC7871C004B5B4C /* UIView+Extension.m in Sources */,
 				7DC454531AC68F5F00ED9410 /* JHDiscoverViewController.m in Sources */,
 				7DC932D91AC913850025291B /* JHSearchBar.m in Sources */,
+				7DC8D1191ACA669600A78DF6 /* JHTabBar.m in Sources */,
 				7DC454591AC68FBE00ED9410 /* JHMessageViewController.m in Sources */,
 				7D672EBA1AC78608004B5B4C /* UIBarButtonItem+Extension.m in Sources */,
 				7DC4545C1AC68FDF00ED9410 /* JHProfileViewController.m in Sources */,
@@ -572,7 +578,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/黑马微博/jinheng.pch";
 				INFOPLIST_FILE = "黑马微博/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -586,7 +592,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/黑马微博/jinheng.pch";
 				INFOPLIST_FILE = "黑马微博/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
