@@ -25,6 +25,7 @@
 		7DC8D1191ACA669600A78DF6 /* JHTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC8D1181ACA669600A78DF6 /* JHTabBar.m */; };
 		7DC932D91AC913850025291B /* JHSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC932D81AC913850025291B /* JHSearchBar.m */; };
 		7DCB26E81ACB956000B71AD2 /* JHComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB26E51ACB956000B71AD2 /* JHComposeViewController.m */; };
+		7DCB26F61ACBA71900B71AD2 /* JHNewfeatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB26F51ACBA71900B71AD2 /* JHNewfeatureViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,8 @@
 		7DC932D81AC913850025291B /* JHSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHSearchBar.m; sourceTree = "<group>"; };
 		7DCB26E41ACB956000B71AD2 /* JHComposeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHComposeViewController.h; sourceTree = "<group>"; };
 		7DCB26E51ACB956000B71AD2 /* JHComposeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHComposeViewController.m; sourceTree = "<group>"; };
+		7DCB26F41ACBA71900B71AD2 /* JHNewfeatureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHNewfeatureViewController.h; sourceTree = "<group>"; };
+		7DCB26F51ACBA71900B71AD2 /* JHNewfeatureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHNewfeatureViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +156,7 @@
 		7DC4542E1AC68CE900ED9410 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				7DCB26EF1ACBA6EB00B71AD2 /* Newfeature(新特性) */,
 				7DCB26E21ACB956000B71AD2 /* Compose(发微博) */,
 				7DC4542F1AC68CE900ED9410 /* Discover(发现) */,
 				7DC454331AC68CE900ED9410 /* Home(首页) */,
@@ -396,6 +400,23 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		7DCB26EF1ACBA6EB00B71AD2 /* Newfeature(新特性) */ = {
+			isa = PBXGroup;
+			children = (
+				7DCB26F01ACBA6EB00B71AD2 /* Controller */,
+			);
+			path = "Newfeature(新特性)";
+			sourceTree = "<group>";
+		};
+		7DCB26F01ACBA6EB00B71AD2 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7DCB26F41ACBA71900B71AD2 /* JHNewfeatureViewController.h */,
+				7DCB26F51ACBA71900B71AD2 /* JHNewfeatureViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -509,6 +530,7 @@
 				7D672EB71AC77B90004B5B4C /* JHNavigationController.m in Sources */,
 				7DC634191AC9461A00F64008 /* JHPopMenu.m in Sources */,
 				7DCB26E81ACB956000B71AD2 /* JHComposeViewController.m in Sources */,
+				7DCB26F61ACBA71900B71AD2 /* JHNewfeatureViewController.m in Sources */,
 				7DC4544A1AC68CE900ED9410 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
