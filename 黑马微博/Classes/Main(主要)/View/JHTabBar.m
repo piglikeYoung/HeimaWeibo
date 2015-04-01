@@ -58,8 +58,17 @@
 - (void)plusClick
 {
     JHLog(@"plusClick----");
+    
+    // 通知代理
+    if ([self.delegate respondsToSelector:@selector(tabBarDidClickedPlusButton:)]) {
+        [self.delegate tabBarDidClickedPlusButton:self];
+    }
 }
 
+
+/**
+ *  布局子控件
+ */
 -(void)layoutSubviews
 {
     [super layoutSubviews];

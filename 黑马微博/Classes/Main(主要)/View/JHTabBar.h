@@ -7,7 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+@class JHTabBar;
+
+@protocol JHTabBarDelegate <NSObject>
+
+@optional
+- (void)tabBarDidClickedPlusButton:(JHTabBar *)tabBar;
+
+@end
 
 @interface JHTabBar : UITabBar
+
+@property (nonatomic, weak) id<JHTabBarDelegate> delegate;
 
 @end

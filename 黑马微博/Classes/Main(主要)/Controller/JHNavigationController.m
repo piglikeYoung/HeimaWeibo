@@ -56,7 +56,7 @@
     //设置导航栏的背景
     if (!iOS7) {
         // 设置状态栏的颜色
-        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleBlackOpaque;
+//        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleBlackOpaque;
         [appearance setBackgroundImage:[UIImage imageWithName:@"navigationbar_background"] forBarMetrics:UIBarMetricsDefault];
     }
     
@@ -65,7 +65,7 @@
     //设置字体颜色
     textAttrs[UITextAttributeTextColor]=[UIColor blackColor];
     //设置字体
-    textAttrs[UITextAttributeFont]=[UIFont boldSystemFontOfSize:20];
+    textAttrs[UITextAttributeFont]=JHNavigationTitleFont;
     //设置字体的偏移量（0）
     //说明：UIOffsetZero是结构体，只有包装成NSValue对象才能放进字典中
     textAttrs[UITextAttributeTextShadowOffset]=[NSValue valueWithUIOffset:UIOffsetZero];
@@ -89,16 +89,15 @@
     //这是偏移量为0
     textAttrs[UITextAttributeTextShadowOffset]=[NSValue valueWithUIOffset:UIOffsetZero];
     //设置颜色为橙色
-    textAttrs[UITextAttributeTextColor]=[UIColor orangeColor];
+    textAttrs[UITextAttributeTextColor] = [UIColor orangeColor];
     [appearance setTitleTextAttributes:textAttrs forState:UIControlStateNormal];
     
     
     //2.设置高亮状态下文字的属性
     //使用1中的textAttrs进行通用设置
-    NSMutableDictionary *hightextAttrs=[NSMutableDictionary dictionaryWithDictionary:textAttrs];
-    //设置颜色为红色
-    hightextAttrs[UITextAttributeTextColor]=[UIColor redColor];
-    [appearance setTitleTextAttributes:hightextAttrs forState:UIControlStateHighlighted];
+    NSMutableDictionary *highTextAttrs = [NSMutableDictionary dictionaryWithDictionary:textAttrs];
+    highTextAttrs[UITextAttributeTextColor] = [UIColor redColor];
+    [appearance setTitleTextAttributes:highTextAttrs forState:UIControlStateHighlighted];
     
     
     //3.设置不可用状态下文字的属性
@@ -108,9 +107,10 @@
     disabletextAttrs[UITextAttributeTextColor]=[UIColor lightGrayColor];
     [appearance setTitleTextAttributes:disabletextAttrs forState:UIControlStateDisabled];
     
+    
     //设置背景
     //技巧提示：为了让某个按钮的背景消失，可以设置一张完全透明的背景图片
-    [appearance setBackButtonBackgroundImage:[UIImage imageWithName:@"navigationbar_button_background"]forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    [appearance setBackgroundImage:[UIImage imageWithName:@"navigationbar_button_background"]forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
 }
 
 

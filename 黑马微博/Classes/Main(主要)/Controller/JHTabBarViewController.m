@@ -13,8 +13,9 @@
 #import "JHProfileViewController.h"
 #import "JHNavigationController.h"
 #import "JHTabBar.h"
+#import "JHComposeViewController.h"
 
-@interface JHTabBarViewController ()<UITabBarControllerDelegate>
+@interface JHTabBarViewController ()<JHTabBarDelegate>
 
 @end
 
@@ -108,6 +109,19 @@
     // 添加为tabbar控制器的子控制器
     JHNavigationController *nav = [[JHNavigationController alloc] initWithRootViewController:childVc];
     [self addChildViewController:nav];
+}
+
+#pragma mark - JHTabBarDelegate
+- (void)tabBarDidClickedPlusButton:(JHTabBar *)tabBar
+{
+    // 弹出发微博控制器
+    JHComposeViewController *compose = [[JHComposeViewController alloc] init];
+    JHNavigationController *nav = [[JHNavigationController alloc] initWithRootViewController:compose];
+    
+    
+    
+    [self presentViewController:nav animated:YES completion:nil];
+    
 }
 
 
