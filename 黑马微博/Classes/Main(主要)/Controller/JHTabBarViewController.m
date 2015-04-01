@@ -23,6 +23,31 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // 添加所有的子控制器
+    [self addAllChildVcs];
+    
+    // 创建自定义tabbar
+    [self addCustomTabBar];
+}
+
+
+/**
+ *  创建自定义tabbar
+ */
+- (void)addCustomTabBar
+{
+    // 调整TabBar
+    JHTabBar *customTabBar = [[JHTabBar alloc] init];
+    // 更换系统自带的tabbar
+    [self setValue:customTabBar forKeyPath:@"tabBar"];
+}
+
+
+/**
+ *  添加所有的子控制器
+ */
+- (void)addAllChildVcs
+{
     // 添加子控制器
     JHHomeViewController *home = [[JHHomeViewController alloc] init];
     [self addOneChlildVc:home title:@"首页" imageName:@"tabbar_home" selectedImageName:@"tabbar_home_selected"];
@@ -36,24 +61,6 @@
     JHProfileViewController *profile = [[JHProfileViewController alloc] init];
     [self addOneChlildVc:profile title:@"我" imageName:@"tabbar_profile" selectedImageName:@"tabbar_profile_selected"];
     
-    // 调整TabBar
-    JHTabBar *customTabBar = [[JHTabBar alloc] init];
-    customTabBar.backgroundImage = [UIImage imageWithName:@"tabbar_background"];
-    customTabBar.selectionIndicatorImage = [UIImage imageWithName:@"navigationbar_button_background"];
-    customTabBar.frame = self.tabBar.bounds;
-    // 更换系统自带的tabbar
-    [self setValue:customTabBar forKeyPath:@"tabBar"];
-    
-    // 设置代理（监听控制器的切换， 控制器一旦切换了子控制器，就会调用代理的tabBarController:didSelectViewController:）
-    self.delegate = self;
-    
-}
-
-
-- (void) tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
-{
-    // 强制重新布局子控件（内部会调用layouSubviews）
-    [self.tabBar setNeedsLayout];
 }
 
 /**
@@ -71,10 +78,22 @@
     // 设置标题
     // 相当于同时设置了tabBarItem.title和navigationItem.title
     childVc.title = title;
-    //    childVc.tabBarItem.title = title; // tabbar标签上
-    //    childVc.navigationItem.title  = title; // 导航栏
+
     // 设置图标
     childVc.tabBarItem.image = [UIImage imageWithName:imageName];
+    
+    // 设置tabBarItem的普通文字颜色
+    NSMutableDictionary *textAttrs = [NSMutableDictionary dictionary];
+    textAttrs[UITextAttributeTextColor] = [UIColor blackColor];
+    textAttrs[UITextAttributeFont] = [UIFont systemFontOfSize:10];
+    [childVc.tabBarItem setTitleTextAttributes:textAttrs forState:UIControlStateNormal];
+    
+    // 设置tabBarItem的选中文字颜色
+    NSMutableDictionary *selectedTextAttrs = [NSMutableDictionary dictionary];
+    selectedTextAttrs[UITextAttributeTextColor] = [UIColor orangeColor];
+    [childVc.tabBarItem setTitleTextAttributes:selectedTextAttrs forState:UIControlStateSelected];
+    
+    
     // 设置选中的图标
     UIImage *selectedImage = [UIImage imageWithName:selectedImageName];
     

@@ -20,6 +20,13 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        
+        // iOS7以下才修改TabBar背景
+        if (!iOS7) {
+            self.backgroundImage = [UIImage imageWithName:@"tabbar_background"];
+        }
+        self.selectionIndicatorImage = [UIImage imageWithName:@"navigationbar_button_background"];
+        
         // 添加加号按钮
         [self setupPlusButton];
 
@@ -87,39 +94,11 @@
         // 根据索引调整位置
         [self setupTabBarButtonFrame:tabBarButton atIndex:index];
         
-        // 遍历UITabBarButton中的所有子控件
-        [self setupTabBarButtonTextColor:tabBarButton atIndex:index];
-        
         // 索引增加
         index++;
     }
 }
 
-/**
- *  设置某个按钮的文字颜色
- *
- *  @param tabBarButton 需要设置的按钮
- *  @param index        按钮所在的索引
- */
-- (void)setupTabBarButtonTextColor:(UIView *)tabBarButton atIndex:(int)index
-{
-    // 选中按钮的索引
-    int selectedIndex = [self.items indexOfObject:self.selectedItem];
-    
-    for (UILabel *label in tabBarButton.subviews) {
-        // 说明不是个Label
-        if (![label isKindOfClass:[UILabel class]]) continue;
-        
-        // 是Label
-        // 设置字体
-        label.font = [UIFont systemFontOfSize:10];
-        if (selectedIndex == index) { // 说明这个Button选中, 设置label颜色为橙色
-            label.textColor = [UIColor orangeColor];
-        } else { // 说明这个Button没有选中, 设置label颜色为黑色
-            label.textColor = [UIColor blackColor];
-        }
-    }
-}
 
 /**
  *  设置某个按钮的frame
