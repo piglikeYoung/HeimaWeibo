@@ -9,6 +9,7 @@
 #define JHNewfeatureImageCount 4
 
 #import "JHNewfeatureViewController.h"
+#import "JHTabBarViewController.h"
 
 @interface JHNewfeatureViewController () <UIScrollViewDelegate>
 
@@ -58,6 +59,13 @@
         imageView.width = imageW;
         imageView.height = imageH;
         imageView.x = i * imageW;
+        
+        
+        // 给最后一个imageView添加按钮
+        if (i == JHNewfeatureImageCount - 1) {
+            [self setupLastImageView:imageView];
+        }
+        
     }
     
     // 3.设置其他属性
@@ -70,6 +78,94 @@
     // 设置背景颜色
     scrollView.backgroundColor = JHColor(246, 246, 246);
 }
+
+/**
+ 设置最后一个UIImageView中的内容
+ */
+- (void)setupLastImageView:(UIImageView *)imageView
+{
+    imageView.userInteractionEnabled = YES;
+    
+    // 1.添加开始按钮
+    [self setupStartButton:imageView];
+    
+    // 2.添加分享按钮
+    [self setupShareButton:imageView];
+}
+
+
+/**
+ *  添加分享按钮
+ */
+- (void)setupShareButton:(UIImageView *)imageView
+{
+    // 1.添加分享按钮
+    UIButton *shareButton = [[UIButton alloc] init];
+    [imageView addSubview:shareButton];
+    
+    // 2.设置文字和图标
+    [shareButton setTitle:@"分享给大家" forState:UIControlStateNormal];
+    [shareButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [shareButton setImage:[UIImage imageWithName:@"new_feature_share_false"] forState:UIControlStateNormal];
+    [shareButton setImage:[UIImage imageWithName:@"new_feature_share_true"] forState:UIControlStateSelected];
+    // 监听点击
+    [shareButton addTarget:self action:@selector(share:) forControlEvents:UIControlEventTouchUpInside];
+    
+    // 3.设置frame
+    shareButton.size = CGSizeMake(150, 35);
+    shareButton.centerX = self.view.width * 0.5;
+    shareButton.centerY = self.view.height * 0.7;
+    
+    // 4.设置间距
+    shareButton.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
+}
+
+/**
+ * 分享
+ */
+- (void)share:(UIButton *)shareButton
+{
+    shareButton.selected = !shareButton.isSelected;
+}
+
+
+/**
+ *  添加开始按钮
+ */
+- (void)setupStartButton:(UIImageView *)imageView
+{
+    // 1.添加开始按钮
+    UIButton *startButton = [[UIButton alloc] init];
+    [imageView addSubview:startButton];
+    
+    // 2.设置背景图片
+    [startButton setBackgroundImage:[UIImage imageWithName:@"new_feature_finish_button"] forState:UIControlStateNormal];
+    [startButton setBackgroundImage:[UIImage imageWithName:@"new_feature_finish_button_highlighted"] forState:UIControlStateHighlighted];
+    
+    // 3.设置frame
+    startButton.size = startButton.currentBackgroundImage.size;
+    startButton.centerX = self.view.width * 0.5;
+    startButton.centerY = self.view.height * 0.8;
+    
+    // 4.设置文字
+    [startButton setTitle:@"开始微博" forState:UIControlStateNormal];
+    [startButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [startButton addTarget:self action:@selector(start) forControlEvents:UIControlEventTouchUpInside];
+}
+
+/**
+ *  开始微博
+ */
+- (void)start
+{
+    // 显示主控制器（JHTabBarController）
+    JHTabBarViewController *vc = [[JHTabBarViewController alloc] init];
+    
+    // 切换控制器
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    window.rootViewController = vc;
+}
+
 
 /**
  *  添加pageControl
