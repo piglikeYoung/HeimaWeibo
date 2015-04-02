@@ -27,6 +27,9 @@
     
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
     if ([currentVersion isEqualToString:lastVersion]) {
+        // 设置状态栏不隐藏
+        [UIApplication sharedApplication].statusBarHidden = NO;
+        
         // 当前版本号 == 上次使用的版本：显示JHTabBarViewController
         window.rootViewController = [[JHTabBarViewController alloc] init];
     } else {

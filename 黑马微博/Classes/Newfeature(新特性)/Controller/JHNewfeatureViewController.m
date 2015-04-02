@@ -158,6 +158,9 @@
  */
 - (void)start
 {
+    // 设置状态栏不隐藏
+    [UIApplication sharedApplication].statusBarHidden = NO;
+    
     // 显示主控制器（JHTabBarController）
     JHTabBarViewController *vc = [[JHTabBarViewController alloc] init];
     

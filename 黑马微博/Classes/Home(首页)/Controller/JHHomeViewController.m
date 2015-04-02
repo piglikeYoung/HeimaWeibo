@@ -9,8 +9,17 @@
 #import "JHHomeViewController.h"
 #import "JHTitleButton.h"
 #import "JHPopMenu.h"
+#import "AFNetworking.h"
+#import "JHAccountTool.h"
+#import "JHAccount.h"
+#import "UIImageView+WebCache.h"
 
 @interface JHHomeViewController ()<JHPopMenuDelegate>
+
+/**
+ *  微博数组(存放着所有的微博数据)
+ */
+@property (nonatomic, strong) NSArray *statuses;
 
 @end
 
@@ -21,6 +30,43 @@
 {
     [super viewDidLoad];
     
+    // 设置导航栏的内容
+    [self setupNavBar];
+    
+    [self loadNewStatus];
+}
+
+/**
+ *  加载最新的微博数据
+ */
+- (void)loadNewStatus
+{
+    // 1.获得请求管理者
+    AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
+
+    // 2.封装请求参数
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"access_token"] = [JHAccountTool account].access_token;
+    
+    // 3.发送GET请求
+    [mgr GET:@"https://api.weibo.com/2/statuses/home_timeline.json" parameters:params success:^(AFHTTPRequestOperation *operation, NSDictionary *resultDict) {
+//        JHLog(@"请求成功--%@", resultDict);
+        
+        // 赋值数组数据
+        self.statuses = resultDict[@"statuses"];
+        
+        // 重新刷新表格
+        [self.tableView reloadData];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        JHLog(@"请求失败--%@", error);
+    }];
+}
+
+/**
+ *  设置导航栏的内容
+ */
+- (void)setupNavBar
+{
     // 设置导航栏按钮
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithImageName:@"navigationbar_friendsearch" highImageName:@"navigationbar_friendsearch_highlighted" target:self action:@selector(friendSearch)];
     
@@ -42,7 +88,7 @@
     
     // 设置背景
     [titleButton setBackgroundImage:[UIImage resizedImage:@"navigationbar_filter_background_highlighted"] forState:UIControlStateHighlighted];
-
+    
     // 监听按钮点击
     [titleButton addTarget:self action:@selector(titleClick:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -87,6 +133,42 @@
 {
     JHLog(@"friendSearch---");
     
+}
+
+#pragma mark - Table view data source
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.statuses.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *ID = @"cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
+    }
+    
+    // 取出这行对应的微博字典数据
+    NSDictionary *statusDict = self.statuses[indexPath.row];
+    cell.textLabel.text = statusDict[@"text"];
+    
+    // 取出用户字典数据
+    NSDictionary *userDict = statusDict[@"user"];
+    cell.detailTextLabel.text = userDict[@"name"];
+    
+    // 下载头像
+    NSString *imageUrlStr = userDict[@"profile_image_url"];
+    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:imageUrlStr] placeholderImage:[UIImage imageWithName:@"avatar_default_small"]];
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UIViewController *newVc = [[UIViewController alloc] init];
+    newVc.view.backgroundColor = [UIColor redColor];
+    newVc.title = @"新控制器";
+    [self.navigationController pushViewController:newVc animated:YES];
 }
 
 @end
