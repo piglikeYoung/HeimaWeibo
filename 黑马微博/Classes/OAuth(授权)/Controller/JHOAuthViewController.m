@@ -9,8 +9,7 @@
 #import "JHOAuthViewController.h"
 #import "MBProgressHUD+MJ.h"
 #import "AFNetworking.h"
-#import "JHTabBarViewController.h"
-#import "JHNewfeatureViewController.h"
+#import "JHControllerTool.h"
 
 @interface JHOAuthViewController () <UIWebViewDelegate>
 
@@ -28,7 +27,8 @@
     [self.view addSubview:webView];
     
     // 2.加载登录页面
-    NSURL *url = [NSURL URLWithString:@"https://api.weibo.com/oauth2/authorize?client_id=1359433872&redirect_uri=http://ios.itcast.cn"];
+    NSString *urlStr = [NSString stringWithFormat:@"https://api.weibo.com/oauth2/authorize?client_id=%@&redirect_uri=%@", JHAppKey, JHRedirectURI];
+    NSURL *url = [NSURL URLWithString:urlStr];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [webView loadRequest:request];
     
@@ -85,7 +85,8 @@
      range.location == NSNotFound
      range.length == 0
      */
-    NSRange range = [url rangeOfString:@"http://ios.itcast.cn/?code="];
+    NSString *str = [NSString stringWithFormat:@"%@/?code=",JHRedirectURI];
+    NSRange range = [url rangeOfString:str];
     if (range.location != NSNotFound) {
         
         // 截取授权成功后的请求标记
@@ -114,9 +115,9 @@
     
     // 2.封装请求参数
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"client_id"] = @"1359433872";
-    params[@"client_secret"] = @"37c372aa97a9329fc561947151c1bd38";
-    params[@"redirect_uri"] = @"http://ios.itcast.cn";
+    params[@"client_id"] = JHAppKey;
+    params[@"client_secret"] = JHAppSecret;
+    params[@"redirect_uri"] = JHRedirectURI;
     params[@"grant_type"] = @"authorization_code";
     params[@"code"] = code;
     
@@ -132,28 +133,7 @@
         NSString *filePath = [doc stringByAppendingPathComponent:@"account.plist"];
         [responseObject writeToFile:filePath atomically:YES];
         
-        // 切换控制器，可能去新特性\tabbar
-        NSString *versionKey = (__bridge NSString *)kCFBundleVersionKey;
-        
-        // 从沙盒中取出上次存储的软件版本号(取出用户上次的使用记录)
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        NSString *lastVersion = [defaults objectForKey:versionKey];
-        
-        // 获得当前打开软件的版本号
-        NSString *currentVersion = [NSBundle mainBundle].infoDictionary[versionKey];
-        
-        UIWindow *window = [UIApplication sharedApplication].keyWindow;
-        if ([currentVersion isEqualToString:lastVersion]) {
-            // 当前版本号 == 上次使用的版本：显示JHTabBarViewController
-            window.rootViewController = [[JHTabBarViewController alloc] init];
-        } else {
-            // 当前版本号 != 上次使用的版本：显示版本新特性
-            window.rootViewController = [[JHNewfeatureViewController alloc] init];
-        
-            // 存储这次使用的软件版本
-            [defaults setObject:currentVersion forKey:versionKey];
-            [defaults synchronize];
-        }
+        [JHControllerTool chooseRootViewController];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         // 隐藏HUD
