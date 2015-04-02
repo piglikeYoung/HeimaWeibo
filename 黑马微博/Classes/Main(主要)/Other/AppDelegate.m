@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "JHTabBarViewController.h"
 #import "JHNewfeatureViewController.h"
+#import "JHOAuthViewController.h"
 
 @interface AppDelegate ()
 
@@ -26,8 +27,8 @@
     self.window = [[UIWindow alloc] init];
     self.window.frame = [UIScreen mainScreen].bounds;
     
-//    // 2.设置窗口的根控制器
-//    // 如何知道第一次使用这个版本？比较上次的使用情况
+    // 2.设置窗口的根控制器
+    // 如何知道第一次使用这个版本？比较上次的使用情况
 //    NSString *versionKey = @"CFBundleVersion";
 ////    NSString *versionKey = (__bridge NSString *)kCFBundleVersionKey;// 也可以获取软件版本
 //    
@@ -42,14 +43,16 @@
 //        // 当前版本号 == 上次使用的版本：显示JHTabBarViewController
 //        self.window.rootViewController = [[JHTabBarViewController alloc] init];
 //    } else {
-        // 当前版本号 != 上次使用的版本：显示版本新特性
-        self.window.rootViewController = [[JHNewfeatureViewController alloc] init];
-        
+//        // 当前版本号 != 上次使用的版本：显示版本新特性
+//        self.window.rootViewController = [[JHNewfeatureViewController alloc] init];
+//        
 //        // 存储这次使用的软件版本
 //        [defaults setObject:currentVersion forKey:versionKey];
 //        [defaults synchronize];
 //    }
     
+    self.window.rootViewController = [[JHOAuthViewController alloc] init];
+
     
     // 3.显示窗口
     [self.window makeKeyAndVisible];
