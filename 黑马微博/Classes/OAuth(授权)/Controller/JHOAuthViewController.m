@@ -10,6 +10,8 @@
 #import "MBProgressHUD+MJ.h"
 #import "AFNetworking.h"
 #import "JHControllerTool.h"
+#import "JHAccount.h"
+#import "JHAccountTool.h"
 
 @interface JHOAuthViewController () <UIWebViewDelegate>
 
@@ -75,16 +77,6 @@
     NSString *url = request.URL.absoluteString;
     
     // 2.判断url是否为回调地址
-    /**
-     url = http://www.itheima.com/?code=a3db74011c311e629bafce3e50c25339
-     range.location == 0
-     range.length > 0
-     */
-    /**
-     url =  https://api.weibo.com/oauth2/authorize
-     range.location == NSNotFound
-     range.length == 0
-     */
     NSString *str = [NSString stringWithFormat:@"%@/?code=",JHRedirectURI];
     NSRange range = [url rangeOfString:str];
     if (range.location != NSNotFound) {
@@ -122,17 +114,19 @@
     params[@"code"] = code;
     
     // 3.发送POST请求
-    [mgr POST:@"https://api.weibo.com/oauth2/access_token" parameters:params success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
+    [mgr POST:@"https://api.weibo.com/oauth2/access_token" parameters:params success:^(AFHTTPRequestOperation *operation, NSDictionary *accountDict) {
         // 隐藏HUD
         [MBProgressHUD hideHUD];
         
-        JHLog(@"请求成功--%@", responseObject);
+        JHLog(@"请求成功--%@", accountDict);
         
-        // 存储授权成功的帐号信息
-        NSString *doc = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-        NSString *filePath = [doc stringByAppendingPathComponent:@"account.plist"];
-        [responseObject writeToFile:filePath atomically:YES];
+        // 字典转成模型
+        JHAccount *account = [JHAccount accountWithDict:accountDict];
         
+        // 存储账号模型
+        [JHAccountTool save:account];
+        
+        // 切换控制器(可能去新特性\tabbar)
         [JHControllerTool chooseRootViewController];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
