@@ -16,6 +16,7 @@
 #import "JHStatus.h"
 #import "JHUser.h"
 #import "MJExtension.h"
+#import "JHLoadMoreFooter.h"
 
 @interface JHHomeViewController () <JHPopMenuDelegate>
 
@@ -23,6 +24,8 @@
  *  微博数组(存放着所有的微博数据)
  */
 @property (nonatomic, strong) NSMutableArray *statuses;
+
+@property (weak , nonatomic) JHLoadMoreFooter *footer;
 
 @end
 
@@ -65,12 +68,26 @@
     
     // 4.加载数据
     [self refreshControlStateChange:refreshControl];
+    
+    // 5.添加上拉加载更多控件
+    JHLoadMoreFooter *footer = [JHLoadMoreFooter footer];
+    self.tableView.tableFooterView = footer;
+    self.footer = footer;
 }
 
 /**
  *  当下拉刷新控件进入刷新状态（转圈圈）的时候会自动调用
  */
 - (void)refreshControlStateChange:(UIRefreshControl *)refreshControl
+{
+    [self loadNewStatuses:refreshControl];
+}
+
+#pragma mark - 加载微博数据
+/**
+ *  加载最新的微博数据
+ */
+- (void)loadNewStatuses:(UIRefreshControl *)refreshControl
 {
     // 1.获得请求管理者
     AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
@@ -113,6 +130,47 @@
         JHLog(@"请求失败--%@", error);
         // 让刷新控件停止刷新（恢复默认的状态）
         [refreshControl endRefreshing];
+    }];
+}
+
+/**
+ *  加载更多的微博数据
+ */
+- (void)loadMoreStatuses
+{
+    // 1.获得请求管理者
+    AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
+    
+    // 2.封装请求参数
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"access_token"] = [JHAccountTool account].access_token;
+    JHStatus *lastStatus =  [self.statuses lastObject];
+    if (lastStatus) {
+        // max_id	false	int64	若指定此参数，则返回ID小于或等于max_id的微博，默认为0。
+        params[@"max_id"] = @([lastStatus.idstr longLongValue] - 1);
+    }
+    
+    // 3.发送GET请求
+    [mgr GET:@"https://api.weibo.com/2/statuses/home_timeline.json" parameters:params success:^(AFHTTPRequestOperation *operation, NSDictionary *resultDict) {
+        // 微博字典数组
+        NSArray *statusDictArray = resultDict[@"statuses"];
+        
+        // 微博字典数组 ---> 微博模型数组
+        NSArray *newStatuses = [JHStatus objectArrayWithKeyValuesArray:statusDictArray];
+        
+        // 将新数据插入到旧数据的最后面
+        [self.statuses addObjectsFromArray:newStatuses];
+        
+        // 重新刷新表格
+        [self.tableView reloadData];
+        
+        // 让刷新控件停止刷新（恢复默认的状态）
+        [self.footer endRefreshing];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        JHLog(@"请求失败--%@", error);
+        // 让刷新控件停止刷新（恢复默认的状态）
+        [self.footer endRefreshing];
     }];
 }
 
@@ -251,6 +309,8 @@
 #pragma mark - Table view data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    // 当tableView没有数据的时候，不显示footerView
+    self.footer.hidden = self.statuses.count == 0;
     return self.statuses.count;
 }
 
@@ -282,6 +342,30 @@
     newVc.view.backgroundColor = [UIColor redColor];
     newVc.title = @"新控制器";
     [self.navigationController pushViewController:newVc animated:YES];
+}
+
+- (void) scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (self.statuses.count <= 0 || self.footer.isRefreshing)
+    {
+        return;
+    }
+
+    // 1.差距
+    CGFloat delta = scrollView.contentSize.height - scrollView.contentOffset.y;
+    // 刚好能完整看到footer的高度
+    CGFloat sawFooterH = self.view.height - self.tabBarController.tabBar.height;
+    
+    // 2.如果能看见整个footer
+    if (delta <= (sawFooterH - 0)) {
+        // 进入上拉刷新状态
+        [self.footer beginRefreshing];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            // 加载更多的微博数据
+            [self loadMoreStatuses];
+        });
+    }
 }
 
 @end

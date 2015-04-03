@@ -69,6 +69,8 @@
 		7DCBE4491ACE2C5000A9B039 /* NSObject+MJCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCBE4401ACE2C5000A9B039 /* NSObject+MJCoding.m */; };
 		7DCBE44A1ACE2C5000A9B039 /* NSObject+MJIvar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCBE4421ACE2C5000A9B039 /* NSObject+MJIvar.m */; };
 		7DCBE44B1ACE2C5000A9B039 /* NSObject+MJKeyValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCBE4441ACE2C5000A9B039 /* NSObject+MJKeyValue.m */; };
+		7DCBE44E1ACE636D00A9B039 /* JHLoadMoreFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCBE44D1ACE636D00A9B039 /* JHLoadMoreFooter.m */; };
+		7DCBE4501ACE638100A9B039 /* JHLoadMoreFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DCBE44F1ACE638100A9B039 /* JHLoadMoreFooter.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -209,6 +211,9 @@
 		7DCBE4421ACE2C5000A9B039 /* NSObject+MJIvar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MJIvar.m"; sourceTree = "<group>"; };
 		7DCBE4431ACE2C5000A9B039 /* NSObject+MJKeyValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+MJKeyValue.h"; sourceTree = "<group>"; };
 		7DCBE4441ACE2C5000A9B039 /* NSObject+MJKeyValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MJKeyValue.m"; sourceTree = "<group>"; };
+		7DCBE44C1ACE636D00A9B039 /* JHLoadMoreFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHLoadMoreFooter.h; sourceTree = "<group>"; };
+		7DCBE44D1ACE636D00A9B039 /* JHLoadMoreFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHLoadMoreFooter.m; sourceTree = "<group>"; };
+		7DCBE44F1ACE638100A9B039 /* JHLoadMoreFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JHLoadMoreFooter.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -489,6 +494,9 @@
 				7DC634151AC9443B00F64008 /* JHTitleButton.m */,
 				7DC634171AC9461A00F64008 /* JHPopMenu.h */,
 				7DC634181AC9461A00F64008 /* JHPopMenu.m */,
+				7DCBE44C1ACE636D00A9B039 /* JHLoadMoreFooter.h */,
+				7DCBE44D1ACE636D00A9B039 /* JHLoadMoreFooter.m */,
+				7DCBE44F1ACE638100A9B039 /* JHLoadMoreFooter.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -780,6 +788,7 @@
 			files = (
 				7D6265161AC664250075F1B6 /* Images.xcassets in Resources */,
 				7DBB53CC1ACCD354003E39F6 /* MBProgressHUD.bundle in Resources */,
+				7DCBE4501ACE638100A9B039 /* JHLoadMoreFooter.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -854,6 +863,7 @@
 				7DCBE4451ACE2C5000A9B039 /* MJConst.m in Sources */,
 				7DCBE4491ACE2C5000A9B039 /* NSObject+MJCoding.m in Sources */,
 				7DBB54491ACD4268003E39F6 /* MKAnnotationView+WebCache.m in Sources */,
+				7DCBE44E1ACE636D00A9B039 /* JHLoadMoreFooter.m in Sources */,
 				7DBB53E91ACCE42A003E39F6 /* AFURLResponseSerialization.m in Sources */,
 				7DC4544A1AC68CE900ED9410 /* AppDelegate.m in Sources */,
 			);
