@@ -46,6 +46,7 @@
 		7DBB54571ACD4268003E39F6 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DBB54461ACD4268003E39F6 /* UIImageView+WebCache.m */; };
 		7DBB54581ACD4268003E39F6 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DBB54481ACD4268003E39F6 /* UIView+WebCacheOperation.m */; };
 		7DC012251ACE86C50006D8F6 /* JHTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC012241ACE86C50006D8F6 /* JHTextView.m */; };
+		7DC012281ACE9D340006D8F6 /* JHComposeToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC012271ACE9D340006D8F6 /* JHComposeToolbar.m */; };
 		7DC4544A1AC68CE900ED9410 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC4543D1AC68CE900ED9410 /* AppDelegate.m */; };
 		7DC4544B1AC68CE900ED9410 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC4543E1AC68CE900ED9410 /* main.m */; };
 		7DC454501AC68EF200ED9410 /* JHTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC4544F1AC68EF200ED9410 /* JHTabBarViewController.m */; };
@@ -165,6 +166,8 @@
 		7DBB54481ACD4268003E39F6 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
 		7DC012231ACE86C50006D8F6 /* JHTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHTextView.h; sourceTree = "<group>"; };
 		7DC012241ACE86C50006D8F6 /* JHTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHTextView.m; sourceTree = "<group>"; };
+		7DC012261ACE9D340006D8F6 /* JHComposeToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHComposeToolbar.h; sourceTree = "<group>"; };
+		7DC012271ACE9D340006D8F6 /* JHComposeToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHComposeToolbar.m; sourceTree = "<group>"; };
 		7DC4543C1AC68CE900ED9410 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7DC4543D1AC68CE900ED9410 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		7DC4543E1AC68CE900ED9410 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -668,6 +671,8 @@
 			children = (
 				7DC012231ACE86C50006D8F6 /* JHTextView.h */,
 				7DC012241ACE86C50006D8F6 /* JHTextView.m */,
+				7DC012261ACE9D340006D8F6 /* JHComposeToolbar.h */,
+				7DC012271ACE9D340006D8F6 /* JHComposeToolbar.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -855,6 +860,7 @@
 				7DC4544B1AC68CE900ED9410 /* main.m in Sources */,
 				7DBB544C1ACD4268003E39F6 /* SDWebImageCompat.m in Sources */,
 				7DBB544A1ACD4268003E39F6 /* NSData+ImageContentType.m in Sources */,
+				7DC012281ACE9D340006D8F6 /* JHComposeToolbar.m in Sources */,
 				7DBB53E31ACCE42A003E39F6 /* AFHTTPRequestOperationManager.m in Sources */,
 				7D672EB71AC77B90004B5B4C /* JHNavigationController.m in Sources */,
 				7DCBE44B1ACE2C5000A9B039 /* NSObject+MJKeyValue.m in Sources */,

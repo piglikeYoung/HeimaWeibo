@@ -8,8 +8,11 @@
 
 #import "JHComposeViewController.h"
 #import "JHTextView.h"
+#import "JHComposeToolbar.h"
 
-@interface JHComposeViewController ()
+@interface JHComposeViewController () <JHComposeToolbarDelegate, UITextViewDelegate>
+
+@property (nonatomic, weak) JHTextView *textView;
 
 @end
 
@@ -24,6 +27,34 @@
     
     // 添加输入控件
     [self setupTextView];
+    
+    // 添加工具条
+    [self setupToolbar];
+
+}
+
+/**
+ *  view显示完毕的时候再弹出键盘，避免显示控制器view的时候会卡住
+ */
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    // 成为第一响应者（叫出键盘）
+    [self.textView becomeFirstResponder];
+}
+
+// 添加工具条
+- (void)setupToolbar
+{
+    // 1.创建
+    JHComposeToolbar *toolbar = [[JHComposeToolbar alloc] init];
+    toolbar.width = self.view.width;
+    toolbar.height = 44;
+    toolbar.delegate = self;
+    
+    // 2.显示
+    self.textView.inputAccessoryView = toolbar;
 }
 
 // 添加输入控件
@@ -32,7 +63,11 @@
     // 1.创建输入控件
     JHTextView *textView = [[JHTextView alloc] init];
     textView.frame = self.view.bounds;
+    textView.alwaysBounceVertical = YES; // 垂直方向上拥有有弹簧效果
+    textView.delegate = self;
     [self.view addSubview:textView];
+    
+    self.textView = textView;
     
     // 2.设置提醒文字（占位文字）
     textView.placehoder = @"分享新鲜事...";
@@ -65,6 +100,40 @@
 - (void)send
 {
     JHLog(@"send");
+}
+
+#pragma mark - UITextViewDelegate
+/**
+ *  当用户开始拖拽scrollView时调用
+ */
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    [self.view endEditing:YES];
+}
+
+#pragma mark - HMComposeToolbarDelegate
+/**
+ *  监听toolbar内部按钮的点击
+ */
+- (void)composeTool:(JHComposeToolbar *)toolbar didClickedButton:(JHComposeToolbarButtonType)buttonType
+{
+    switch (buttonType) {
+        case JHComposeToolbarButtonTypeCamera: // 照相机
+            JHLog(@"打开照相机");
+            break;
+            
+        case JHComposeToolbarButtonTypePicture: // 相册
+            JHLog(@"打开相册");
+            break;
+            
+        case JHComposeToolbarButtonTypeEmotion: // 表情
+            JHLog(@"打开表情");
+            break;
+            
+        default:
+            break;
+    }
+
 }
 
 @end
