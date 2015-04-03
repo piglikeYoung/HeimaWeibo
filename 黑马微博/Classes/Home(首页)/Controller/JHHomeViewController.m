@@ -13,13 +13,15 @@
 #import "JHAccountTool.h"
 #import "JHAccount.h"
 #import "UIImageView+WebCache.h"
+#import "JHStatus.h"
+#import "JHUser.h"
 
 @interface JHHomeViewController ()<JHPopMenuDelegate>
 
 /**
  *  微博数组(存放着所有的微博数据)
  */
-@property (nonatomic, strong) NSArray *statuses;
+@property (nonatomic, strong) NSMutableArray *statuses;
 
 @end
 
@@ -52,8 +54,14 @@
     [mgr GET:@"https://api.weibo.com/2/statuses/home_timeline.json" parameters:params success:^(AFHTTPRequestOperation *operation, NSDictionary *resultDict) {
 //        JHLog(@"请求成功--%@", resultDict);
         
+        self.statuses = [NSMutableArray array];
+        
         // 赋值数组数据
-        self.statuses = resultDict[@"statuses"];
+        NSArray *statusDictArray = resultDict[@"statuses"];
+        for (NSDictionary *statusDict in statusDictArray) {
+            JHStatus *status = [JHStatus statusWithDict:statusDict];
+            [self.statuses addObject:status];
+        }
         
         // 重新刷新表格
         [self.tableView reloadData];
@@ -150,15 +158,15 @@
     }
     
     // 取出这行对应的微博字典数据
-    NSDictionary *statusDict = self.statuses[indexPath.row];
-    cell.textLabel.text = statusDict[@"text"];
+    JHStatus *status = self.statuses[indexPath.row];
+    cell.textLabel.text = status.text;
     
     // 取出用户字典数据
-    NSDictionary *userDict = statusDict[@"user"];
-    cell.detailTextLabel.text = userDict[@"name"];
+    JHUser *user = status.user;
+    cell.detailTextLabel.text = user.name;
     
     // 下载头像
-    NSString *imageUrlStr = userDict[@"profile_image_url"];
+    NSString *imageUrlStr = user.profile_image_url;
     [cell.imageView sd_setImageWithURL:[NSURL URLWithString:imageUrlStr] placeholderImage:[UIImage imageWithName:@"avatar_default_small"]];
     return cell;
 }

@@ -59,6 +59,9 @@
 		7DC932D91AC913850025291B /* JHSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC932D81AC913850025291B /* JHSearchBar.m */; };
 		7DCB26E81ACB956000B71AD2 /* JHComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB26E51ACB956000B71AD2 /* JHComposeViewController.m */; };
 		7DCB26F61ACBA71900B71AD2 /* JHNewfeatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB26F51ACBA71900B71AD2 /* JHNewfeatureViewController.m */; };
+		7DCBE42E1ACE1BFC00A9B039 /* JHUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCBE42D1ACE1BFC00A9B039 /* JHUser.m */; };
+		7DCBE4311ACE1C7900A9B039 /* JHPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCBE4301ACE1C7900A9B039 /* JHPhoto.m */; };
+		7DCBE4341ACE1CA300A9B039 /* JHStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCBE4331ACE1CA300A9B039 /* JHStatus.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -178,6 +181,12 @@
 		7DCB26E51ACB956000B71AD2 /* JHComposeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHComposeViewController.m; sourceTree = "<group>"; };
 		7DCB26F41ACBA71900B71AD2 /* JHNewfeatureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHNewfeatureViewController.h; sourceTree = "<group>"; };
 		7DCB26F51ACBA71900B71AD2 /* JHNewfeatureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHNewfeatureViewController.m; sourceTree = "<group>"; };
+		7DCBE42C1ACE1BFC00A9B039 /* JHUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHUser.h; sourceTree = "<group>"; };
+		7DCBE42D1ACE1BFC00A9B039 /* JHUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHUser.m; sourceTree = "<group>"; };
+		7DCBE42F1ACE1C7900A9B039 /* JHPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHPhoto.h; sourceTree = "<group>"; };
+		7DCBE4301ACE1C7900A9B039 /* JHPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHPhoto.m; sourceTree = "<group>"; };
+		7DCBE4321ACE1CA300A9B039 /* JHStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHStatus.h; sourceTree = "<group>"; };
+		7DCBE4331ACE1CA300A9B039 /* JHStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHStatus.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -440,6 +449,12 @@
 		7DC454351AC68CE900ED9410 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7DCBE42C1ACE1BFC00A9B039 /* JHUser.h */,
+				7DCBE42D1ACE1BFC00A9B039 /* JHUser.m */,
+				7DCBE42F1ACE1C7900A9B039 /* JHPhoto.h */,
+				7DCBE4301ACE1C7900A9B039 /* JHPhoto.m */,
+				7DCBE4321ACE1CA300A9B039 /* JHStatus.h */,
+				7DCBE4331ACE1CA300A9B039 /* JHStatus.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -741,6 +756,7 @@
 				7DBB53E71ACCE42A003E39F6 /* AFURLConnectionOperation.m in Sources */,
 				7DC454561AC68F8600ED9410 /* JHHomeViewController.m in Sources */,
 				7DBB54501ACD4268003E39F6 /* SDWebImageManager.m in Sources */,
+				7DCBE42E1ACE1BFC00A9B039 /* JHUser.m in Sources */,
 				7DBB53CB1ACCD354003E39F6 /* MBProgressHUD+MJ.m in Sources */,
 				7DC634161AC9443B00F64008 /* JHTitleButton.m in Sources */,
 				7DBB53F41ACD1F44003E39F6 /* JHAccount.m in Sources */,
@@ -756,6 +772,7 @@
 				7DBB54561ACD4268003E39F6 /* UIImageView+HighlightedWebCache.m in Sources */,
 				7DBB544D1ACD4268003E39F6 /* SDWebImageDecoder.m in Sources */,
 				7DBB54511ACD4268003E39F6 /* SDWebImagePrefetcher.m in Sources */,
+				7DCBE4311ACE1C7900A9B039 /* JHPhoto.m in Sources */,
 				7DBB53E21ACCE42A003E39F6 /* AFHTTPRequestOperation.m in Sources */,
 				7DC454531AC68F5F00ED9410 /* JHDiscoverViewController.m in Sources */,
 				7DBB53CD1ACCD354003E39F6 /* MBProgressHUD.m in Sources */,
@@ -766,6 +783,7 @@
 				7DBB54571ACD4268003E39F6 /* UIImageView+WebCache.m in Sources */,
 				7DBB53F01ACD0165003E39F6 /* JHAccountTool.m in Sources */,
 				7DBB544B1ACD4268003E39F6 /* SDImageCache.m in Sources */,
+				7DCBE4341ACE1CA300A9B039 /* JHStatus.m in Sources */,
 				7D672EBA1AC78608004B5B4C /* UIBarButtonItem+Extension.m in Sources */,
 				7DBB53E41ACCE42A003E39F6 /* AFHTTPSessionManager.m in Sources */,
 				7DBB53F11ACD0165003E39F6 /* JHControllerTool.m in Sources */,
