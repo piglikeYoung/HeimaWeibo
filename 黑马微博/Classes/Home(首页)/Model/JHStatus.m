@@ -7,24 +7,14 @@
 //
 
 #import "JHStatus.h"
-#import "JHUser.h"
+#import "MJExtension.h"
+#import "JHPhoto.h"
 
 @implementation JHStatus
 
-+ (instancetype)statusWithDict:(NSDictionary *)dict
++ (NSDictionary *)objectClassInArray
 {
-    JHStatus *status = [[self alloc] init];
-    
-    status.text = dict[@"text"];
-    
-    status.user = [JHUser userWithDict:dict[@"user"]];
-    
-    NSDictionary *retweetedDict = dict[@"retweeted_status"];
-    if (retweetedDict) {
-        status.retweeted_status = [JHStatus statusWithDict:retweetedDict];
-    }
-    
-    return status;
+    return @{@"pic_urls" : [JHPhoto class]};
 }
 
 @end

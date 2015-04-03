@@ -15,13 +15,14 @@
 #import "UIImageView+WebCache.h"
 #import "JHStatus.h"
 #import "JHUser.h"
+#import "MJExtension.h"
 
 @interface JHHomeViewController ()<JHPopMenuDelegate>
 
 /**
  *  微博数组(存放着所有的微博数据)
  */
-@property (nonatomic, strong) NSMutableArray *statuses;
+@property (nonatomic, strong) NSArray *statuses;
 
 @end
 
@@ -54,14 +55,10 @@
     [mgr GET:@"https://api.weibo.com/2/statuses/home_timeline.json" parameters:params success:^(AFHTTPRequestOperation *operation, NSDictionary *resultDict) {
 //        JHLog(@"请求成功--%@", resultDict);
         
-        self.statuses = [NSMutableArray array];
-        
         // 赋值数组数据
         NSArray *statusDictArray = resultDict[@"statuses"];
-        for (NSDictionary *statusDict in statusDictArray) {
-            JHStatus *status = [JHStatus statusWithDict:statusDict];
-            [self.statuses addObject:status];
-        }
+        // 微博字典数组 ---> 微博模型数组
+        self.statuses = [JHStatus objectArrayWithKeyValuesArray:statusDictArray];
         
         // 重新刷新表格
         [self.tableView reloadData];

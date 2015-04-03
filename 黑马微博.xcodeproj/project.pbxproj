@@ -62,6 +62,13 @@
 		7DCBE42E1ACE1BFC00A9B039 /* JHUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCBE42D1ACE1BFC00A9B039 /* JHUser.m */; };
 		7DCBE4311ACE1C7900A9B039 /* JHPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCBE4301ACE1C7900A9B039 /* JHPhoto.m */; };
 		7DCBE4341ACE1CA300A9B039 /* JHStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCBE4331ACE1CA300A9B039 /* JHStatus.m */; };
+		7DCBE4451ACE2C5000A9B039 /* MJConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCBE4371ACE2C5000A9B039 /* MJConst.m */; };
+		7DCBE4461ACE2C5000A9B039 /* MJFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCBE43A1ACE2C5000A9B039 /* MJFoundation.m */; };
+		7DCBE4471ACE2C5000A9B039 /* MJIvar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCBE43C1ACE2C5000A9B039 /* MJIvar.m */; };
+		7DCBE4481ACE2C5000A9B039 /* MJType.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCBE43E1ACE2C5000A9B039 /* MJType.m */; };
+		7DCBE4491ACE2C5000A9B039 /* NSObject+MJCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCBE4401ACE2C5000A9B039 /* NSObject+MJCoding.m */; };
+		7DCBE44A1ACE2C5000A9B039 /* NSObject+MJIvar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCBE4421ACE2C5000A9B039 /* NSObject+MJIvar.m */; };
+		7DCBE44B1ACE2C5000A9B039 /* NSObject+MJKeyValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCBE4441ACE2C5000A9B039 /* NSObject+MJKeyValue.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -187,6 +194,21 @@
 		7DCBE4301ACE1C7900A9B039 /* JHPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHPhoto.m; sourceTree = "<group>"; };
 		7DCBE4321ACE1CA300A9B039 /* JHStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHStatus.h; sourceTree = "<group>"; };
 		7DCBE4331ACE1CA300A9B039 /* JHStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHStatus.m; sourceTree = "<group>"; };
+		7DCBE4361ACE2C5000A9B039 /* MJConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJConst.h; sourceTree = "<group>"; };
+		7DCBE4371ACE2C5000A9B039 /* MJConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJConst.m; sourceTree = "<group>"; };
+		7DCBE4381ACE2C5000A9B039 /* MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJExtension.h; sourceTree = "<group>"; };
+		7DCBE4391ACE2C5000A9B039 /* MJFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJFoundation.h; sourceTree = "<group>"; };
+		7DCBE43A1ACE2C5000A9B039 /* MJFoundation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJFoundation.m; sourceTree = "<group>"; };
+		7DCBE43B1ACE2C5000A9B039 /* MJIvar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJIvar.h; sourceTree = "<group>"; };
+		7DCBE43C1ACE2C5000A9B039 /* MJIvar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJIvar.m; sourceTree = "<group>"; };
+		7DCBE43D1ACE2C5000A9B039 /* MJType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJType.h; sourceTree = "<group>"; };
+		7DCBE43E1ACE2C5000A9B039 /* MJType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJType.m; sourceTree = "<group>"; };
+		7DCBE43F1ACE2C5000A9B039 /* NSObject+MJCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+MJCoding.h"; sourceTree = "<group>"; };
+		7DCBE4401ACE2C5000A9B039 /* NSObject+MJCoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MJCoding.m"; sourceTree = "<group>"; };
+		7DCBE4411ACE2C5000A9B039 /* NSObject+MJIvar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+MJIvar.h"; sourceTree = "<group>"; };
+		7DCBE4421ACE2C5000A9B039 /* NSObject+MJIvar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MJIvar.m"; sourceTree = "<group>"; };
+		7DCBE4431ACE2C5000A9B039 /* NSObject+MJKeyValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+MJKeyValue.h"; sourceTree = "<group>"; };
+		7DCBE4441ACE2C5000A9B039 /* NSObject+MJKeyValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MJKeyValue.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -281,6 +303,7 @@
 		7DBB53C41ACCD354003E39F6 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				7DCBE4351ACE2C5000A9B039 /* MJExtension */,
 				7DBB54271ACD4268003E39F6 /* SDWebImage */,
 				7DBB53CE1ACCE42A003E39F6 /* AFNetworking */,
 				7DBB53C51ACCD354003E39F6 /* MBProgressHUD */,
@@ -653,6 +676,28 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		7DCBE4351ACE2C5000A9B039 /* MJExtension */ = {
+			isa = PBXGroup;
+			children = (
+				7DCBE4361ACE2C5000A9B039 /* MJConst.h */,
+				7DCBE4371ACE2C5000A9B039 /* MJConst.m */,
+				7DCBE4381ACE2C5000A9B039 /* MJExtension.h */,
+				7DCBE4391ACE2C5000A9B039 /* MJFoundation.h */,
+				7DCBE43A1ACE2C5000A9B039 /* MJFoundation.m */,
+				7DCBE43B1ACE2C5000A9B039 /* MJIvar.h */,
+				7DCBE43C1ACE2C5000A9B039 /* MJIvar.m */,
+				7DCBE43D1ACE2C5000A9B039 /* MJType.h */,
+				7DCBE43E1ACE2C5000A9B039 /* MJType.m */,
+				7DCBE43F1ACE2C5000A9B039 /* NSObject+MJCoding.h */,
+				7DCBE4401ACE2C5000A9B039 /* NSObject+MJCoding.m */,
+				7DCBE4411ACE2C5000A9B039 /* NSObject+MJIvar.h */,
+				7DCBE4421ACE2C5000A9B039 /* NSObject+MJIvar.m */,
+				7DCBE4431ACE2C5000A9B039 /* NSObject+MJKeyValue.h */,
+				7DCBE4441ACE2C5000A9B039 /* NSObject+MJKeyValue.m */,
+			);
+			path = MJExtension;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -755,6 +800,8 @@
 				7DBB53E81ACCE42A003E39F6 /* AFURLRequestSerialization.m in Sources */,
 				7DBB53E71ACCE42A003E39F6 /* AFURLConnectionOperation.m in Sources */,
 				7DC454561AC68F8600ED9410 /* JHHomeViewController.m in Sources */,
+				7DCBE4461ACE2C5000A9B039 /* MJFoundation.m in Sources */,
+				7DCBE4481ACE2C5000A9B039 /* MJType.m in Sources */,
 				7DBB54501ACD4268003E39F6 /* SDWebImageManager.m in Sources */,
 				7DCBE42E1ACE1BFC00A9B039 /* JHUser.m in Sources */,
 				7DBB53CB1ACCD354003E39F6 /* MBProgressHUD+MJ.m in Sources */,
@@ -776,6 +823,7 @@
 				7DBB53E21ACCE42A003E39F6 /* AFHTTPRequestOperation.m in Sources */,
 				7DC454531AC68F5F00ED9410 /* JHDiscoverViewController.m in Sources */,
 				7DBB53CD1ACCD354003E39F6 /* MBProgressHUD.m in Sources */,
+				7DCBE44A1ACE2C5000A9B039 /* NSObject+MJIvar.m in Sources */,
 				7DC932D91AC913850025291B /* JHSearchBar.m in Sources */,
 				7DC8D1191ACA669600A78DF6 /* JHTabBar.m in Sources */,
 				7DC454591AC68FBE00ED9410 /* JHMessageViewController.m in Sources */,
@@ -795,12 +843,16 @@
 				7DBB544A1ACD4268003E39F6 /* NSData+ImageContentType.m in Sources */,
 				7DBB53E31ACCE42A003E39F6 /* AFHTTPRequestOperationManager.m in Sources */,
 				7D672EB71AC77B90004B5B4C /* JHNavigationController.m in Sources */,
+				7DCBE44B1ACE2C5000A9B039 /* NSObject+MJKeyValue.m in Sources */,
 				7DC634191AC9461A00F64008 /* JHPopMenu.m in Sources */,
+				7DCBE4471ACE2C5000A9B039 /* MJIvar.m in Sources */,
 				7DBB54521ACD4268003E39F6 /* UIButton+WebCache.m in Sources */,
 				7DCB26E81ACB956000B71AD2 /* JHComposeViewController.m in Sources */,
 				7DCB26F61ACBA71900B71AD2 /* JHNewfeatureViewController.m in Sources */,
 				7DBB53E51ACCE42A003E39F6 /* AFNetworkReachabilityManager.m in Sources */,
 				7DBB54581ACD4268003E39F6 /* UIView+WebCacheOperation.m in Sources */,
+				7DCBE4451ACE2C5000A9B039 /* MJConst.m in Sources */,
+				7DCBE4491ACE2C5000A9B039 /* NSObject+MJCoding.m in Sources */,
 				7DBB54491ACD4268003E39F6 /* MKAnnotationView+WebCache.m in Sources */,
 				7DBB53E91ACCE42A003E39F6 /* AFURLResponseSerialization.m in Sources */,
 				7DC4544A1AC68CE900ED9410 /* AppDelegate.m in Sources */,
