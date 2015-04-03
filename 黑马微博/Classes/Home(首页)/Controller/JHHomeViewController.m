@@ -59,6 +59,12 @@
     
     // 2.监听状态
     [refreshControl addTarget:self action:@selector(refreshControlStateChange:) forControlEvents:UIControlEventValueChanged];
+    
+    // 3.让刷新控件自动进入刷新状态
+    [refreshControl beginRefreshing];
+    
+    // 4.加载数据
+    [self refreshControlStateChange:refreshControl];
 }
 
 /**
@@ -100,11 +106,71 @@
         // 让刷新控件停止刷新（恢复默认的状态）
         [refreshControl endRefreshing];
         
+        // 提示用户最新的微博数量
+        [self showNewStatusesCount:newStatuses.count];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         JHLog(@"请求失败--%@", error);
         // 让刷新控件停止刷新（恢复默认的状态）
         [refreshControl endRefreshing];
+    }];
+}
+
+/**
+ *  提示用户最新的微博数量
+ *
+ *  @param count 最新的微博数量
+ */
+- (void)showNewStatusesCount:(int)count
+{
+    // 1.创建一个UILabel
+    UILabel *label = [[UILabel alloc] init];
+    
+    // 2.显示文字
+    if (count) {
+        label.text = [NSString stringWithFormat:@"共有%d条新的微博数据", count];
+    } else {
+        label.text = @"没有最新的微博数据";
+    }
+    
+    // 3.设置背景
+    label.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithName:@"timeline_new_status_background"]];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.textColor = [UIColor whiteColor];
+    
+    // 4.设置frame
+    label.width = self.view.width;
+    label.height = 35;
+    label.x = 0;
+    label.y = 64 - label.height;
+    
+    // 5.添加到导航控制器的view
+    [self.navigationController.view insertSubview:label belowSubview:self.navigationController.navigationBar];
+    
+    // 6.动画
+    CGFloat duration = 0.75;
+    label.alpha = 0.0;
+    [UIView animateWithDuration:duration animations:^{
+        // 往下移动一个label的高度
+        label.transform = CGAffineTransformMakeTranslation(0, label.height);
+        label.alpha = 1.0;
+        
+    } completion:^(BOOL finished) { // 向下移动完毕
+        
+        // 延迟delay秒后，再执行动画
+        CGFloat delay = 1.0;
+        
+        [UIView animateWithDuration:duration delay:delay options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            
+            // 恢复到原来的位置
+            label.transform = CGAffineTransformIdentity;
+            label.alpha = 0.0;
+            
+        } completion:^(BOOL finished) {
+            
+            // 删除控件
+            [label removeFromSuperview];
+        }];
     }];
 }
 
