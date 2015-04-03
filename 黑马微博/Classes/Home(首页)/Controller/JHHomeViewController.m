@@ -17,17 +17,24 @@
 #import "JHUser.h"
 #import "MJExtension.h"
 
-@interface JHHomeViewController ()<JHPopMenuDelegate>
+@interface JHHomeViewController () <JHPopMenuDelegate>
 
 /**
  *  微博数组(存放着所有的微博数据)
  */
-@property (nonatomic, strong) NSArray *statuses;
+@property (nonatomic, strong) NSMutableArray *statuses;
 
 @end
 
 @implementation JHHomeViewController
 
+- (NSMutableArray *)statuses
+{
+    if (_statuses == nil) {
+        _statuses = [NSMutableArray array];
+    }
+    return _statuses;
+}
 
 - (void)viewDidLoad
 {
@@ -36,36 +43,71 @@
     // 设置导航栏的内容
     [self setupNavBar];
     
-    [self loadNewStatus];
+    
+    // 集成刷新控件
+    [self setupRefresh];
 }
 
 /**
- *  加载最新的微博数据
+ *  集成刷新控件
  */
-- (void)loadNewStatus
+- (void)setupRefresh
+{
+    // 1.添加下拉刷新控件
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [self.tableView addSubview:refreshControl];
+    
+    // 2.监听状态
+    [refreshControl addTarget:self action:@selector(refreshControlStateChange:) forControlEvents:UIControlEventValueChanged];
+}
+
+/**
+ *  当下拉刷新控件进入刷新状态（转圈圈）的时候会自动调用
+ */
+- (void)refreshControlStateChange:(UIRefreshControl *)refreshControl
 {
     // 1.获得请求管理者
     AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
-
+    
     // 2.封装请求参数
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"access_token"] = [JHAccountTool account].access_token;
     
+    // 取出数组中第一个数据，存在就加载比数组晚数据，不存在就加载全部数据
+    JHStatus *firstStatus = [self.statuses firstObject];
+    if (firstStatus) {
+        // since_id 	false 	int64 	若指定此参数，则返回ID比since_id大的微博（即比since_id时间晚的微博），默认为0。
+        params[@"since_id"] = firstStatus.idstr;
+    }
+    
     // 3.发送GET请求
     [mgr GET:@"https://api.weibo.com/2/statuses/home_timeline.json" parameters:params success:^(AFHTTPRequestOperation *operation, NSDictionary *resultDict) {
-//        JHLog(@"请求成功--%@", resultDict);
+        // JHLog(@"请求成功--%@", resultDict);
         
         // 赋值数组数据
         NSArray *statusDictArray = resultDict[@"statuses"];
         // 微博字典数组 ---> 微博模型数组
-        self.statuses = [JHStatus objectArrayWithKeyValuesArray:statusDictArray];
+        NSArray *newStatuses = [JHStatus objectArrayWithKeyValuesArray:statusDictArray];
+        
+        // 将新数据插入到旧数据的最前面
+        NSRange range = NSMakeRange(0, newStatuses.count);
+        NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:range];
+        [self.statuses insertObjects:newStatuses atIndexes:indexSet];
         
         // 重新刷新表格
         [self.tableView reloadData];
+        
+        // 让刷新控件停止刷新（恢复默认的状态）
+        [refreshControl endRefreshing];
+        
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         JHLog(@"请求失败--%@", error);
+        // 让刷新控件停止刷新（恢复默认的状态）
+        [refreshControl endRefreshing];
     }];
 }
+
 
 /**
  *  设置导航栏的内容
