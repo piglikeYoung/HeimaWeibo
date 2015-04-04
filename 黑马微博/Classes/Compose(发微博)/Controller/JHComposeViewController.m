@@ -9,11 +9,13 @@
 #import "JHComposeViewController.h"
 #import "JHTextView.h"
 #import "JHComposeToolbar.h"
+#import "JHComposePhotosView.h"
 
-@interface JHComposeViewController () <JHComposeToolbarDelegate, UITextViewDelegate>
+@interface JHComposeViewController () <JHComposeToolbarDelegate, UITextViewDelegate, UINavigationControllerDelegate ,UIImagePickerControllerDelegate>
 
 @property (nonatomic, weak) JHTextView *textView;
 @property (nonatomic, weak) JHComposeToolbar *toolbar;
+@property (nonatomic, weak) JHComposePhotosView *photosView;
 
 @end
 
@@ -32,6 +34,9 @@
     
     // 添加工具条
     [self setupToolbar];
+    
+    // 添加显示图片的相册控件
+    [self setupPhotosView];
 
 }
 
@@ -45,6 +50,18 @@
     // 成为第一响应者（叫出键盘）
     [self.textView becomeFirstResponder];
 }
+
+// 添加显示图片的相册控件
+- (void)setupPhotosView
+{
+    JHComposePhotosView *photoView = [[JHComposePhotosView alloc] init];
+    photoView.width = self.textView.width;
+    photoView.height = self.textView.height;
+    photoView.y = 70;
+    [self.textView addSubview:photoView];
+    self.photosView = photoView;
+}
+
 
 // 添加工具条
 - (void)setupToolbar
@@ -167,21 +184,67 @@
 {
     switch (buttonType) {
         case JHComposeToolbarButtonTypeCamera: // 照相机
-            JHLog(@"打开照相机");
+            [self openCamera];
             break;
             
         case JHComposeToolbarButtonTypePicture: // 相册
-            JHLog(@"打开相册");
+            [self openAlbum];
             break;
             
         case JHComposeToolbarButtonTypeEmotion: // 表情
-            JHLog(@"打开表情");
+            [self openEmotion];
             break;
             
         default:
             break;
     }
 
+}
+
+/**
+ *  打开照相机
+ */
+- (void)openCamera
+{
+    if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) return;
+    
+    UIImagePickerController *ipc = [[UIImagePickerController alloc] init];
+    ipc.sourceType = UIImagePickerControllerSourceTypeCamera;
+    ipc.delegate = self;
+    [self presentViewController:ipc animated:YES completion:nil];
+}
+
+/**
+ *  打开相册
+ */
+- (void)openAlbum
+{
+    if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) return;
+    
+    UIImagePickerController *ipc = [[UIImagePickerController alloc] init];
+    ipc.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    ipc.delegate = self;
+    [self presentViewController:ipc animated:YES completion:nil];
+}
+
+/**
+ *  打开表情
+ */
+- (void)openEmotion
+{
+    
+}
+
+#pragma mark - UIImagePickerControllerDelegate
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    
+    // 1.取出选中的图片
+    UIImage *image = info[UIImagePickerControllerOriginalImage];
+    
+    // 2.添加图片到相册中
+    [self.photosView addImage:image];
 }
 
 @end

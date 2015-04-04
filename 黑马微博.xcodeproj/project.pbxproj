@@ -59,6 +59,7 @@
 		7DC634191AC9461A00F64008 /* JHPopMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC634181AC9461A00F64008 /* JHPopMenu.m */; };
 		7DC8D1191ACA669600A78DF6 /* JHTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC8D1181ACA669600A78DF6 /* JHTabBar.m */; };
 		7DC932D91AC913850025291B /* JHSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC932D81AC913850025291B /* JHSearchBar.m */; };
+		7DCAD3AF1ACF75570035BDE6 /* JHComposePhotosView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCAD3AE1ACF75570035BDE6 /* JHComposePhotosView.m */; };
 		7DCB26E81ACB956000B71AD2 /* JHComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB26E51ACB956000B71AD2 /* JHComposeViewController.m */; };
 		7DCB26F61ACBA71900B71AD2 /* JHNewfeatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB26F51ACBA71900B71AD2 /* JHNewfeatureViewController.m */; };
 		7DCBE42E1ACE1BFC00A9B039 /* JHUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCBE42D1ACE1BFC00A9B039 /* JHUser.m */; };
@@ -192,6 +193,8 @@
 		7DC8D1181ACA669600A78DF6 /* JHTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHTabBar.m; sourceTree = "<group>"; };
 		7DC932D71AC913850025291B /* JHSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHSearchBar.h; sourceTree = "<group>"; };
 		7DC932D81AC913850025291B /* JHSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHSearchBar.m; sourceTree = "<group>"; };
+		7DCAD3AD1ACF75570035BDE6 /* JHComposePhotosView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHComposePhotosView.h; sourceTree = "<group>"; };
+		7DCAD3AE1ACF75570035BDE6 /* JHComposePhotosView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHComposePhotosView.m; sourceTree = "<group>"; };
 		7DCB26E41ACB956000B71AD2 /* JHComposeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHComposeViewController.h; sourceTree = "<group>"; };
 		7DCB26E51ACB956000B71AD2 /* JHComposeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHComposeViewController.m; sourceTree = "<group>"; };
 		7DCB26F41ACBA71900B71AD2 /* JHNewfeatureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHNewfeatureViewController.h; sourceTree = "<group>"; };
@@ -673,6 +676,8 @@
 				7DC012241ACE86C50006D8F6 /* JHTextView.m */,
 				7DC012261ACE9D340006D8F6 /* JHComposeToolbar.h */,
 				7DC012271ACE9D340006D8F6 /* JHComposeToolbar.m */,
+				7DCAD3AD1ACF75570035BDE6 /* JHComposePhotosView.h */,
+				7DCAD3AE1ACF75570035BDE6 /* JHComposePhotosView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -844,6 +849,7 @@
 				7DBB53CD1ACCD354003E39F6 /* MBProgressHUD.m in Sources */,
 				7DCBE44A1ACE2C5000A9B039 /* NSObject+MJIvar.m in Sources */,
 				7DC932D91AC913850025291B /* JHSearchBar.m in Sources */,
+				7DCAD3AF1ACF75570035BDE6 /* JHComposePhotosView.m in Sources */,
 				7DC8D1191ACA669600A78DF6 /* JHTabBar.m in Sources */,
 				7DC454591AC68FBE00ED9410 /* JHMessageViewController.m in Sources */,
 				7DBB54531ACD4268003E39F6 /* UIImage+GIF.m in Sources */,
