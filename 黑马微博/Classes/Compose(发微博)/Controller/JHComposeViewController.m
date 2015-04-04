@@ -13,11 +13,13 @@
 @interface JHComposeViewController () <JHComposeToolbarDelegate, UITextViewDelegate>
 
 @property (nonatomic, weak) JHTextView *textView;
+@property (nonatomic, weak) JHComposeToolbar *toolbar;
 
 @end
 
 @implementation JHComposeViewController
 
+#pragma mark - 初始化方法
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -52,9 +54,11 @@
     toolbar.width = self.view.width;
     toolbar.height = 44;
     toolbar.delegate = self;
+    self.toolbar = toolbar;
     
     // 2.显示
-    self.textView.inputAccessoryView = toolbar;
+    toolbar.y = self.view.height - toolbar.height;
+    [self.view addSubview:toolbar];
 }
 
 // 添加输入控件
@@ -74,6 +78,13 @@
     
     // 3.设置字体
     textView.font = [UIFont systemFontOfSize:15];
+    
+    // 4.监听键盘
+    // 键盘的frame(位置)即将改变, 就会发出UIKeyboardWillChangeFrameNotification
+    // 键盘即将弹出, 就会发出UIKeyboardWillShowNotification
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    // 键盘即将隐藏, 就会发出UIKeyboardWillHideNotification
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
 
 // 设置导航条内容
@@ -86,6 +97,7 @@
     self.navigationItem.rightBarButtonItem.enabled = NO;
 }
 
+#pragma mark - 私有方法
 /**
  *  取消
  */
@@ -101,6 +113,42 @@
 {
     JHLog(@"send");
 }
+
+#pragma mark - 键盘处理
+/**
+ *  键盘即将隐藏
+ */
+- (void)keyboardWillHide:(NSNotification *)note
+{
+    // 1.键盘弹出需要的时间
+    CGFloat duration = [note.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    
+    // 2.动画
+    [UIView animateWithDuration:duration animations:^{
+        self.toolbar.transform = CGAffineTransformIdentity;
+    }];
+}
+
+
+/**
+ *  键盘即将弹出
+ */
+- (void)keyboardWillShow:(NSNotification *)note
+{
+    // 1.键盘弹出需要时间
+    CGFloat duration = [note.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    
+    // 2.动画
+    [UIView animateWithDuration:duration animations:^{
+        // 取出键盘高度
+        CGRect keyboardF = [note.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+        CGFloat keyboardH = keyboardF.size.height;
+        // 键盘的高度就是toolbar向上移动的高度
+        self.toolbar.transform = CGAffineTransformMakeTranslation(0, - keyboardH);
+    }];
+
+}
+
 
 #pragma mark - UITextViewDelegate
 /**
