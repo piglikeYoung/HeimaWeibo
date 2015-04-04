@@ -10,6 +10,10 @@
 #import "JHTextView.h"
 #import "JHComposeToolbar.h"
 #import "JHComposePhotosView.h"
+#import "JHAccount.h"
+#import "JHAccountTool.h"
+#import "AFNetworking.h"
+#import "MBProgressHUD+MJ.h"
 
 @interface JHComposeViewController () <JHComposeToolbarDelegate, UITextViewDelegate, UINavigationControllerDelegate ,UIImagePickerControllerDelegate>
 
@@ -104,6 +108,11 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 // 设置导航条内容
 - (void)setupNavBar
 {
@@ -128,7 +137,69 @@
  */
 - (void)send
 {
-    JHLog(@"send");
+    // 1.发送微博
+    if (self.photosView.images.count) {
+        [self sendStatusWithImage];
+    }else {
+        [self sendStatusWithoutImage];
+    }
+    
+    // 2.关闭控制器
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+/**
+ *  发表有图片的微博
+ */
+- (void)sendStatusWithImage
+{
+    // 1.获得请求管理者
+    AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
+    
+    // 2.封装请求参数
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"access_token"] = [JHAccountTool account].access_token;
+    params[@"status"] = self.textView.text;
+    
+    // 3.发送post请求
+    [mgr POST:@"https://upload.api.weibo.com/2/statuses/upload.json" parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        
+#warning 目前新浪开放的发微博接口 最多 只能上传一张图片
+        UIImage *image = [self.photosView.images firstObject];
+        NSData *data = UIImageJPEGRepresentation(image, 1.0);
+        
+        // 拼接文件参数
+        [formData appendPartWithFileData:data name:@"pic" fileName:@"status.jpg" mimeType:@"image/jpeg"];
+        
+    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [MBProgressHUD showSuccess:@"发表成功"];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [MBProgressHUD showError:@"发表失败"];
+    }];
+}
+
+// 图文混排 ： 图片和文字混合在一起排列
+
+/**
+ *  发表没有图片的微博
+ */
+- (void)sendStatusWithoutImage
+{
+    // 1.获得请求管理者
+    AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
+    
+    // 2.封装请求参数
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"access_token"] = [JHAccountTool account].access_token;
+    params[@"status"] = self.textView.text;
+    
+    // 3.发送POST请求
+    [mgr POST:@"https://api.weibo.com/2/statuses/update.json" parameters:params
+      success:^(AFHTTPRequestOperation *operation, NSDictionary *statusDict) {
+          [MBProgressHUD showSuccess:@"发表成功"];
+      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+          [MBProgressHUD showError:@"发表失败"];
+      }];
 }
 
 #pragma mark - 键盘处理
@@ -174,6 +245,11 @@
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
     [self.view endEditing:YES];
+}
+
+- (void) textViewDidChange:(UITextView *)textView
+{
+    self.navigationItem.rightBarButtonItem.enabled = textView.text.length != 0;
 }
 
 #pragma mark - HMComposeToolbarDelegate

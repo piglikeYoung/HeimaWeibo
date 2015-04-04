@@ -17,4 +17,6 @@
  */
 - (void)addImage:(UIImage *)image;
 
+- (NSArray *)images;
+
 @end
