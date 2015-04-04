@@ -26,6 +26,7 @@
 @property (nonatomic, strong) NSMutableArray *statuses;
 
 @property (weak , nonatomic) JHLoadMoreFooter *footer;
+@property (weak , nonatomic) JHTitleButton *titleButton;
 
 @end
 
@@ -49,6 +50,41 @@
     
     // 集成刷新控件
     [self setupRefresh];
+    
+    // 获得用户信息
+    [self setupUserInfo];
+
+}
+
+/**
+ *  获得用户信息
+ */
+- (void)setupUserInfo
+{
+    // 1.获得请求管理者
+    AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
+    
+    // 2.封装请求参数
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"access_token"] = [JHAccountTool account].access_token;
+    params[@"uid"] = [JHAccountTool account].uid;
+    
+    // 3.发送GET请求
+    [mgr GET:@"https://api.weibo.com/2/users/show.json" parameters:params
+     success:^(AFHTTPRequestOperation *operation, NSDictionary *userDict) {
+         // 字典转模型
+         JHUser *user = [JHUser objectWithKeyValues:userDict];
+         
+         // 设置用户的昵称为标题
+         [self.titleButton setTitle:user.name forState:UIControlStateNormal];
+         
+         // 存储帐号信息
+         JHAccount *account = [JHAccountTool account];
+         account.name = user.name;
+         [JHAccountTool save:account];
+     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         
+     }];
 }
 
 /**
@@ -246,16 +282,18 @@
     
     // 设置导航栏中间的标题按钮
     JHTitleButton *titleButton = [[JHTitleButton alloc] init];
+    
+    // 设置尺寸，高度在titleButton里setTitle方法里计算设置
+    titleButton.height = 35;
+    
     // 设置文字
-    [titleButton setTitle:@"首页" forState:UIControlStateNormal];
+    NSString *name = [JHAccountTool account].name;
+    [titleButton setTitle:name ? name : @"首页" forState:UIControlStateNormal];
     
     
     // 设置图标
     [titleButton setImage:[UIImage imageWithName:@"navigationbar_arrow_down"] forState:UIControlStateNormal];
     
-    // 设置尺寸
-    titleButton.width = 100;
-    titleButton.height = 35;
     
     // 设置背景
     [titleButton setBackgroundImage:[UIImage resizedImage:@"navigationbar_filter_background_highlighted"] forState:UIControlStateHighlighted];
@@ -264,6 +302,8 @@
     [titleButton addTarget:self action:@selector(titleClick:) forControlEvents:UIControlEventTouchUpInside];
     
     self.navigationItem.titleView = titleButton;
+    
+    self.titleButton = titleButton;
 }
 
 

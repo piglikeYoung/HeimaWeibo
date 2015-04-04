@@ -56,4 +56,15 @@
     return CGRectMake(titleX, titleY, titleW, titleH);
 }
 
+-(void)setTitle:(NSString *)title forState:(UIControlState)state
+{
+    [super setTitle:title forState:state];
+    
+    // 1.计算文字尺寸
+    CGSize titleSize = [title sizeWithFont:self.titleLabel.font];
+    
+    // 2.计算按钮的宽度
+    self.width = titleSize.width + self.height + 10;
+}
+
 @end
