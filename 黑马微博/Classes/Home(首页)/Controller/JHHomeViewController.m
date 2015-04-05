@@ -9,7 +9,6 @@
 #import "JHHomeViewController.h"
 #import "JHTitleButton.h"
 #import "JHPopMenu.h"
-#import "AFNetworking.h"
 #import "JHAccountTool.h"
 #import "JHAccount.h"
 #import "UIImageView+WebCache.h"
@@ -17,6 +16,7 @@
 #import "JHUser.h"
 #import "MJExtension.h"
 #import "JHLoadMoreFooter.h"
+#import "JHHttpTool.h"
 
 @interface JHHomeViewController () <JHPopMenuDelegate>
 
@@ -61,30 +61,26 @@
  */
 - (void)setupUserInfo
 {
-    // 1.获得请求管理者
-    AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
-    
-    // 2.封装请求参数
+    // 1.封装请求参数
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"access_token"] = [JHAccountTool account].access_token;
     params[@"uid"] = [JHAccountTool account].uid;
     
-    // 3.发送GET请求
-    [mgr GET:@"https://api.weibo.com/2/users/show.json" parameters:params
-     success:^(AFHTTPRequestOperation *operation, NSDictionary *userDict) {
-         // 字典转模型
-         JHUser *user = [JHUser objectWithKeyValues:userDict];
-         
-         // 设置用户的昵称为标题
-         [self.titleButton setTitle:user.name forState:UIControlStateNormal];
-         
-         // 存储帐号信息
-         JHAccount *account = [JHAccountTool account];
-         account.name = user.name;
-         [JHAccountTool save:account];
-     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-         
-     }];
+    // 2.发送请求
+    [JHHttpTool get:@"https://api.weibo.com/2/users/show.json" params:params success:^(id repsonseObj) {
+        // 字典转模型
+        JHUser *user = [JHUser objectWithKeyValues:repsonseObj];
+        
+        // 设置用户的昵称为标题
+        [self.titleButton setTitle:user.name forState:UIControlStateNormal];
+        
+        // 存储帐号信息
+        JHAccount *account = [JHAccountTool account];
+        account.name = user.name;
+        [JHAccountTool save:account];
+    } failure:^(NSError *error) {
+        JHLog(@"请求失败-------%@", error);
+    }];
 }
 
 /**
@@ -125,10 +121,8 @@
  */
 - (void)loadNewStatuses:(UIRefreshControl *)refreshControl
 {
-    // 1.获得请求管理者
-    AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
     
-    // 2.封装请求参数
+    // 1.封装请求参数
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"access_token"] = [JHAccountTool account].access_token;
     
@@ -139,12 +133,13 @@
         params[@"since_id"] = firstStatus.idstr;
     }
     
-    // 3.发送GET请求
-    [mgr GET:@"https://api.weibo.com/2/statuses/home_timeline.json" parameters:params success:^(AFHTTPRequestOperation *operation, NSDictionary *resultDict) {
+    // 2.发送GET请求
+    [JHHttpTool get:@"https://api.weibo.com/2/statuses/home_timeline.json" params:params success:^(id responseObj) {
+        
         // JHLog(@"请求成功--%@", resultDict);
         
         // 赋值数组数据
-        NSArray *statusDictArray = resultDict[@"statuses"];
+        NSArray *statusDictArray = responseObj[@"statuses"];
         // 微博字典数组 ---> 微博模型数组
         NSArray *newStatuses = [JHStatus objectArrayWithKeyValuesArray:statusDictArray];
         
@@ -162,7 +157,7 @@
         // 提示用户最新的微博数量
         [self showNewStatusesCount:newStatuses.count];
         
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(NSError *error) {
         JHLog(@"请求失败--%@", error);
         // 让刷新控件停止刷新（恢复默认的状态）
         [refreshControl endRefreshing];
@@ -174,10 +169,8 @@
  */
 - (void)loadMoreStatuses
 {
-    // 1.获得请求管理者
-    AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
     
-    // 2.封装请求参数
+    // 1.封装请求参数
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"access_token"] = [JHAccountTool account].access_token;
     JHStatus *lastStatus =  [self.statuses lastObject];
@@ -186,10 +179,10 @@
         params[@"max_id"] = @([lastStatus.idstr longLongValue] - 1);
     }
     
-    // 3.发送GET请求
-    [mgr GET:@"https://api.weibo.com/2/statuses/home_timeline.json" parameters:params success:^(AFHTTPRequestOperation *operation, NSDictionary *resultDict) {
+    // 2.发送GET请求
+    [JHHttpTool get:@"https://api.weibo.com/2/statuses/home_timeline.json" params:params success:^(id responseObj) {
         // 微博字典数组
-        NSArray *statusDictArray = resultDict[@"statuses"];
+        NSArray *statusDictArray = responseObj[@"statuses"];
         
         // 微博字典数组 ---> 微博模型数组
         NSArray *newStatuses = [JHStatus objectArrayWithKeyValuesArray:statusDictArray];
@@ -203,7 +196,7 @@
         // 让刷新控件停止刷新（恢复默认的状态）
         [self.footer endRefreshing];
         
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(NSError *error) {
         JHLog(@"请求失败--%@", error);
         // 让刷新控件停止刷新（恢复默认的状态）
         [self.footer endRefreshing];

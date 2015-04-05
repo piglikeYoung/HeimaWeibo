@@ -12,8 +12,8 @@
 #import "JHComposePhotosView.h"
 #import "JHAccount.h"
 #import "JHAccountTool.h"
-#import "AFNetworking.h"
 #import "MBProgressHUD+MJ.h"
+#import "JHHttpTool.h"
 
 @interface JHComposeViewController () <JHComposeToolbarDelegate, UITextViewDelegate, UINavigationControllerDelegate ,UIImagePickerControllerDelegate>
 
@@ -153,27 +153,27 @@
  */
 - (void)sendStatusWithImage
 {
-    // 1.获得请求管理者
-    AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
-    
-    // 2.封装请求参数
+    // 1.封装请求参数
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"access_token"] = [JHAccountTool account].access_token;
     params[@"status"] = self.textView.text;
     
-    // 3.发送post请求
-    [mgr POST:@"https://upload.api.weibo.com/2/statuses/upload.json" parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-        
-#warning 目前新浪开放的发微博接口 最多 只能上传一张图片
-        UIImage *image = [self.photosView.images firstObject];
-        NSData *data = UIImageJPEGRepresentation(image, 1.0);
-        
-        // 拼接文件参数
-        [formData appendPartWithFileData:data name:@"pic" fileName:@"status.jpg" mimeType:@"image/jpeg"];
-        
-    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    // 2.封装文件参数
+    NSMutableArray *formDataArray = [NSMutableArray array];
+    NSArray *images = [self.photosView images];
+    for (UIImage *image in images) {
+        JHFormData *formData = [[JHFormData alloc] init];
+        formData.data = UIImageJPEGRepresentation(image, 1.0);
+        formData.name = @"pic";
+        formData.mimeType = @"image/jpeg";
+        formData.filename = @"status.jpg";
+        [formDataArray addObject:formData];
+    }
+    
+    // 3.发送请求
+    [JHHttpTool post:@"https://upload.api.weibo.com/2/statuses/upload.json" params:params formDataArray:formDataArray success:^(id responseObj) {
         [MBProgressHUD showSuccess:@"发表成功"];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(NSError *error) {
         [MBProgressHUD showError:@"发表失败"];
     }];
 }
@@ -185,19 +185,16 @@
  */
 - (void)sendStatusWithoutImage
 {
-    // 1.获得请求管理者
-    AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
     
-    // 2.封装请求参数
+    // 1.封装请求参数
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"access_token"] = [JHAccountTool account].access_token;
     params[@"status"] = self.textView.text;
     
     // 3.发送POST请求
-    [mgr POST:@"https://api.weibo.com/2/statuses/update.json" parameters:params
-      success:^(AFHTTPRequestOperation *operation, NSDictionary *statusDict) {
+    [JHHttpTool post:@"https://api.weibo.com/2/statuses/update.json" params:params success:^(id responseObj) {
           [MBProgressHUD showSuccess:@"发表成功"];
-      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+      } failure:^(NSError *error) {
           [MBProgressHUD showError:@"发表失败"];
       }];
 }

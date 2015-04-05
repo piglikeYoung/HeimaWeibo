@@ -57,7 +57,6 @@
 
 - (void)plusClick
 {
-    JHLog(@"plusClick----");
     
     // 通知代理
     if ([self.delegate respondsToSelector:@selector(tabBarDidClickedPlusButton:)]) {

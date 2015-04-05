@@ -8,10 +8,10 @@
 
 #import "JHOAuthViewController.h"
 #import "MBProgressHUD+MJ.h"
-#import "AFNetworking.h"
 #import "JHControllerTool.h"
 #import "JHAccount.h"
 #import "JHAccountTool.h"
+#import "JHHttpTool.h"
 
 @interface JHOAuthViewController () <UIWebViewDelegate>
 
@@ -102,10 +102,8 @@
  */
 - (void)accessTokenWithCode:(NSString *)code
 {
-    // 1.获得请求管理者
-    AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
     
-    // 2.封装请求参数
+    // 1.封装请求参数
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"client_id"] = JHAppKey;
     params[@"client_secret"] = JHAppSecret;
@@ -114,14 +112,12 @@
     params[@"code"] = code;
     
     // 3.发送POST请求
-    [mgr POST:@"https://api.weibo.com/oauth2/access_token" parameters:params success:^(AFHTTPRequestOperation *operation, NSDictionary *accountDict) {
+    [JHHttpTool post:@"https://api.weibo.com/oauth2/access_token" params:params success:^(id responseObj) {
         // 隐藏HUD
         [MBProgressHUD hideHUD];
         
-        JHLog(@"请求成功--%@", accountDict);
-        
         // 字典转成模型
-        JHAccount *account = [JHAccount accountWithDict:accountDict];
+        JHAccount *account = [JHAccount accountWithDict:responseObj];
         
         // 存储账号模型
         [JHAccountTool save:account];
@@ -129,7 +125,7 @@
         // 切换控制器(可能去新特性\tabbar)
         [JHControllerTool chooseRootViewController];
         
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(NSError *error) {
         // 隐藏HUD
         [MBProgressHUD hideHUD];
         
