@@ -16,7 +16,9 @@
 #import "JHUser.h"
 #import "MJExtension.h"
 #import "JHLoadMoreFooter.h"
-#import "JHHttpTool.h"
+#import "JHHomeStatusesParam.h"
+#import "JHHomeStatusesResult.h"
+#import "JHStatusTool.h"
 
 @interface JHHomeViewController () <JHPopMenuDelegate>
 
@@ -61,26 +63,26 @@
  */
 - (void)setupUserInfo
 {
-    // 1.封装请求参数
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"access_token"] = [JHAccountTool account].access_token;
-    params[@"uid"] = [JHAccountTool account].uid;
-    
-    // 2.发送请求
-    [JHHttpTool get:@"https://api.weibo.com/2/users/show.json" params:params success:^(id repsonseObj) {
-        // 字典转模型
-        JHUser *user = [JHUser objectWithKeyValues:repsonseObj];
-        
-        // 设置用户的昵称为标题
-        [self.titleButton setTitle:user.name forState:UIControlStateNormal];
-        
-        // 存储帐号信息
-        JHAccount *account = [JHAccountTool account];
-        account.name = user.name;
-        [JHAccountTool save:account];
-    } failure:^(NSError *error) {
-        JHLog(@"请求失败-------%@", error);
-    }];
+//    // 1.封装请求参数
+//    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+//    params[@"access_token"] = [JHAccountTool account].access_token;
+//    params[@"uid"] = [JHAccountTool account].uid;
+//    
+//    // 2.发送请求
+//    [JHHttpTool get:@"https://api.weibo.com/2/users/show.json" params:params success:^(id repsonseObj) {
+//        // 字典转模型
+//        JHUser *user = [JHUser objectWithKeyValues:repsonseObj];
+//        
+//        // 设置用户的昵称为标题
+//        [self.titleButton setTitle:user.name forState:UIControlStateNormal];
+//        
+//        // 存储帐号信息
+//        JHAccount *account = [JHAccountTool account];
+//        account.name = user.name;
+//        [JHAccountTool save:account];
+//    } failure:^(NSError *error) {
+//        JHLog(@"请求失败-------%@", error);
+//    }];
 }
 
 /**
@@ -123,25 +125,21 @@
 {
     
     // 1.封装请求参数
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"access_token"] = [JHAccountTool account].access_token;
-    
+    JHHomeStatusesParam *params = [[JHHomeStatusesParam alloc] init];
+    params.access_token = [JHAccountTool account].access_token;
+
     // 取出数组中第一个数据，存在就加载比数组晚数据，不存在就加载全部数据
     JHStatus *firstStatus = [self.statuses firstObject];
     if (firstStatus) {
         // since_id 	false 	int64 	若指定此参数，则返回ID比since_id大的微博（即比since_id时间晚的微博），默认为0。
-        params[@"since_id"] = firstStatus.idstr;
+        params.since_id = @([firstStatus.idstr longLongValue]);
     }
-    
+
     // 2.发送GET请求
-    [JHHttpTool get:@"https://api.weibo.com/2/statuses/home_timeline.json" params:params success:^(id responseObj) {
+    [JHStatusTool homeStatusesWithParam:params success:^(JHHomeStatusesResult *result) {
         
-        // JHLog(@"请求成功--%@", resultDict);
-        
-        // 赋值数组数据
-        NSArray *statusDictArray = responseObj[@"statuses"];
-        // 微博字典数组 ---> 微博模型数组
-        NSArray *newStatuses = [JHStatus objectArrayWithKeyValuesArray:statusDictArray];
+        // 微博模型数组
+        NSArray *newStatuses = result.statuses;
         
         // 将新数据插入到旧数据的最前面
         NSRange range = NSMakeRange(0, newStatuses.count);
@@ -156,7 +154,6 @@
         
         // 提示用户最新的微博数量
         [self showNewStatusesCount:newStatuses.count];
-        
     } failure:^(NSError *error) {
         JHLog(@"请求失败--%@", error);
         // 让刷新控件停止刷新（恢复默认的状态）
@@ -171,21 +168,18 @@
 {
     
     // 1.封装请求参数
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"access_token"] = [JHAccountTool account].access_token;
+    JHHomeStatusesParam *params = [[JHHomeStatusesParam alloc] init];
+    params.access_token = [JHAccountTool account].access_token;
     JHStatus *lastStatus =  [self.statuses lastObject];
     if (lastStatus) {
         // max_id	false	int64	若指定此参数，则返回ID小于或等于max_id的微博，默认为0。
-        params[@"max_id"] = @([lastStatus.idstr longLongValue] - 1);
+        params.max_id = @([lastStatus.idstr longLongValue] - 1);
     }
     
     // 2.发送GET请求
-    [JHHttpTool get:@"https://api.weibo.com/2/statuses/home_timeline.json" params:params success:^(id responseObj) {
+    [JHStatusTool homeStatusesWithParam:params success:^(JHHomeStatusesResult *result) {
         // 微博字典数组
-        NSArray *statusDictArray = responseObj[@"statuses"];
-        
-        // 微博字典数组 ---> 微博模型数组
-        NSArray *newStatuses = [JHStatus objectArrayWithKeyValuesArray:statusDictArray];
+        NSArray *newStatuses = result.statuses;
         
         // 将新数据插入到旧数据的最后面
         [self.statuses addObjectsFromArray:newStatuses];
@@ -195,12 +189,12 @@
         
         // 让刷新控件停止刷新（恢复默认的状态）
         [self.footer endRefreshing];
-        
     } failure:^(NSError *error) {
         JHLog(@"请求失败--%@", error);
         // 让刷新控件停止刷新（恢复默认的状态）
         [self.footer endRefreshing];
     }];
+    
 }
 
 /**

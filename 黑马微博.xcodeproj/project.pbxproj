@@ -58,6 +58,9 @@
 		7DC634161AC9443B00F64008 /* JHTitleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC634151AC9443B00F64008 /* JHTitleButton.m */; };
 		7DC634191AC9461A00F64008 /* JHPopMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC634181AC9461A00F64008 /* JHPopMenu.m */; };
 		7DC65C7A1AD0C0BE00BE37A0 /* JHHttpTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC65C791AD0C0BE00BE37A0 /* JHHttpTool.m */; };
+		7DC65C7D1AD0DF3A00BE37A0 /* JHStatusTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC65C7C1AD0DF3A00BE37A0 /* JHStatusTool.m */; };
+		7DC65C801AD0DF9800BE37A0 /* JHHomeStatusesParam.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC65C7F1AD0DF9800BE37A0 /* JHHomeStatusesParam.m */; };
+		7DC65C831AD0DFD400BE37A0 /* JHHomeStatusesResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC65C821AD0DFD400BE37A0 /* JHHomeStatusesResult.m */; };
 		7DC8D1191ACA669600A78DF6 /* JHTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC8D1181ACA669600A78DF6 /* JHTabBar.m */; };
 		7DC932D91AC913850025291B /* JHSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC932D81AC913850025291B /* JHSearchBar.m */; };
 		7DCAD3AF1ACF75570035BDE6 /* JHComposePhotosView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCAD3AE1ACF75570035BDE6 /* JHComposePhotosView.m */; };
@@ -192,6 +195,12 @@
 		7DC634181AC9461A00F64008 /* JHPopMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHPopMenu.m; sourceTree = "<group>"; };
 		7DC65C781AD0C0BE00BE37A0 /* JHHttpTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHHttpTool.h; sourceTree = "<group>"; };
 		7DC65C791AD0C0BE00BE37A0 /* JHHttpTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHHttpTool.m; sourceTree = "<group>"; };
+		7DC65C7B1AD0DF3A00BE37A0 /* JHStatusTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHStatusTool.h; sourceTree = "<group>"; };
+		7DC65C7C1AD0DF3A00BE37A0 /* JHStatusTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHStatusTool.m; sourceTree = "<group>"; };
+		7DC65C7E1AD0DF9800BE37A0 /* JHHomeStatusesParam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHHomeStatusesParam.h; sourceTree = "<group>"; };
+		7DC65C7F1AD0DF9800BE37A0 /* JHHomeStatusesParam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHHomeStatusesParam.m; sourceTree = "<group>"; };
+		7DC65C811AD0DFD400BE37A0 /* JHHomeStatusesResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHHomeStatusesResult.h; sourceTree = "<group>"; };
+		7DC65C821AD0DFD400BE37A0 /* JHHomeStatusesResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHHomeStatusesResult.m; sourceTree = "<group>"; };
 		7DC8D1171ACA669600A78DF6 /* JHTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHTabBar.h; sourceTree = "<group>"; };
 		7DC8D1181ACA669600A78DF6 /* JHTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHTabBar.m; sourceTree = "<group>"; };
 		7DC932D71AC913850025291B /* JHSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHSearchBar.h; sourceTree = "<group>"; };
@@ -375,6 +384,8 @@
 				7DBB53EF1ACD0165003E39F6 /* JHControllerTool.m */,
 				7DC65C781AD0C0BE00BE37A0 /* JHHttpTool.h */,
 				7DC65C791AD0C0BE00BE37A0 /* JHHttpTool.m */,
+				7DC65C7B1AD0DF3A00BE37A0 /* JHStatusTool.h */,
+				7DC65C7C1AD0DF3A00BE37A0 /* JHStatusTool.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -559,6 +570,10 @@
 			children = (
 				7DBB53F21ACD1F44003E39F6 /* JHAccount.h */,
 				7DBB53F31ACD1F44003E39F6 /* JHAccount.m */,
+				7DC65C7E1AD0DF9800BE37A0 /* JHHomeStatusesParam.h */,
+				7DC65C7F1AD0DF9800BE37A0 /* JHHomeStatusesParam.m */,
+				7DC65C811AD0DFD400BE37A0 /* JHHomeStatusesResult.h */,
+				7DC65C821AD0DFD400BE37A0 /* JHHomeStatusesResult.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -847,7 +862,9 @@
 				7DBB53E61ACCE42A003E39F6 /* AFSecurityPolicy.m in Sources */,
 				7DBB54561ACD4268003E39F6 /* UIImageView+HighlightedWebCache.m in Sources */,
 				7DBB544D1ACD4268003E39F6 /* SDWebImageDecoder.m in Sources */,
+				7DC65C831AD0DFD400BE37A0 /* JHHomeStatusesResult.m in Sources */,
 				7DBB54511ACD4268003E39F6 /* SDWebImagePrefetcher.m in Sources */,
+				7DC65C801AD0DF9800BE37A0 /* JHHomeStatusesParam.m in Sources */,
 				7DCBE4311ACE1C7900A9B039 /* JHPhoto.m in Sources */,
 				7DBB53E21ACCE42A003E39F6 /* AFHTTPRequestOperation.m in Sources */,
 				7DC454531AC68F5F00ED9410 /* JHDiscoverViewController.m in Sources */,
@@ -866,6 +883,7 @@
 				7DBB53E41ACCE42A003E39F6 /* AFHTTPSessionManager.m in Sources */,
 				7DBB53F11ACD0165003E39F6 /* JHControllerTool.m in Sources */,
 				7DC4545C1AC68FDF00ED9410 /* JHProfileViewController.m in Sources */,
+				7DC65C7D1AD0DF3A00BE37A0 /* JHStatusTool.m in Sources */,
 				7DBB544F1ACD4268003E39F6 /* SDWebImageDownloaderOperation.m in Sources */,
 				7DC454631AC69F7D00ED9410 /* UIImage+Extension.m in Sources */,
 				7DC4544B1AC68CE900ED9410 /* main.m in Sources */,
