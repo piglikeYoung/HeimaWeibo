@@ -75,6 +75,8 @@
 		7DCB7E121AD21BBB001650F4 /* JHUserInfoParam.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB7E0F1AD21BBB001650F4 /* JHUserInfoParam.m */; };
 		7DCB7E131AD21BBB001650F4 /* JHUserInfoResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB7E111AD21BBB001650F4 /* JHUserInfoResult.m */; };
 		7DCB7E161AD21D36001650F4 /* JHBaseParam.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB7E151AD21D36001650F4 /* JHBaseParam.m */; };
+		7DCB7E191AD22E47001650F4 /* JHUnreadCountParam.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB7E181AD22E47001650F4 /* JHUnreadCountParam.m */; };
+		7DCB7E1C1AD22E74001650F4 /* JHUnreadCountResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB7E1B1AD22E74001650F4 /* JHUnreadCountResult.m */; };
 		7DCBE42E1ACE1BFC00A9B039 /* JHUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCBE42D1ACE1BFC00A9B039 /* JHUser.m */; };
 		7DCBE4311ACE1C7900A9B039 /* JHPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCBE4301ACE1C7900A9B039 /* JHPhoto.m */; };
 		7DCBE4341ACE1CA300A9B039 /* JHStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCBE4331ACE1CA300A9B039 /* JHStatus.m */; };
@@ -238,6 +240,10 @@
 		7DCB7E111AD21BBB001650F4 /* JHUserInfoResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHUserInfoResult.m; sourceTree = "<group>"; };
 		7DCB7E141AD21D36001650F4 /* JHBaseParam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHBaseParam.h; sourceTree = "<group>"; };
 		7DCB7E151AD21D36001650F4 /* JHBaseParam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHBaseParam.m; sourceTree = "<group>"; };
+		7DCB7E171AD22E47001650F4 /* JHUnreadCountParam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHUnreadCountParam.h; sourceTree = "<group>"; };
+		7DCB7E181AD22E47001650F4 /* JHUnreadCountParam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHUnreadCountParam.m; sourceTree = "<group>"; };
+		7DCB7E1A1AD22E74001650F4 /* JHUnreadCountResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHUnreadCountResult.h; sourceTree = "<group>"; };
+		7DCB7E1B1AD22E74001650F4 /* JHUnreadCountResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHUnreadCountResult.m; sourceTree = "<group>"; };
 		7DCBE42C1ACE1BFC00A9B039 /* JHUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHUser.h; sourceTree = "<group>"; };
 		7DCBE42D1ACE1BFC00A9B039 /* JHUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHUser.m; sourceTree = "<group>"; };
 		7DCBE42F1ACE1C7900A9B039 /* JHPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHPhoto.h; sourceTree = "<group>"; };
@@ -789,6 +795,10 @@
 		7DCB7E0C1AD21BB3001650F4 /* UnreadCount */ = {
 			isa = PBXGroup;
 			children = (
+				7DCB7E171AD22E47001650F4 /* JHUnreadCountParam.h */,
+				7DCB7E181AD22E47001650F4 /* JHUnreadCountParam.m */,
+				7DCB7E1A1AD22E74001650F4 /* JHUnreadCountResult.h */,
+				7DCB7E1B1AD22E74001650F4 /* JHUnreadCountResult.m */,
 			);
 			path = UnreadCount;
 			sourceTree = "<group>";
@@ -989,6 +999,8 @@
 				7DCBE4471ACE2C5000A9B039 /* MJIvar.m in Sources */,
 				7DBB54521ACD4268003E39F6 /* UIButton+WebCache.m in Sources */,
 				7DCB26E81ACB956000B71AD2 /* JHComposeViewController.m in Sources */,
+				7DCB7E1C1AD22E74001650F4 /* JHUnreadCountResult.m in Sources */,
+				7DCB7E191AD22E47001650F4 /* JHUnreadCountParam.m in Sources */,
 				7DCB26F61ACBA71900B71AD2 /* JHNewfeatureViewController.m in Sources */,
 				7DBB53E51ACCE42A003E39F6 /* AFNetworkReachabilityManager.m in Sources */,
 				7DC65C7A1AD0C0BE00BE37A0 /* JHHttpTool.m in Sources */,

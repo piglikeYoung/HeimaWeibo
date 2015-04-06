@@ -28,6 +28,7 @@
 
 @property (weak , nonatomic) JHLoadMoreFooter *footer;
 @property (weak , nonatomic) JHTitleButton *titleButton;
+@property (weak , nonatomic) UIRefreshControl *refreshControl;
 
 @end
 
@@ -91,6 +92,8 @@
 {
     // 1.添加下拉刷新控件
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    
+    self.refreshControl = refreshControl;
     [self.tableView addSubview:refreshControl];
     
     // 2.监听状态
@@ -159,6 +162,25 @@
     }];
 }
 
+#pragma mark - 刷新
+- (void)refresh:(BOOL)fromSelf
+{
+    if (self.tabBarItem.badgeValue) { // 有数字
+        // 转圈圈
+        [self.refreshControl beginRefreshing];
+        // 刷新数据
+        [self loadNewStatuses:self.refreshControl];
+    }
+    
+    // 是否回到tableview顶部
+    if (fromSelf) {
+        // 让表格回到最顶部
+        NSIndexPath *firstRow = [NSIndexPath indexPathForRow:0 inSection:0];
+        [self.tableView scrollToRowAtIndexPath:firstRow atScrollPosition:UITableViewScrollPositionTop animated:YES];
+        
+    }
+}
+
 /**
  *  加载更多的微博数据
  */
@@ -201,6 +223,12 @@
  */
 - (void)showNewStatusesCount:(int)count
 {
+    
+    // 0.清零提醒数字
+    [UIApplication sharedApplication].applicationIconBadgeNumber -= self.tabBarItem.badgeValue.intValue;
+    self.tabBarItem.badgeValue = nil;
+
+    
     // 1.创建一个UILabel
     UILabel *label = [[UILabel alloc] init];
     

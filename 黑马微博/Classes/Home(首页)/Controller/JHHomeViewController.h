@@ -10,4 +10,10 @@
 
 @interface JHHomeViewController : UITableViewController
 
+/**
+ *  刷新
+ */
+- (void)refresh:(BOOL)fromSelf;
+
+
 @end

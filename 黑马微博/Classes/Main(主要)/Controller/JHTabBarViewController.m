@@ -14,8 +14,16 @@
 #import "JHNavigationController.h"
 #import "JHTabBar.h"
 #import "JHComposeViewController.h"
+#import "JHUserTool.h"
+#import "JHAccountTool.h"
+#import "JHAccount.h"
 
-@interface JHTabBarViewController ()<JHTabBarDelegate>
+@interface JHTabBarViewController ()<JHTabBarDelegate, UITabBarControllerDelegate>
+
+@property (nonatomic, weak) JHHomeViewController *home;
+@property (nonatomic, weak) JHMessageViewController *message;
+@property (nonatomic, weak) JHProfileViewController *profile;
+@property (nonatomic, weak) UIViewController *lastSelectedViewContoller;
 
 @end
 
@@ -24,11 +32,68 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.delegate = self;
+    
     // 添加所有的子控制器
     [self addAllChildVcs];
     
     // 创建自定义tabbar
     [self addCustomTabBar];
+    
+    // 利用定时器获得用户的未读数
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:10.0 target:self selector:@selector(getUnreadCount) userInfo:nil repeats:YES];
+    
+    [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+}
+
+
+- (void)getUnreadCount
+{
+    // 1.请求参数
+    JHUnreadCountParam *param = [JHUnreadCountParam param];
+    param.uid = [JHAccountTool account].uid;
+    
+    // 2.获取未读数
+    [JHUserTool unreadCountWithParam:param success:^(JHUnreadCountResult *result) {
+        // 显示微博未读数
+        if (result.status == 0) {
+            self.home.tabBarItem.badgeValue = nil;
+        } else {
+            self.home.tabBarItem.badgeValue = [NSString stringWithFormat:@"%d", result.status];
+        }
+        
+        // 显示消息未读数
+        if (result.messageCount == 0) {
+            self.message.tabBarItem.badgeValue = nil;
+        } else {
+            self.message.tabBarItem.badgeValue = [NSString stringWithFormat:@"%d", result.messageCount];
+        }
+        
+        // 显示新粉丝数
+        if (result.follower == 0) {
+            self.profile.tabBarItem.badgeValue = nil;
+        } else {
+            self.profile.tabBarItem.badgeValue = [NSString stringWithFormat:@"%d", result.follower];
+        }
+        
+        // 判断是否系统是否大于iOS8，iOS8之后需要申请权限才能显示applicationIconBadgeNumber
+        if (iOS8) {
+            UIUserNotificationType myTypes = UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound;
+            UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:myTypes categories:nil];
+            [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+        }else
+        {
+            UIRemoteNotificationType myTypes = UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeAlert|UIRemoteNotificationTypeSound;
+            [[UIApplication sharedApplication] registerForRemoteNotificationTypes:myTypes];
+        }
+        
+        // 在图标上显示所有的未读数
+        [UIApplication sharedApplication].applicationIconBadgeNumber = result.totalCount;
+        
+        JHLog(@"总未读数--%d", result.totalCount);
+    } failure:^(NSError *error) {
+        JHLog(@"获得未读数失败---%@", error);
+    }];
 }
 
 
@@ -52,16 +117,19 @@
     // 添加子控制器
     JHHomeViewController *home = [[JHHomeViewController alloc] init];
     [self addOneChlildVc:home title:@"首页" imageName:@"tabbar_home" selectedImageName:@"tabbar_home_selected"];
+    self.home = home;
+    self.lastSelectedViewContoller = home;
     
     JHMessageViewController *message = [[JHMessageViewController alloc] init];
     [self addOneChlildVc:message title:@"消息" imageName:@"tabbar_message_center" selectedImageName:@"tabbar_message_center_selected"];
+    self.message = message;
     
     JHDiscoverViewController *discover = [[JHDiscoverViewController alloc] init];
     [self addOneChlildVc:discover title:@"发现" imageName:@"tabbar_discover" selectedImageName:@"tabbar_discover_selected"];
     
     JHProfileViewController *profile = [[JHProfileViewController alloc] init];
     [self addOneChlildVc:profile title:@"我" imageName:@"tabbar_profile" selectedImageName:@"tabbar_profile_selected"];
-    
+    self.profile = profile;
 }
 
 /**
@@ -110,6 +178,26 @@
     JHNavigationController *nav = [[JHNavigationController alloc] initWithRootViewController:childVc];
     [self addChildViewController:nav];
 }
+
+#pragma mark - UITabBarControllerDelegate
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UINavigationController *)viewController
+{
+    // 拿到栈顶的控制器，即点击了TabBar的哪个控制器
+    UIViewController *vc = [viewController.viewControllers firstObject];
+    
+    // 如果是首页控制器
+    if ([vc isKindOfClass:[JHHomeViewController class]]) {
+        // 最后选中的控制器等于当前控制器才回到顶端，否则点击别的控制器，再回来不回到顶端
+        if (self.lastSelectedViewContoller == vc) {
+            [self.home refresh:YES];
+        } else {
+            [self.home refresh:NO];
+        }
+    }
+    
+    self.lastSelectedViewContoller = vc;
+}
+
 
 #pragma mark - JHTabBarDelegate
 - (void)tabBarDidClickedPlusButton:(JHTabBar *)tabBar
