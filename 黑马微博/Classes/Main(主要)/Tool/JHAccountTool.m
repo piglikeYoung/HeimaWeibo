@@ -17,6 +17,9 @@
 
 + (void)save:(JHAccount *)account
 {
+    // 确定帐号的过期时间 ： 帐号创建时间 + 有效期
+    NSDate *now = [NSDate date];
+    account.expires_time = [now dateByAddingTimeInterval:account.expires_in.doubleValue];
     // 归档
     [NSKeyedArchiver archiveRootObject:account toFile:JHAccountFilepath];
 }
@@ -34,13 +37,20 @@
     }
     
     return account;
+    
+    /**
+     NSOrderedAscending = -1L,  升序，越往右边越大
+     NSOrderedSame, 相等，一样
+     NSOrderedDescending 降序，越往右边越小
+     */
 }
 
-/**
- NSOrderedAscending = -1L,  升序，越往右边越大
- NSOrderedSame, 相等，一样
- NSOrderedDescending 降序，越往右边越小
- */
++ (void)accessTokenWithParam:(JHAccessTokenParam *)param success:(void (^)(JHAccount *))success failure:(void (^)(NSError *))failure
+{
+    [self postWithUrl:@"https://api.weibo.com/oauth2/access_token" param:param resultClass:[JHAccount class] success:success failure:failure];
+}
+
+
 
 
 

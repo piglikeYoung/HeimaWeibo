@@ -16,9 +16,8 @@
 #import "JHUser.h"
 #import "MJExtension.h"
 #import "JHLoadMoreFooter.h"
-#import "JHHomeStatusesParam.h"
-#import "JHHomeStatusesResult.h"
 #import "JHStatusTool.h"
+#import "JHUserTool.h"
 
 @interface JHHomeViewController () <JHPopMenuDelegate>
 
@@ -63,26 +62,26 @@
  */
 - (void)setupUserInfo
 {
-//    // 1.封装请求参数
-//    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-//    params[@"access_token"] = [JHAccountTool account].access_token;
-//    params[@"uid"] = [JHAccountTool account].uid;
-//    
-//    // 2.发送请求
-//    [JHHttpTool get:@"https://api.weibo.com/2/users/show.json" params:params success:^(id repsonseObj) {
-//        // 字典转模型
-//        JHUser *user = [JHUser objectWithKeyValues:repsonseObj];
-//        
-//        // 设置用户的昵称为标题
-//        [self.titleButton setTitle:user.name forState:UIControlStateNormal];
-//        
-//        // 存储帐号信息
-//        JHAccount *account = [JHAccountTool account];
-//        account.name = user.name;
-//        [JHAccountTool save:account];
-//    } failure:^(NSError *error) {
-//        JHLog(@"请求失败-------%@", error);
-//    }];
+    // 1.封装请求参数
+    JHUserInfoParam *param = [JHUserInfoParam param];
+    param.uid = [JHAccountTool account].uid;
+    
+    
+    // 2.发送请求
+    [JHUserTool userInfoWithParam:param success:^(JHUserInfoResult *user) {
+                
+        // 设置用户的昵称为标题
+        [self.titleButton setTitle:user.name forState:UIControlStateNormal];
+        
+        // 存储帐号信息
+        JHAccount *account = [JHAccountTool account];
+        account.name = user.name;
+        [JHAccountTool save:account];
+
+    } failure:^(NSError *error) {
+        JHLog(@"请求失败-------%@", error);
+    }];
+
 }
 
 /**
@@ -125,18 +124,17 @@
 {
     
     // 1.封装请求参数
-    JHHomeStatusesParam *params = [[JHHomeStatusesParam alloc] init];
-    params.access_token = [JHAccountTool account].access_token;
+    JHHomeStatusesParam *param = [JHHomeStatusesParam param];
 
     // 取出数组中第一个数据，存在就加载比数组晚数据，不存在就加载全部数据
     JHStatus *firstStatus = [self.statuses firstObject];
     if (firstStatus) {
         // since_id 	false 	int64 	若指定此参数，则返回ID比since_id大的微博（即比since_id时间晚的微博），默认为0。
-        params.since_id = @([firstStatus.idstr longLongValue]);
+        param.since_id = @([firstStatus.idstr longLongValue]);
     }
 
     // 2.发送GET请求
-    [JHStatusTool homeStatusesWithParam:params success:^(JHHomeStatusesResult *result) {
+    [JHStatusTool homeStatusesWithParam:param success:^(JHHomeStatusesResult *result) {
         
         // 微博模型数组
         NSArray *newStatuses = result.statuses;
@@ -168,8 +166,7 @@
 {
     
     // 1.封装请求参数
-    JHHomeStatusesParam *params = [[JHHomeStatusesParam alloc] init];
-    params.access_token = [JHAccountTool account].access_token;
+    JHHomeStatusesParam *params = [JHHomeStatusesParam param];
     JHStatus *lastStatus =  [self.statuses lastObject];
     if (lastStatus) {
         // max_id	false	int64	若指定此参数，则返回ID小于或等于max_id的微博，默认为0。
@@ -293,7 +290,7 @@
     self.titleButton = titleButton;
 }
 
-
+#pragma mark - 私有方法
 /**
  * 点击显示弹出框
  */
@@ -315,13 +312,6 @@
     [menu showInRect:CGRectMake(100, 100, 100, 100)];
 }
 
-#pragma mark - 弹出菜单协议
-- (void)popMenuDidDismissed:(JHPopMenu *)popMenu{
-    JHTitleButton *titleButton = (JHTitleButton *)self.navigationItem.titleView;
-    [titleButton setImage:[UIImage imageWithName:@"navigationbar_arrow_down"] forState:UIControlStateNormal];
-}
-
-
 - (void)pop
 {
     JHLog(@"pop---");
@@ -332,6 +322,14 @@
     JHLog(@"friendSearch---");
     
 }
+
+
+#pragma mark - 弹出菜单协议
+- (void)popMenuDidDismissed:(JHPopMenu *)popMenu{
+    JHTitleButton *titleButton = (JHTitleButton *)self.navigationItem.titleView;
+    [titleButton setImage:[UIImage imageWithName:@"navigationbar_arrow_down"] forState:UIControlStateNormal];
+}
+
 
 #pragma mark - Table view data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

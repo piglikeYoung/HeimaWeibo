@@ -13,7 +13,8 @@
 #import "JHAccount.h"
 #import "JHAccountTool.h"
 #import "MBProgressHUD+MJ.h"
-#import "JHHttpTool.h"
+#import "JHStatusTool.h"
+#import "JHFormData.h"
 
 @interface JHComposeViewController () <JHComposeToolbarDelegate, UITextViewDelegate, UINavigationControllerDelegate ,UIImagePickerControllerDelegate>
 
@@ -154,9 +155,8 @@
 - (void)sendStatusWithImage
 {
     // 1.封装请求参数
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"access_token"] = [JHAccountTool account].access_token;
-    params[@"status"] = self.textView.text;
+    JHSendStatusParam *param = [JHSendStatusParam param];
+    param.status = self.textView.text;
     
     // 2.封装文件参数
     NSMutableArray *formDataArray = [NSMutableArray array];
@@ -171,7 +171,7 @@
     }
     
     // 3.发送请求
-    [JHHttpTool post:@"https://upload.api.weibo.com/2/statuses/upload.json" params:params formDataArray:formDataArray success:^(id responseObj) {
+    [JHStatusTool sendStatusWithParam:param formDataArray:formDataArray success:^(JHSendStatusResult *result) {
         [MBProgressHUD showSuccess:@"发表成功"];
     } failure:^(NSError *error) {
         [MBProgressHUD showError:@"发表失败"];
@@ -187,16 +187,16 @@
 {
     
     // 1.封装请求参数
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"access_token"] = [JHAccountTool account].access_token;
-    params[@"status"] = self.textView.text;
+    JHSendStatusParam *param = [JHSendStatusParam param];
+    param.status = self.textView.text;
     
     // 3.发送POST请求
-    [JHHttpTool post:@"https://api.weibo.com/2/statuses/update.json" params:params success:^(id responseObj) {
-          [MBProgressHUD showSuccess:@"发表成功"];
-      } failure:^(NSError *error) {
-          [MBProgressHUD showError:@"发表失败"];
-      }];
+    [JHStatusTool sendStatusWithParam:param success:^(JHSendStatusResult *result) {
+        [MBProgressHUD showSuccess:@"发表成功"];
+    } failure:^(NSError *error) {
+        [MBProgressHUD showError:@"发表失败"];
+    }];
+    
 }
 
 #pragma mark - 键盘处理

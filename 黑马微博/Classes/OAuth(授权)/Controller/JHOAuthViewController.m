@@ -11,7 +11,6 @@
 #import "JHControllerTool.h"
 #import "JHAccount.h"
 #import "JHAccountTool.h"
-#import "JHHttpTool.h"
 
 @interface JHOAuthViewController () <UIWebViewDelegate>
 
@@ -104,34 +103,30 @@
 {
     
     // 1.封装请求参数
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"client_id"] = JHAppKey;
-    params[@"client_secret"] = JHAppSecret;
-    params[@"redirect_uri"] = JHRedirectURI;
-    params[@"grant_type"] = @"authorization_code";
-    params[@"code"] = code;
+    JHAccessTokenParam *param = [[JHAccessTokenParam alloc] init];
+    param.client_id = JHAppKey;
+    param.client_secret = JHAppSecret;
+    param.redirect_uri = JHRedirectURI;
+    param.grant_type = @"authorization_code";
+    param.code = code;
     
     // 3.发送POST请求
-    [JHHttpTool post:@"https://api.weibo.com/oauth2/access_token" params:params success:^(id responseObj) {
+    [JHAccountTool accessTokenWithParam:param success:^(JHAccount *account) {
         // 隐藏HUD
         [MBProgressHUD hideHUD];
-        
-        // 字典转成模型
-        JHAccount *account = [JHAccount accountWithDict:responseObj];
         
         // 存储账号模型
         [JHAccountTool save:account];
         
         // 切换控制器(可能去新特性\tabbar)
         [JHControllerTool chooseRootViewController];
-        
     } failure:^(NSError *error) {
         // 隐藏HUD
         [MBProgressHUD hideHUD];
         
         JHLog(@"请求失败--%@", error);
-
     }];
+    
 }
 
 

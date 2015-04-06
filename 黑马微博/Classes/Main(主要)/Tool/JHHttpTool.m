@@ -9,6 +9,7 @@
 #import "JHHttpTool.h"
 #import "AFNetworking.h"
 #import "MBProgressHUD+MJ.h"
+#import "JHFormData.h"
 
 @implementation JHHttpTool
 
@@ -96,12 +97,5 @@
     }];
 }
 
-
-@end
-
-/**
- *  用来封装文件数据的模型
- */
-@implementation JHFormData
 
 @end

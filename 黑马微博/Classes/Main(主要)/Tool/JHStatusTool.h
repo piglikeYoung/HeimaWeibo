@@ -9,8 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "JHHomeStatusesParam.h"
 #import "JHHomeStatusesResult.h"
+#import "JHSendStatusParam.h"
+#import "JHSendStatusResult.h"
+#import "JHBaseTool.h"
 
-@interface JHStatusTool : NSObject
+@interface JHStatusTool : JHBaseTool
 
 /**
  *  加载首页的微博数据
@@ -20,5 +23,25 @@
  *  @param failure 请求失败后的回调（请将请求失败后想做的事情写到这个block中）
  */
 + (void)homeStatusesWithParam:(JHHomeStatusesParam *)param success:(void (^)(JHHomeStatusesResult *result))success failure:(void (^)(NSError *error))failure;
+
+
+/**
+ *  发没有图片的微博
+ *
+ *  @param param   请求参数
+ *  @param success 请求成功后的回调（请将请求成功后想做的事情写到这个block中）
+ *  @param failure 请求失败后的回调（请将请求失败后想做的事情写到这个block中）
+ */
++ (void)sendStatusWithParam:(JHSendStatusParam *)param success:(void (^)(JHSendStatusResult *result))success failure:(void (^)(NSError *error))failure;
+
+
+/**
+ *  发有图片的微博
+ *
+ *  @param param   请求参数
+ *  @param success 请求成功后的回调（请将请求成功后想做的事情写到这个block中）
+ *  @param failure 请求失败后的回调（请将请求失败后想做的事情写到这个block中）
+ */
++ (void)sendStatusWithParam:(JHSendStatusParam *)param formDataArray:(NSArray *)formDataArray  success:(void (^)(JHSendStatusResult *result))success failure:(void (^)(NSError *error))failure;
 
 @end
