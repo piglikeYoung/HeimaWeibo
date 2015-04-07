@@ -18,13 +18,15 @@
 #import "JHLoadMoreFooter.h"
 #import "JHStatusTool.h"
 #import "JHUserTool.h"
+#import "JHStatusCell.h"
+#import "JHStatusFrame.h"
 
 @interface JHHomeViewController () <JHPopMenuDelegate>
 
 /**
- *  微博数组(存放着所有的微博数据)
+ *  微博数组(存放着所有的微博frame数据)
  */
-@property (nonatomic, strong) NSMutableArray *statuses;
+@property (nonatomic, strong) NSMutableArray *statusFrames;
 
 @property (weak , nonatomic) JHLoadMoreFooter *footer;
 @property (weak , nonatomic) JHTitleButton *titleButton;
@@ -34,12 +36,13 @@
 
 @implementation JHHomeViewController
 
-- (NSMutableArray *)statuses
+#pragma mark - 初始化
+- (NSMutableArray *)statusFrames
 {
-    if (_statuses == nil) {
-        _statuses = [NSMutableArray array];
+    if (_statusFrames == nil) {
+        _statusFrames = [NSMutableArray array];
     }
-    return _statuses;
+    return _statusFrames;
 }
 
 - (void)viewDidLoad
@@ -120,6 +123,29 @@
 }
 
 #pragma mark - 加载微博数据
+
+
+/**
+ *  根据微博模型数组 转成 微博frame模型数据
+ *
+ *  @param statuses 微博模型数组
+ *
+ */
+
+- (NSArray *)statusFramesWithStatuses:(NSArray *)statuses
+{
+    NSMutableArray *frames = [NSMutableArray array];
+    for (JHStatus *status in statuses) {
+        JHStatusFrame *frame = [[JHStatusFrame alloc] init];
+        // 传递微博模型数据，计算所有子控件的frame
+        frame.status = status;
+        [frames addObject:frame];
+    }
+    
+    return frames;
+    
+}
+
 /**
  *  加载最新的微博数据
  */
@@ -130,7 +156,8 @@
     JHHomeStatusesParam *param = [JHHomeStatusesParam param];
 
     // 取出数组中第一个数据，存在就加载比数组晚数据，不存在就加载全部数据
-    JHStatus *firstStatus = [self.statuses firstObject];
+    JHStatusFrame *firstStatusFrame = [self.statusFrames firstObject];
+    JHStatus *firstStatus = firstStatusFrame.status;
     if (firstStatus) {
         // since_id 	false 	int64 	若指定此参数，则返回ID比since_id大的微博（即比since_id时间晚的微博），默认为0。
         param.since_id = @([firstStatus.idstr longLongValue]);
@@ -139,13 +166,13 @@
     // 2.发送GET请求
     [JHStatusTool homeStatusesWithParam:param success:^(JHHomeStatusesResult *result) {
         
-        // 微博模型数组
-        NSArray *newStatuses = result.statuses;
+        // 获得最新的微博frame数组
+        NSArray *newFrames = [self statusFramesWithStatuses:result.statuses];
         
         // 将新数据插入到旧数据的最前面
-        NSRange range = NSMakeRange(0, newStatuses.count);
+        NSRange range = NSMakeRange(0, newFrames.count);
         NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:range];
-        [self.statuses insertObjects:newStatuses atIndexes:indexSet];
+        [self.statusFrames insertObjects:newFrames atIndexes:indexSet];
         
         // 重新刷新表格
         [self.tableView reloadData];
@@ -154,12 +181,49 @@
         [refreshControl endRefreshing];
         
         // 提示用户最新的微博数量
-        [self showNewStatusesCount:newStatuses.count];
+        [self showNewStatusesCount:newFrames.count];
     } failure:^(NSError *error) {
         JHLog(@"请求失败--%@", error);
         // 让刷新控件停止刷新（恢复默认的状态）
         [refreshControl endRefreshing];
     }];
+}
+
+#pragma mark - 加载更多的微博数据
+/**
+ *  加载更多的微博数据
+ */
+- (void)loadMoreStatuses
+{
+    
+    // 1.封装请求参数
+    JHHomeStatusesParam *params = [JHHomeStatusesParam param];
+    JHStatusFrame *lastStatusFrame =  [self.statusFrames lastObject];
+    JHStatus *lastStatus = lastStatusFrame.status;
+    if (lastStatus) {
+        // max_id	false	int64	若指定此参数，则返回ID小于或等于max_id的微博，默认为0。
+        params.max_id = @([lastStatus.idstr longLongValue] - 1);
+    }
+    
+    // 2.发送GET请求
+    [JHStatusTool homeStatusesWithParam:params success:^(JHHomeStatusesResult *result) {
+        // 获得最新的微博frame数组
+        NSArray *newFrames = [self statusFramesWithStatuses:result.statuses];
+        
+        // 将新数据插入到旧数据的最后面
+        [self.statusFrames addObjectsFromArray:newFrames];
+        
+        // 重新刷新表格
+        [self.tableView reloadData];
+        
+        // 让刷新控件停止刷新（恢复默认的状态）
+        [self.footer endRefreshing];
+    } failure:^(NSError *error) {
+        JHLog(@"请求失败--%@", error);
+        // 让刷新控件停止刷新（恢复默认的状态）
+        [self.footer endRefreshing];
+    }];
+    
 }
 
 #pragma mark - 刷新
@@ -181,40 +245,6 @@
     }
 }
 
-/**
- *  加载更多的微博数据
- */
-- (void)loadMoreStatuses
-{
-    
-    // 1.封装请求参数
-    JHHomeStatusesParam *params = [JHHomeStatusesParam param];
-    JHStatus *lastStatus =  [self.statuses lastObject];
-    if (lastStatus) {
-        // max_id	false	int64	若指定此参数，则返回ID小于或等于max_id的微博，默认为0。
-        params.max_id = @([lastStatus.idstr longLongValue] - 1);
-    }
-    
-    // 2.发送GET请求
-    [JHStatusTool homeStatusesWithParam:params success:^(JHHomeStatusesResult *result) {
-        // 微博字典数组
-        NSArray *newStatuses = result.statuses;
-        
-        // 将新数据插入到旧数据的最后面
-        [self.statuses addObjectsFromArray:newStatuses];
-        
-        // 重新刷新表格
-        [self.tableView reloadData];
-        
-        // 让刷新控件停止刷新（恢复默认的状态）
-        [self.footer endRefreshing];
-    } failure:^(NSError *error) {
-        JHLog(@"请求失败--%@", error);
-        // 让刷新控件停止刷新（恢复默认的状态）
-        [self.footer endRefreshing];
-    }];
-    
-}
 
 /**
  *  提示用户最新的微博数量
@@ -363,29 +393,16 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // 当tableView没有数据的时候，不显示footerView
-    self.footer.hidden = self.statuses.count == 0;
-    return self.statuses.count;
+    self.footer.hidden = self.statusFrames.count == 0;
+    return self.statusFrames.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *ID = @"cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
-    }
+    JHStatusCell *cell = [JHStatusCell cellWithTableView:tableView];
     
-    // 取出这行对应的微博字典数据
-    JHStatus *status = self.statuses[indexPath.row];
-    cell.textLabel.text = status.text;
+    cell.statusFrame = self.statusFrames[indexPath.row];
     
-    // 取出用户字典数据
-    JHUser *user = status.user;
-    cell.detailTextLabel.text = user.name;
-    
-    // 下载头像
-    NSString *imageUrlStr = user.profile_image_url;
-    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:imageUrlStr] placeholderImage:[UIImage imageWithName:@"avatar_default_small"]];
     return cell;
 }
 
@@ -397,9 +414,15 @@
     [self.navigationController pushViewController:newVc animated:YES];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    JHStatusFrame *frame = self.statusFrames[indexPath.row];
+    return frame.cellHeight;
+}
+
 - (void) scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    if (self.statuses.count <= 0 || self.footer.isRefreshing)
+    if (self.statusFrames.count <= 0 || self.footer.isRefreshing)
     {
         return;
     }

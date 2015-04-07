@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+@class JHStatusOriginalFrame;
 
 @interface JHStatusOriginalView : UIView
 
+@property (nonatomic, strong) JHStatusOriginalFrame *originalFrame;
 @end

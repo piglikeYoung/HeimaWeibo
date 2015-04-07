@@ -9,6 +9,7 @@
 #import "JHStatusDetailView.h"
 #import "JHStatusRetweetedView.h"
 #import "JHStatusOriginalView.h"
+#import "JHStatusDetailFrame.h"
 
 @interface JHStatusDetailView()
 
@@ -24,34 +25,31 @@
     
     if (self = [super initWithFrame:frame]) {// 初始化子控件
         // 1.添加原创微博
-        [self setupOriginalView];
+        JHStatusOriginalView *originalView = [[JHStatusOriginalView alloc] init];
+        [self addSubview:originalView];
+        self.originalView = originalView;
         
         // 2.添加转发微博
-        [self setupRetweetedView];
+        JHStatusRetweetedView *retweetedView = [[JHStatusRetweetedView alloc] init];
+        [self addSubview:retweetedView];
+        self.retweetedView = retweetedView;
     }
     
     return self;
 }
 
 
-/**
- *  添加原创微博
- */
-- (void)setupOriginalView
+- (void)setDetailFrame:(JHStatusDetailFrame *)detailFrame
 {
-    JHStatusOriginalView *originalView = [[JHStatusOriginalView alloc] init];
-    [self addSubview:originalView];
-    self.originalView = originalView;
-}
-
-/**
- *  添加转发微博
- */
-- (void)setupRetweetedView
-{
-    JHStatusRetweetedView *retweetedView = [[JHStatusRetweetedView alloc] init];
-    [self addSubview:retweetedView];
-    self.retweetedView = retweetedView;
+    _detailFrame = detailFrame;
+    
+    self.frame = detailFrame.frame;
+    
+    // 1.原创微博的frame数据
+    self.originalView.originalFrame = detailFrame.originalFrame;
+    
+    // 2.原创转发的frame数据
+    self.retweetedView.retweetedFrame = detailFrame.retweetedFrame;
 }
 
 

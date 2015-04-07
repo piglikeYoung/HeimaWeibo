@@ -9,6 +9,7 @@
 #import "JHStatusCell.h"
 #import "JHStatusDetailView.h"
 #import "JHStatusToolbar.h"
+#import "JHStatusFrame.h"
 
 @interface JHStatusCell()
 
@@ -19,37 +20,42 @@
 
 @implementation JHStatusCell
 
++ (instancetype)cellWithTableView:(UITableView *)tableView
+{
+    static NSString *identifier = @"status";
+    JHStatusCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    if (!cell) {
+        cell = [[JHStatusCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
+    }
+    
+    return cell;
+}
+
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) { // 初始化子控件
         // 1.添加微博具体内容
-        [self setupDetailView];
+        JHStatusDetailView *detailView = [[JHStatusDetailView alloc] init];
+        [self.contentView addSubview:detailView];
+        self.detailView = detailView;
         
         // 2.添加工具条
-        [self setupToolbar];
+        JHStatusToolbar *toolbar = [[JHStatusToolbar alloc] init];
+        [self.contentView addSubview:toolbar];
+        self.toolbar = toolbar;
     }
     return self;
 }
 
-
-/**
- *  添加微博具体内容
- */
-- (void)setupDetailView
+- (void)setStatusFrame:(JHStatusFrame *)statusFrame
 {
-    JHStatusDetailView *detailView = [[JHStatusDetailView alloc] init];
-    [self.contentView addSubview:detailView];
-    self.detailView = detailView;
-}
-
-/**
- *  添加工具条
- */
-- (void)setupToolbar
-{
-    JHStatusToolbar *toolbar = [[JHStatusToolbar alloc] init];
-    [self.contentView addSubview:toolbar];
-    self.toolbar = toolbar;
+    _statusFrame = statusFrame;
+    
+    // 1.微博具体内容的frame数据
+    self.detailView.detailFrame = statusFrame.detailFrame;
+    
+    // 2.底部工具条的frame数据
+    self.toolbar.frame = statusFrame.toolbarFrame;
 }
 
 @end

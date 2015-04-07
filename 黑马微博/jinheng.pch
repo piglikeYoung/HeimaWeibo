@@ -43,4 +43,26 @@
 #define JHAppSecret @"37c372aa97a9329fc561947151c1bd38"
 #define JHRedirectURI @"http://ios.itcast.cn"
 
+
+// 屏幕尺寸
+#define JHScreenW [UIScreen mainScreen].bounds.size.width
+
+// cell的计算参数
+// cell的内边距
+#define JHStatusCellInset 10
+
+// 原创微博昵称字体
+#define JHStatusOrginalNameFont [UIFont systemFontOfSize:14]
+// 原创微博时间字体
+#define JHStatusOrginalTimeFont [UIFont systemFontOfSize:12]
+// 原创微博来源字体
+#define JHStatusOrginalSourceFont JHStatusOrginalTimeFont
+// 原创微博正文字体
+#define JHStatusOrginalTextFont [UIFont systemFontOfSize:15]
+
+// 转发微博昵称字体
+#define JHStatusRetweetedNameFont JHStatusOrginalNameFont
+// 转发微博正文字体
+#define JHStatusRetweetedTextFont JHStatusOrginalTextFont
+
 #endif

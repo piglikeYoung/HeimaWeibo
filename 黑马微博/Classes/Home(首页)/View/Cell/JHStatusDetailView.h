@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class JHStatusDetailFrame;
 
 @interface JHStatusDetailView : UIView
+
+@property (nonatomic, strong) JHStatusDetailFrame *detailFrame;
 
 @end
