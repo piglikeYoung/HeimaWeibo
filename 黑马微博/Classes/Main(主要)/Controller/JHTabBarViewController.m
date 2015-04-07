@@ -90,7 +90,7 @@
         // 在图标上显示所有的未读数
         [UIApplication sharedApplication].applicationIconBadgeNumber = result.totalCount;
         
-        JHLog(@"总未读数--%d", result.totalCount);
+//        JHLog(@"总未读数--%d", result.totalCount);
     } failure:^(NSError *error) {
         JHLog(@"获得未读数失败---%@", error);
     }];

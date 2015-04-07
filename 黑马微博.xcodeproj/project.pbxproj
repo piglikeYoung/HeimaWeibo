@@ -77,6 +77,11 @@
 		7DCB7E161AD21D36001650F4 /* JHBaseParam.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB7E151AD21D36001650F4 /* JHBaseParam.m */; };
 		7DCB7E191AD22E47001650F4 /* JHUnreadCountParam.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB7E181AD22E47001650F4 /* JHUnreadCountParam.m */; };
 		7DCB7E1C1AD22E74001650F4 /* JHUnreadCountResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB7E1B1AD22E74001650F4 /* JHUnreadCountResult.m */; };
+		7DCB7E201AD28600001650F4 /* JHStatusCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB7E1F1AD28600001650F4 /* JHStatusCell.m */; };
+		7DCB7E231AD28646001650F4 /* JHStatusDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB7E221AD28646001650F4 /* JHStatusDetailView.m */; };
+		7DCB7E261AD28669001650F4 /* JHStatusOriginalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB7E251AD28669001650F4 /* JHStatusOriginalView.m */; };
+		7DCB7E291AD28683001650F4 /* JHStatusRetweetedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB7E281AD28683001650F4 /* JHStatusRetweetedView.m */; };
+		7DCB7E2C1AD28697001650F4 /* JHStatusToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB7E2B1AD28697001650F4 /* JHStatusToolbar.m */; };
 		7DCBE42E1ACE1BFC00A9B039 /* JHUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCBE42D1ACE1BFC00A9B039 /* JHUser.m */; };
 		7DCBE4311ACE1C7900A9B039 /* JHPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCBE4301ACE1C7900A9B039 /* JHPhoto.m */; };
 		7DCBE4341ACE1CA300A9B039 /* JHStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCBE4331ACE1CA300A9B039 /* JHStatus.m */; };
@@ -244,6 +249,16 @@
 		7DCB7E181AD22E47001650F4 /* JHUnreadCountParam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHUnreadCountParam.m; sourceTree = "<group>"; };
 		7DCB7E1A1AD22E74001650F4 /* JHUnreadCountResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHUnreadCountResult.h; sourceTree = "<group>"; };
 		7DCB7E1B1AD22E74001650F4 /* JHUnreadCountResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHUnreadCountResult.m; sourceTree = "<group>"; };
+		7DCB7E1E1AD28600001650F4 /* JHStatusCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHStatusCell.h; sourceTree = "<group>"; };
+		7DCB7E1F1AD28600001650F4 /* JHStatusCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHStatusCell.m; sourceTree = "<group>"; };
+		7DCB7E211AD28646001650F4 /* JHStatusDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHStatusDetailView.h; sourceTree = "<group>"; };
+		7DCB7E221AD28646001650F4 /* JHStatusDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHStatusDetailView.m; sourceTree = "<group>"; };
+		7DCB7E241AD28669001650F4 /* JHStatusOriginalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHStatusOriginalView.h; sourceTree = "<group>"; };
+		7DCB7E251AD28669001650F4 /* JHStatusOriginalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHStatusOriginalView.m; sourceTree = "<group>"; };
+		7DCB7E271AD28683001650F4 /* JHStatusRetweetedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHStatusRetweetedView.h; sourceTree = "<group>"; };
+		7DCB7E281AD28683001650F4 /* JHStatusRetweetedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHStatusRetweetedView.m; sourceTree = "<group>"; };
+		7DCB7E2A1AD28697001650F4 /* JHStatusToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHStatusToolbar.h; sourceTree = "<group>"; };
+		7DCB7E2B1AD28697001650F4 /* JHStatusToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHStatusToolbar.m; sourceTree = "<group>"; };
 		7DCBE42C1ACE1BFC00A9B039 /* JHUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHUser.h; sourceTree = "<group>"; };
 		7DCBE42D1ACE1BFC00A9B039 /* JHUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHUser.m; sourceTree = "<group>"; };
 		7DCBE42F1ACE1C7900A9B039 /* JHPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHPhoto.h; sourceTree = "<group>"; };
@@ -552,6 +567,7 @@
 		7DC454361AC68CE900ED9410 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7DCB7E1D1AD285CF001650F4 /* Cell */,
 				7DC634141AC9443B00F64008 /* JHTitleButton.h */,
 				7DC634151AC9443B00F64008 /* JHTitleButton.m */,
 				7DC634171AC9461A00F64008 /* JHPopMenu.h */,
@@ -814,6 +830,23 @@
 			path = UserInfo;
 			sourceTree = "<group>";
 		};
+		7DCB7E1D1AD285CF001650F4 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				7DCB7E1E1AD28600001650F4 /* JHStatusCell.h */,
+				7DCB7E1F1AD28600001650F4 /* JHStatusCell.m */,
+				7DCB7E211AD28646001650F4 /* JHStatusDetailView.h */,
+				7DCB7E221AD28646001650F4 /* JHStatusDetailView.m */,
+				7DCB7E241AD28669001650F4 /* JHStatusOriginalView.h */,
+				7DCB7E251AD28669001650F4 /* JHStatusOriginalView.m */,
+				7DCB7E271AD28683001650F4 /* JHStatusRetweetedView.h */,
+				7DCB7E281AD28683001650F4 /* JHStatusRetweetedView.m */,
+				7DCB7E2A1AD28697001650F4 /* JHStatusToolbar.h */,
+				7DCB7E2B1AD28697001650F4 /* JHStatusToolbar.m */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		7DCBE4351ACE2C5000A9B039 /* MJExtension */ = {
 			isa = PBXGroup;
 			children = (
@@ -950,6 +983,7 @@
 				7DBB544E1ACD4268003E39F6 /* SDWebImageDownloader.m in Sources */,
 				7DC454501AC68EF200ED9410 /* JHTabBarViewController.m in Sources */,
 				7DBB54551ACD4268003E39F6 /* UIImage+WebP.m in Sources */,
+				7DCB7E2C1AD28697001650F4 /* JHStatusToolbar.m in Sources */,
 				7DBB53C31ACCD2C9003E39F6 /* JHOAuthViewController.m in Sources */,
 				7DBB53F71ACD3E57003E39F6 /* Foundation+Log.m in Sources */,
 				7D672EBD1AC7871C004B5B4C /* UIView+Extension.m in Sources */,
@@ -968,9 +1002,11 @@
 				7DCB7E121AD21BBB001650F4 /* JHUserInfoParam.m in Sources */,
 				7DC932D91AC913850025291B /* JHSearchBar.m in Sources */,
 				7DCB7E0B1AD21BA6001650F4 /* JHSendStatusResult.m in Sources */,
+				7DCB7E201AD28600001650F4 /* JHStatusCell.m in Sources */,
 				7DCAD3AF1ACF75570035BDE6 /* JHComposePhotosView.m in Sources */,
 				7DC8D1191ACA669600A78DF6 /* JHTabBar.m in Sources */,
 				7DC454591AC68FBE00ED9410 /* JHMessageViewController.m in Sources */,
+				7DCB7E291AD28683001650F4 /* JHStatusRetweetedView.m in Sources */,
 				7DBB54531ACD4268003E39F6 /* UIImage+GIF.m in Sources */,
 				7DBB54571ACD4268003E39F6 /* UIImageView+WebCache.m in Sources */,
 				7DBB53F01ACD0165003E39F6 /* JHAccountTool.m in Sources */,
@@ -1002,6 +1038,7 @@
 				7DCB7E1C1AD22E74001650F4 /* JHUnreadCountResult.m in Sources */,
 				7DCB7E191AD22E47001650F4 /* JHUnreadCountParam.m in Sources */,
 				7DCB26F61ACBA71900B71AD2 /* JHNewfeatureViewController.m in Sources */,
+				7DCB7E231AD28646001650F4 /* JHStatusDetailView.m in Sources */,
 				7DBB53E51ACCE42A003E39F6 /* AFNetworkReachabilityManager.m in Sources */,
 				7DC65C7A1AD0C0BE00BE37A0 /* JHHttpTool.m in Sources */,
 				7DBB54581ACD4268003E39F6 /* UIView+WebCacheOperation.m in Sources */,
@@ -1011,6 +1048,7 @@
 				7DCB7E161AD21D36001650F4 /* JHBaseParam.m in Sources */,
 				7DCBE4491ACE2C5000A9B039 /* NSObject+MJCoding.m in Sources */,
 				7DBB54491ACD4268003E39F6 /* MKAnnotationView+WebCache.m in Sources */,
+				7DCB7E261AD28669001650F4 /* JHStatusOriginalView.m in Sources */,
 				7DCBE44E1ACE636D00A9B039 /* JHLoadMoreFooter.m in Sources */,
 				7DBB53E91ACCE42A003E39F6 /* AFURLResponseSerialization.m in Sources */,
 				7DC4544A1AC68CE900ED9410 /* AppDelegate.m in Sources */,
