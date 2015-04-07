@@ -24,6 +24,10 @@
 {
     
     if (self = [super initWithFrame:frame]) {// 初始化子控件
+        
+        // 设置除了工具条之外的背景
+        self.image = [UIImage resizedImage:@"timeline_card_top_background"];
+        
         // 1.添加原创微博
         JHStatusOriginalView *originalView = [[JHStatusOriginalView alloc] init];
         [self addSubview:originalView];

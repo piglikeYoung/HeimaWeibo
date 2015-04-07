@@ -29,9 +29,18 @@
     CGSize nameSize = [status.user.name sizeWithFont:JHStatusOrginalNameFont];
     self.nameFrame = (CGRect){{nameX, nameY}, nameSize};
     
+    // 计算会员图标位置
+    if (status.user.isVip) { // 计算会员图标的位置
+        CGFloat vipX = CGRectGetMaxX(self.nameFrame) + JHStatusCellInset;
+        CGFloat vipY = nameY;
+        CGFloat vipH = nameSize.height;
+        CGFloat vipW = vipH;
+        self.vipFrame = CGRectMake(vipX, vipY, vipW, vipH);
+    }
+    
     // 3.时间
     CGFloat timeX = nameX;
-    CGFloat timeY = CGRectGetMaxY(self.nameFrame) + JHStatusCellInset;
+    CGFloat timeY = CGRectGetMaxY(self.nameFrame) + JHStatusCellInset * 0.5;
     CGSize timeSize = [status.created_at sizeWithFont:JHStatusOrginalTimeFont];
     self.timeFrame = (CGRect){{timeX, timeY}, timeSize};
     

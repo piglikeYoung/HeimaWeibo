@@ -10,5 +10,10 @@
 
 @implementation JHUser
 
+- (BOOL)isVip
+{
+    // 是会员
+    return self.mbtype > 2;
+}
 
 @end

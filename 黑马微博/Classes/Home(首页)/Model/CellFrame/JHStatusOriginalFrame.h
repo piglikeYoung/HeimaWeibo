@@ -20,6 +20,9 @@
 @property (nonatomic, assign) CGRect timeFrame;
 /** 头像 */
 @property (nonatomic, assign) CGRect iconFrame;
+/** 会员图标 */
+@property (nonatomic, assign) CGRect vipFrame;
+
 
 /** 自己的frame */
 @property (nonatomic, assign) CGRect frame;

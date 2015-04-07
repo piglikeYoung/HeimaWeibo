@@ -26,9 +26,15 @@
 - (instancetype)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
+        
+        // 设置转发的背景，原来是继承自UIView，现在继承自UIImageView
+        self.image=[UIImage resizedImage:@"timeline_retweet_background"];
+        self.highlightedImage=[UIImage resizedImage:@"timeline_retweet_background_highlighted"];
+        
         // 1.呢称
         UILabel *nameLabel = [[UILabel alloc] init];
         nameLabel.font = JHStatusRetweetedNameFont;
+        nameLabel.textColor = JHColor(74, 102, 105);
         [self addSubview:nameLabel];
         self.nameLabel = nameLabel;
         
@@ -56,11 +62,24 @@
     JHUser *user = retweetedStatus.user;
     
     // 1.昵称
-    self.nameLabel.text = user.name;
+    self.nameLabel.text = [NSString stringWithFormat:@"@%@", user.name];
     self.nameLabel.frame = retweetedFrame.nameFrame;
     
     // 2.正文（内容）
     self.textLabel.text = retweetedStatus.text;
     self.textLabel.frame = retweetedFrame.textFrame;
 }
+
+//- (void)setFrame:(CGRect)frame
+//{
+//    [super setFrame:frame];
+//    
+//    [self setNeedsDisplay];
+//}
+//
+//- (void)drawRect:(CGRect)rect
+//{
+//    [[UIImage resizedImage:@"timeline_retweet_background"] drawInRect:rect];
+//}
+
 @end

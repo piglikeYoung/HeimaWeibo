@@ -49,6 +49,9 @@
 {
     [super viewDidLoad];
     
+    self.tableView.backgroundColor = JHColor(211, 211, 211);
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
     // 设置导航栏的内容
     [self setupNavBar];
     

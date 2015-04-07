@@ -28,6 +28,8 @@
         cell = [[JHStatusCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
     }
     
+    cell.backgroundColor = [UIColor clearColor];
+    
     return cell;
 }
 

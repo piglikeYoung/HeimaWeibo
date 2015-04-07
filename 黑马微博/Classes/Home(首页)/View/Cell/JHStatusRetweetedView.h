@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 @class JHStatusRetweetedFrame;
 
-@interface JHStatusRetweetedView : UIView
+@interface JHStatusRetweetedView : UIImageView
 
 @property (strong , nonatomic) JHStatusRetweetedFrame *retweetedFrame;
 

@@ -42,7 +42,8 @@
     
     // 自己的frame
     CGFloat x = 0;
-    CGFloat y = 0;
+    // 起始Y值往下移一段距离，让每个cell的顶部空出一小段距离
+    CGFloat y = JHStatusCell_Y;
     CGFloat w = JHScreenW;
     self.frame = CGRectMake(x, y, w, h);
 }
