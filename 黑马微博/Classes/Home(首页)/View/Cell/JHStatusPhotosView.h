@@ -4,7 +4,7 @@
 //
 //  Created by piglikeyoung on 15/4/8.
 //  Copyright (c) 2015年 jinheng. All rights reserved.
-//
+//  微博cell里面的相册 -- 里面包含N个JHStatusPhotoView
 
 #import <UIKit/UIKit.h>
 
