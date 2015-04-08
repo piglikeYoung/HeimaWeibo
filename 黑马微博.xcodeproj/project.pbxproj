@@ -50,6 +50,7 @@
 		7DC155C71AD361E000193925 /* JHStatusDetailFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC155C61AD361E000193925 /* JHStatusDetailFrame.m */; };
 		7DC155CA1AD361FB00193925 /* JHStatusOriginalFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC155C91AD361FB00193925 /* JHStatusOriginalFrame.m */; };
 		7DC155CD1AD3620F00193925 /* JHStatusRetweetedFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC155CC1AD3620F00193925 /* JHStatusRetweetedFrame.m */; };
+		7DC155D31AD3FD5800193925 /* NSDate+JH.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC155D21AD3FD5800193925 /* NSDate+JH.m */; };
 		7DC4544A1AC68CE900ED9410 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC4543D1AC68CE900ED9410 /* AppDelegate.m */; };
 		7DC4544B1AC68CE900ED9410 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC4543E1AC68CE900ED9410 /* main.m */; };
 		7DC454501AC68EF200ED9410 /* JHTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC4544F1AC68EF200ED9410 /* JHTabBarViewController.m */; };
@@ -199,6 +200,8 @@
 		7DC155C91AD361FB00193925 /* JHStatusOriginalFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHStatusOriginalFrame.m; sourceTree = "<group>"; };
 		7DC155CB1AD3620F00193925 /* JHStatusRetweetedFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHStatusRetweetedFrame.h; sourceTree = "<group>"; };
 		7DC155CC1AD3620F00193925 /* JHStatusRetweetedFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHStatusRetweetedFrame.m; sourceTree = "<group>"; };
+		7DC155D11AD3FD5800193925 /* NSDate+JH.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+JH.h"; sourceTree = "<group>"; };
+		7DC155D21AD3FD5800193925 /* NSDate+JH.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+JH.m"; sourceTree = "<group>"; };
 		7DC4543C1AC68CE900ED9410 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7DC4543D1AC68CE900ED9410 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		7DC4543E1AC68CE900ED9410 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -631,6 +634,8 @@
 				7D672EBB1AC7871C004B5B4C /* UIView+Extension.h */,
 				7D672EBC1AC7871C004B5B4C /* UIView+Extension.m */,
 				7DBB53F61ACD3E57003E39F6 /* Foundation+Log.m */,
+				7DC155D11AD3FD5800193925 /* NSDate+JH.h */,
+				7DC155D21AD3FD5800193925 /* NSDate+JH.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -1039,6 +1044,7 @@
 				7DC8D1191ACA669600A78DF6 /* JHTabBar.m in Sources */,
 				7DC454591AC68FBE00ED9410 /* JHMessageViewController.m in Sources */,
 				7DCB7E291AD28683001650F4 /* JHStatusRetweetedView.m in Sources */,
+				7DC155D31AD3FD5800193925 /* NSDate+JH.m in Sources */,
 				7DBB54531ACD4268003E39F6 /* UIImage+GIF.m in Sources */,
 				7DBB54571ACD4268003E39F6 /* UIImageView+WebCache.m in Sources */,
 				7DBB53F01ACD0165003E39F6 /* JHAccountTool.m in Sources */,

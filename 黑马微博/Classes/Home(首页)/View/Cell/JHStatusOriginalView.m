@@ -106,13 +106,24 @@
     self.textLabel.text = status.text;
     self.textLabel.frame = originalFrame.textFrame;
     
+#warning 需要时刻根据现在的时间字符串来计算时间label的frame
     // 3.时间
-    self.timeLabel.text = status.created_at;
-    self.timeLabel.frame = originalFrame.timeFrame;
+    self.timeLabel.text = status.created_at; // 刚刚 --> 1分钟前 --> 10分钟前
+//    self.timeLabel.frame = originalFrame.timeFrame;
+    CGFloat timeX = CGRectGetMinX(self.nameLabel.frame);
+    CGFloat timeY = CGRectGetMaxY(self.nameLabel.frame) + JHStatusCellInset * 0.5;
+    CGSize timeSize = [status.created_at sizeWithFont:JHStatusOrginalTimeFont];
+    self.timeLabel.frame = (CGRect){{timeX, timeY}, timeSize};
+    
     
     // 4.来源
     self.sourceLabel.text = status.source;
-    self.sourceLabel.frame = originalFrame.sourceFrame;
+//    self.sourceLabel.frame = originalFrame.sourceFrame;
+    CGFloat sourceX = CGRectGetMaxX(self.timeLabel.frame) + JHStatusCellInset;
+    CGFloat sourceY = timeY;
+    CGSize sourceSize = [status.source sizeWithFont:JHStatusOrginalSourceFont];
+    self.sourceLabel.frame = (CGRect){{sourceX, sourceY}, sourceSize};
+    
     
     // 5.头像
     self.iconView.frame = originalFrame.iconFrame;

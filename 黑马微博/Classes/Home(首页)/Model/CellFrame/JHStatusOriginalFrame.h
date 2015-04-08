@@ -14,10 +14,14 @@
 @property (nonatomic, assign) CGRect nameFrame;
 /** 正文 */
 @property (nonatomic, assign) CGRect textFrame;
+
+// 因为时间的frame需要随时计算，实时更新，不能只算一次，来源的frame依赖时间的frame，所以一并注释
 /** 来源 */
-@property (nonatomic, assign) CGRect sourceFrame;
+//@property (nonatomic, assign) CGRect sourceFrame;
 /** 时间 */
-@property (nonatomic, assign) CGRect timeFrame;
+//@property (nonatomic, assign) CGRect timeFrame;
+
+
 /** 头像 */
 @property (nonatomic, assign) CGRect iconFrame;
 /** 会员图标 */

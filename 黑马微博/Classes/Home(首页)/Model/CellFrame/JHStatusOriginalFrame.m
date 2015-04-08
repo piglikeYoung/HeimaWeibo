@@ -38,6 +38,7 @@
         self.vipFrame = CGRectMake(vipX, vipY, vipW, vipH);
     }
     
+    /*
     // 3.时间
     CGFloat timeX = nameX;
     CGFloat timeY = CGRectGetMaxY(self.nameFrame) + JHStatusCellInset * 0.5;
@@ -49,6 +50,7 @@
     CGFloat sourceY = timeY;
     CGSize sourceSize = [status.source sizeWithFont:JHStatusOrginalSourceFont];
     self.sourceFrame = (CGRect){{sourceX, sourceY}, sourceSize};
+    */
     
     // 5.正文
     CGFloat textX = iconX;
