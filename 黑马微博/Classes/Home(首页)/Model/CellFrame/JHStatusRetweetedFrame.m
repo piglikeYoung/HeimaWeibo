@@ -9,6 +9,7 @@
 #import "JHStatusRetweetedFrame.h"
 #import "JHStatus.h"
 #import "JHUser.h"
+#import "JHStatusPhotosView.h"
 
 @implementation JHStatusRetweetedFrame
 
@@ -38,9 +39,8 @@
     if (retweetedStatus.pic_urls.count) {
         CGFloat photosX = textX;
         CGFloat photosY = CGRectGetMaxY(self.textFrame) + JHStatusCellInset;
-        CGFloat photosW = 300;
-        CGFloat photosH = 300;
-        self.photosFrame = CGRectMake(photosX, photosY, photosW, photosH);
+        CGSize photosSize = [JHStatusPhotosView sizeWithPhotosCount:retweetedStatus.pic_urls.count];
+        self.photosFrame = (CGRect){{photosX, photosY}, photosSize};
         
         h = CGRectGetMaxY(self.photosFrame) + JHStatusCellInset;
     } else {

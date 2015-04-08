@@ -10,4 +10,9 @@
 
 @interface JHStatusPhotosView : UIView
 
+/**
+ *  根据图片个数计算相册的最终尺寸
+ */
++ (CGSize)sizeWithPhotosCount:(int)photosCount;
+
 @end
