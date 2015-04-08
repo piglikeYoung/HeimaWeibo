@@ -32,11 +32,25 @@
     CGSize textSize = [retweetedStatus.text sizeWithFont:JHStatusRetweetedTextFont constrainedToSize:maxSize];
     self.textFrame = (CGRect){{textX, textY}, textSize};
     
+    
+    // 3.配图相册
+    CGFloat h = 0;
+    if (retweetedStatus.pic_urls.count) {
+        CGFloat photosX = textX;
+        CGFloat photosY = CGRectGetMaxY(self.textFrame) + JHStatusCellInset;
+        CGFloat photosW = 300;
+        CGFloat photosH = 300;
+        self.photosFrame = CGRectMake(photosX, photosY, photosW, photosH);
+        
+        h = CGRectGetMaxY(self.photosFrame) + JHStatusCellInset;
+    } else {
+        h = CGRectGetMaxY(self.textFrame) + JHStatusCellInset;
+    }
+    
     // 自己
     CGFloat x = 0;
     CGFloat y = 0; // 高度 = 原创微博最大的Y值
     CGFloat w = JHScreenW;
-    CGFloat h = CGRectGetMaxY(self.textFrame) + JHStatusCellInset;
     self.frame = CGRectMake(x, y, w, h);
 }
 

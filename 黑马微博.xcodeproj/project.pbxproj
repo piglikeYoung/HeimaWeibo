@@ -44,6 +44,8 @@
 		7DBB54561ACD4268003E39F6 /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DBB54441ACD4268003E39F6 /* UIImageView+HighlightedWebCache.m */; };
 		7DBB54571ACD4268003E39F6 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DBB54461ACD4268003E39F6 /* UIImageView+WebCache.m */; };
 		7DBB54581ACD4268003E39F6 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DBB54481ACD4268003E39F6 /* UIView+WebCacheOperation.m */; };
+		7DBE0FAE1AD4E70C00587EC6 /* JHStatusPhotosView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DBE0FAD1AD4E70C00587EC6 /* JHStatusPhotosView.m */; };
+		7DBE0FB11AD4E72900587EC6 /* JHStatusPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DBE0FB01AD4E72900587EC6 /* JHStatusPhotoView.m */; };
 		7DC012251ACE86C50006D8F6 /* JHTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC012241ACE86C50006D8F6 /* JHTextView.m */; };
 		7DC012281ACE9D340006D8F6 /* JHComposeToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC012271ACE9D340006D8F6 /* JHComposeToolbar.m */; };
 		7DC155C41AD361BE00193925 /* JHStatusFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC155C31AD361BE00193925 /* JHStatusFrame.m */; };
@@ -188,6 +190,10 @@
 		7DBB54461ACD4268003E39F6 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		7DBB54471ACD4268003E39F6 /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		7DBB54481ACD4268003E39F6 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
+		7DBE0FAC1AD4E70C00587EC6 /* JHStatusPhotosView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHStatusPhotosView.h; sourceTree = "<group>"; };
+		7DBE0FAD1AD4E70C00587EC6 /* JHStatusPhotosView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHStatusPhotosView.m; sourceTree = "<group>"; };
+		7DBE0FAF1AD4E72900587EC6 /* JHStatusPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHStatusPhotoView.h; sourceTree = "<group>"; };
+		7DBE0FB01AD4E72900587EC6 /* JHStatusPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHStatusPhotoView.m; sourceTree = "<group>"; };
 		7DC012231ACE86C50006D8F6 /* JHTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHTextView.h; sourceTree = "<group>"; };
 		7DC012241ACE86C50006D8F6 /* JHTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHTextView.m; sourceTree = "<group>"; };
 		7DC012261ACE9D340006D8F6 /* JHComposeToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHComposeToolbar.h; sourceTree = "<group>"; };
@@ -876,6 +882,10 @@
 				7DCB7E281AD28683001650F4 /* JHStatusRetweetedView.m */,
 				7DCB7E2A1AD28697001650F4 /* JHStatusToolbar.h */,
 				7DCB7E2B1AD28697001650F4 /* JHStatusToolbar.m */,
+				7DBE0FAC1AD4E70C00587EC6 /* JHStatusPhotosView.h */,
+				7DBE0FAD1AD4E70C00587EC6 /* JHStatusPhotosView.m */,
+				7DBE0FAF1AD4E72900587EC6 /* JHStatusPhotoView.h */,
+				7DBE0FB01AD4E72900587EC6 /* JHStatusPhotoView.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1051,6 +1061,7 @@
 				7DBB544B1ACD4268003E39F6 /* SDImageCache.m in Sources */,
 				7DCBE4341ACE1CA300A9B039 /* JHStatus.m in Sources */,
 				7D672EBA1AC78608004B5B4C /* UIBarButtonItem+Extension.m in Sources */,
+				7DBE0FAE1AD4E70C00587EC6 /* JHStatusPhotosView.m in Sources */,
 				7DBB53E41ACCE42A003E39F6 /* AFHTTPSessionManager.m in Sources */,
 				7DBB53F11ACD0165003E39F6 /* JHControllerTool.m in Sources */,
 				7DC4545C1AC68FDF00ED9410 /* JHProfileViewController.m in Sources */,
@@ -1060,6 +1071,7 @@
 				7DBB544F1ACD4268003E39F6 /* SDWebImageDownloaderOperation.m in Sources */,
 				7DCB7E011AD21B79001650F4 /* JHHomeStatusesResult.m in Sources */,
 				7DCB7E001AD21B79001650F4 /* JHHomeStatusesParam.m in Sources */,
+				7DBE0FB11AD4E72900587EC6 /* JHStatusPhotoView.m in Sources */,
 				7DC454631AC69F7D00ED9410 /* UIImage+Extension.m in Sources */,
 				7DC4544B1AC68CE900ED9410 /* main.m in Sources */,
 				7DBB544C1ACD4268003E39F6 /* SDWebImageCompat.m in Sources */,

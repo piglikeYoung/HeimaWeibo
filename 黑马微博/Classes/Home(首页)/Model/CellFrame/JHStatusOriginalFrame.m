@@ -60,11 +60,24 @@
     CGSize textSize = [status.text sizeWithFont:JHStatusOrginalTextFont constrainedToSize:maxSize];
     self.textFrame = (CGRect){{textX, textY}, textSize};
     
+    // 6.配图相册
+    CGFloat h = 0;
+    if (status.pic_urls.count) {
+        CGFloat photosX = textX;
+        CGFloat photosY = CGRectGetMaxY(self.textFrame) + JHStatusCellInset;
+        CGFloat photosW = 300;
+        CGFloat photosH = 300;
+        self.photosFrame = CGRectMake(photosX, photosY, photosW, photosH);
+        
+        h = CGRectGetMaxY(self.photosFrame) + JHStatusCellInset;
+    } else {
+        h = CGRectGetMaxY(self.textFrame) + JHStatusCellInset;
+    }
+    
     // 自己
     CGFloat x = 0;
     CGFloat y = 0;
     CGFloat w = JHScreenW;
-    CGFloat h = CGRectGetMaxY(self.textFrame) + JHStatusCellInset;
     self.frame = CGRectMake(x, y, w, h);
 }
 
