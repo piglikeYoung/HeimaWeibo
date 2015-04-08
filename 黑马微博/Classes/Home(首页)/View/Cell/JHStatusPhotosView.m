@@ -11,20 +11,15 @@
 #import "JHPhoto.h"
 #import "UIImageView+WebCache.h"
 
+#import "MJPhotoBrowser.h"
+#import "MJPhoto.h"
+
 #define JHStatusPhotosMaxCount 9
 // 判断最大列数，如果图片是4张，显示2列，图片为田字，不是4张，显示3列
 #define JHStatusPhotosMaxCols(photosCount) ((photosCount==4)?2:3)
 #define JHStatusPhotoW 70
 #define JHStatusPhotoH JHStatusPhotoW
 #define JHStatusPhotoMargin 10
-
-
-@interface JHStatusPhotosView()
-
-@property (nonatomic, weak) UIImageView *imageView;
-@property (nonatomic, assign) CGRect lastFrame;
-
-@end
 
 @implementation JHStatusPhotosView
 
@@ -34,6 +29,7 @@
         // 预先创建9个图片view
         for (int i = 0; i<JHStatusPhotosMaxCount; i++) {
             JHStatusPhotoView *photoView = [[JHStatusPhotoView alloc] init];
+            photoView.tag = i;
             [self addSubview:photoView];
             
             // 添加手势监听器(一个手势监听器 只能 监听对应的一个view，所以放在循环每次创建新的)
@@ -52,52 +48,31 @@
  */
 - (void)tapPhoto:(UITapGestureRecognizer *)recognizer
 {
-    // 1.添加一个遮盖
-    UIView *cover = [[UIView alloc] init];
-    cover.frame = [UIScreen mainScreen].bounds;
-    cover.backgroundColor = [UIColor blackColor];
-    [cover addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapCover:)]];
-    [[UIApplication sharedApplication].keyWindow addSubview:cover];
+    // 1.创建图片浏览器
+    MJPhotoBrowser *browser = [[MJPhotoBrowser alloc] init];
     
-    // 2.添加图片到遮盖上
-    JHStatusPhotoView *photoView = (JHStatusPhotoView *)recognizer.view;
-    UIImageView *imageView = [[UIImageView alloc] init];
-    // 去下载大图
-    [imageView sd_setImageWithURL:[NSURL URLWithString:photoView.photo.bmiddle_pic] placeholderImage:photoView.image];
+    // 2.设置图片浏览器显示的所有图片
+    NSMutableArray *photos = [NSMutableArray array];
+    int count = self.pic_urls.count;
+    for (int i = 0; i < count; i++) {
+        JHPhoto *pic = self.pic_urls[i];
+        
+        MJPhoto *photo = [[MJPhoto alloc] init];
+        // 设置图片的路径
+        photo.url = [NSURL URLWithString:pic.bmiddle_pic];
+        // 设置来源于哪一个UIImageView
+        photo.srcImageView = self.subviews[i];
+        [photos addObject:photo];
+    }
+    browser.photos = photos;
     
-    // 将photoView.frame从它自己原来位置坐标系转为当前cover的坐标系
-    imageView.frame = [cover convertRect:photoView.frame fromView:self];
-    // 记录放大前的frame，恢复小图的时候用到
-    self.lastFrame = imageView.frame;
-    [cover addSubview:imageView];
-    self.imageView = imageView;
+    // 3.设置默认显示的图片索引
+    browser.currentPhotoIndex = recognizer.view.tag;
     
-    // 3.放大
-    [UIView animateWithDuration:0.25 animations:^{
-        CGRect frame = imageView.frame;
-        frame.size.width = cover.width; // 屏幕宽度
-        // 等比例高度
-        frame.size.height = frame.size.width * (imageView.image.size.height / imageView.image.size.width);
-        frame.origin.x = 0;
-        frame.origin.y = (cover.height - frame.size.height) * 0.5;
-        imageView.frame = frame;
-    }];
+    // 4.显示浏览器
+    [browser show];
 }
 
-/**
- *  恢复小图，取消遮盖
- */
-- (void)tapCover:(UITapGestureRecognizer *)recognizer
-{
-    [UIView animateWithDuration:0.5 animations:^{
-        recognizer.view.backgroundColor = [UIColor clearColor];
-        // 将大图变回原来小图的位置
-        self.imageView.frame = self.lastFrame;
-    } completion:^(BOOL finished) {
-        [recognizer.view removeFromSuperview];
-        self.imageView = nil;
-    }];
-}
 
 - (void)setPic_urls:(NSArray *)pic_urls
 {
