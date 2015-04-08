@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class JHStatus;
 
-@interface JHStatusToolbar : UIView
+@interface JHStatusToolbar : UIImageView
+
+@property (strong , nonatomic) JHStatus *status;
 
 @end

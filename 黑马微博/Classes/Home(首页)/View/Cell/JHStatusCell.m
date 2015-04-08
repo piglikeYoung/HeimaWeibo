@@ -58,6 +58,9 @@
     
     // 2.底部工具条的frame数据
     self.toolbar.frame = statusFrame.toolbarFrame;
+    
+    // 3.设置toolbar的数据模型
+    self.toolbar.status = statusFrame.status;
 }
 
 @end
