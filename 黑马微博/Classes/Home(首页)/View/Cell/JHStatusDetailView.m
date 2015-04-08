@@ -25,6 +25,8 @@
     
     if (self = [super initWithFrame:frame]) {// 初始化子控件
         
+        self.userInteractionEnabled = YES;
+        
         // 设置除了工具条之外的背景
         self.image = [UIImage resizedImage:@"timeline_card_top_background"];
         

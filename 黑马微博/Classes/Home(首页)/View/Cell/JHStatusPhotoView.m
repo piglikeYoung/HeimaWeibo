@@ -23,6 +23,7 @@
     if (self = [super initWithFrame:frame]) {
         self.contentMode = UIViewContentModeScaleAspectFill;
         self.clipsToBounds = YES;
+        self.userInteractionEnabled = YES;
         
         // 添加一个gif图标
         UIImage *image = [UIImage imageWithName:@"timeline_image_gif"];

@@ -29,6 +29,8 @@
 {
     if (self = [super initWithFrame:frame]) {
         
+        self.userInteractionEnabled = YES;
+        
         // 设置转发的背景，原来是继承自UIView，现在继承自UIImageView
         self.image=[UIImage resizedImage:@"timeline_retweet_background"];
         self.highlightedImage=[UIImage resizedImage:@"timeline_retweet_background_highlighted"];
