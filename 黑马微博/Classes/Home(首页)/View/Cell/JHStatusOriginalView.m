@@ -141,6 +141,7 @@
     // 6.配图相册
     if (status.pic_urls.count) { // 有配图
         self.photosView.frame = originalFrame.photosFrame;
+        self.photosView.pic_urls = status.pic_urls;
         self.photosView.hidden = NO;
     } else {
         self.photosView.hidden = YES;

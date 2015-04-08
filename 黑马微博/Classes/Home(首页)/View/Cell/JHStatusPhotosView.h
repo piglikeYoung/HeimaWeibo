@@ -11,6 +11,11 @@
 @interface JHStatusPhotosView : UIView
 
 /**
+ *  图片数据（里面都是JHPhoto模型）
+ */
+@property (strong , nonatomic) NSArray *pic_urls;
+
+/**
  *  根据图片个数计算相册的最终尺寸
  */
 + (CGSize)sizeWithPhotosCount:(int)photosCount;

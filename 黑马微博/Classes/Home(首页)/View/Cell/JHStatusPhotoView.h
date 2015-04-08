@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class JHPhoto;
 
 @interface JHStatusPhotoView : UIImageView
+
+@property (strong , nonatomic) JHPhoto *photo;
 
 @end

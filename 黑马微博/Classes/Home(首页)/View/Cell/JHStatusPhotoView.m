@@ -7,15 +7,27 @@
 //
 
 #import "JHStatusPhotoView.h"
+#import "JHPhoto.h"
+#import "UIImageView+WebCache.h"
 
 @implementation JHStatusPhotoView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    if (self = [super initWithFrame:frame]) {
+        self.contentMode = UIViewContentModeScaleAspectFill;
+        self.clipsToBounds = YES;
+    }
+    
+    return self;
 }
-*/
+
+- (void)setPhoto:(JHPhoto *)photo
+{
+    _photo = photo;
+    
+    // 1.下载图片
+    [self sd_setImageWithURL:[NSURL URLWithString:photo.thumbnail_pic] placeholderImage:[UIImage imageWithName:@"timeline_image_placeholder"]];
+}
 
 @end

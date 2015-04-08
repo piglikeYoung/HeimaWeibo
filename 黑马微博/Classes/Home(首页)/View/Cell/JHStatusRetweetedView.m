@@ -79,6 +79,7 @@
     // 3.配图相册
     if (retweetedStatus.pic_urls.count) { // 有配图
         self.photosView.frame = retweetedFrame.photosFrame;
+        self.photosView.pic_urls = retweetedStatus.pic_urls;
         self.photosView.hidden = NO;
     } else {
         self.photosView.hidden = YES;
