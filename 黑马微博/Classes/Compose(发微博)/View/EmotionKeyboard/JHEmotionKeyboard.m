@@ -76,7 +76,7 @@
         
         // 2.添加表情工具条
         JHEmotionToolbar *toollbar = [[JHEmotionToolbar alloc] init];
-        toollbar.delegate = self;
+        toollbar.delegate = self;// 设置代理时，去调用默认选中“默认”按钮方法
         [self addSubview:toollbar];
         self.toollbar = toollbar;
     }
@@ -122,6 +122,7 @@
         default:
             break;
     }
+    
 }
 
 

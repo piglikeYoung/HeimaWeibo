@@ -25,12 +25,10 @@
     if (self) {
         // 1.添加4个按钮
         [self setupButton:@"最近" tag:JHEmotionTypeRecent];
-        UIButton *defaultButton = [self setupButton:@"默认" tag:JHEmotionTypeDefault];
+        [self setupButton:@"默认" tag:JHEmotionTypeDefault];
         [self setupButton:@"Emoji" tag:JHEmotionTypeEmoji];
         [self setupButton:@"浪小花" tag:JHEmotionTypeLxh];
         
-        // 2.默认选中“默认”按钮
-        [self buttonClick:defaultButton];
     }
     return self;
 }
@@ -86,6 +84,20 @@
     if ([self.delegate respondsToSelector:@selector(emotionToolbar:didSelectedButton:)]) {
         [self.delegate emotionToolbar:self didSelectedButton:button.tag];
     }
+}
+
+
+/**
+ *  重写setDelegate方法，当设置代理时，选中“默认”按钮
+ */
+- (void)setDelegate:(id<JHEmotionToolbarDelegate>)delegate
+{
+    _delegate = delegate;
+    
+    // 获得“默认”按钮
+    UIButton *defaultButton = (UIButton *)[self viewWithTag:JHEmotionTypeDefault];
+    // 默认选中“默认”按钮
+    [self buttonClick:defaultButton];
 }
 
 - (void)layoutSubviews
