@@ -30,4 +30,9 @@ typedef enum {
 
 @property (nonatomic, weak) id<JHComposeToolbarDelegate> delegate;
 
+/**
+ *  是否要显示表情按钮
+ */
+@property (nonatomic, assign, getter = isShowEmotionButton) BOOL showEmotionButton;
+
 @end

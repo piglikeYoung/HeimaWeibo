@@ -15,18 +15,36 @@
 #import "MBProgressHUD+MJ.h"
 #import "JHStatusTool.h"
 #import "JHFormData.h"
+#import "JHEmotionKeyboard.h"
 
 @interface JHComposeViewController () <JHComposeToolbarDelegate, UITextViewDelegate, UINavigationControllerDelegate ,UIImagePickerControllerDelegate>
 
 @property (nonatomic, weak) JHTextView *textView;
 @property (nonatomic, weak) JHComposeToolbar *toolbar;
 @property (nonatomic, weak) JHComposePhotosView *photosView;
+@property (strong , nonatomic) JHEmotionKeyboard *kerboard;
+
+/**
+ *  是否正在切换键盘
+ */
+@property (nonatomic, assign, getter = isChangingKeyboard) BOOL changingKeyboard;
 
 @end
 
 @implementation JHComposeViewController
 
 #pragma mark - 初始化方法
+- (JHEmotionKeyboard *)kerboard
+{
+    if (!_kerboard) {
+        self.kerboard = [JHEmotionKeyboard keyboard];
+        self.kerboard.width = JHScreenW;
+        self.kerboard.height = 216;
+    }
+    
+    return _kerboard;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -205,6 +223,12 @@
  */
 - (void)keyboardWillHide:(NSNotification *)note
 {
+    // 切换表情键盘的时候，toolbar位置不变
+    if (self.isChangingKeyboard) {
+        self.changingKeyboard = NO;
+        return;
+    }
+        
     // 1.键盘弹出需要的时间
     CGFloat duration = [note.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
     
@@ -305,7 +329,30 @@
  */
 - (void)openEmotion
 {
+    // 正在切换键盘，告诉toolbar不跟着键盘下落
+    self.changingKeyboard = YES;
     
+    // 判断是否是自定义键盘
+    if (self.textView.inputView) {// 是自定义键盘，切换为系统自带的键盘
+        self.textView.inputView = nil;
+        
+        // 显示表情图片
+        self.toolbar.showEmotionButton = YES;
+        
+    } else { // 是系统自带的键盘，切换为自定义键盘
+        // 如果临时更换了文本框的键盘，一定要重新打开键盘(关闭原来的键盘，打开新的)
+        self.textView.inputView = self.kerboard;
+        
+        // 不显示表情图片
+        self.toolbar.showEmotionButton = NO;
+    }
+    
+    // 关闭键盘
+    [self.textView resignFirstResponder];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        // 打开键盘
+        [self.textView becomeFirstResponder];
+    });
 }
 
 #pragma mark - UIImagePickerControllerDelegate

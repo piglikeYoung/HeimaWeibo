@@ -8,6 +8,12 @@
 
 #import "JHComposeToolbar.h"
 
+@interface JHComposeToolbar()
+
+@property (weak , nonatomic) UIButton *emotionButton;
+
+@end
+
 @implementation JHComposeToolbar
 
 - (id)initWithFrame:(CGRect)frame
@@ -21,9 +27,22 @@
         [self addButtonWithIcon:@"compose_toolbar_picture" highIcon:@"compose_toolbar_picture_highlighted" tag:JHComposeToolbarButtonTypePicture];
         [self addButtonWithIcon:@"compose_mentionbutton_background" highIcon:@"compose_mentionbutton_background_highlighted" tag:JHComposeToolbarButtonTypeMention];
         [self addButtonWithIcon:@"compose_trendbutton_background" highIcon:@"compose_trendbutton_background_highlighted" tag:JHComposeToolbarButtonTypeTrend];
-        [self addButtonWithIcon:@"compose_emoticonbutton_background" highIcon:@"compose_emoticonbutton_background_highlighted" tag:JHComposeToolbarButtonTypeEmotion];
+        self.emotionButton = [self addButtonWithIcon:@"compose_emoticonbutton_background" highIcon:@"compose_emoticonbutton_background_highlighted" tag:JHComposeToolbarButtonTypeEmotion];
     }
     return self;
+}
+
+
+- (void)setShowEmotionButton:(BOOL)showEmotionButton
+{
+    _showEmotionButton = showEmotionButton;
+    if (showEmotionButton) { // 显示表情按钮
+        [self.emotionButton setImage:[UIImage imageWithName:@"compose_emoticonbutton_background"] forState:UIControlStateNormal];
+        [self.emotionButton setImage:[UIImage imageWithName:@"compose_emoticonbutton_background_highlighted"] forState:UIControlStateHighlighted];
+    } else { // 切换为键盘按钮
+        [self.emotionButton setImage:[UIImage imageWithName:@"compose_keyboardbutton_background"] forState:UIControlStateNormal];
+        [self.emotionButton setImage:[UIImage imageWithName:@"compose_keyboardbutton_background_highlighted"] forState:UIControlStateHighlighted];
+    }
 }
 
 /**
@@ -32,7 +51,7 @@
  *  @param icon     默认图标
  *  @param highIcon 高亮图标
  */
-- (void)addButtonWithIcon:(NSString *)icon highIcon:(NSString *)highIcon tag:(JHComposeToolbarButtonType)tag
+- (UIButton *)addButtonWithIcon:(NSString *)icon highIcon:(NSString *)highIcon tag:(JHComposeToolbarButtonType)tag
 {
     UIButton *button = [[UIButton alloc] init];
     button.tag = tag;
@@ -40,6 +59,8 @@
     [button setImage:[UIImage imageWithName:icon] forState:UIControlStateNormal];
     [button setImage:[UIImage imageWithName:highIcon] forState:UIControlStateHighlighted];
     [self addSubview:button];
+    
+    return button;
 }
 
 /**
