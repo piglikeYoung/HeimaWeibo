@@ -80,6 +80,8 @@
 		7DC71B7F1AD6120D00328D02 /* JHEmotionListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC71B7E1AD6120D00328D02 /* JHEmotionListView.m */; };
 		7DC71B821AD6239D00328D02 /* JHEmotion.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC71B811AD6239D00328D02 /* JHEmotion.m */; };
 		7DC71B851AD6241300328D02 /* JHEmotionToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC71B841AD6241300328D02 /* JHEmotionToolbar.m */; };
+		7DC7BD521AD74A2F001F94BA /* JHEmotionGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC7BD511AD74A2F001F94BA /* JHEmotionGridView.m */; };
+		7DC7BD551AD74BCF001F94BA /* NSString+Emoji.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC7BD541AD74BCF001F94BA /* NSString+Emoji.m */; };
 		7DC8D1191ACA669600A78DF6 /* JHTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC8D1181ACA669600A78DF6 /* JHTabBar.m */; };
 		7DC932D91AC913850025291B /* JHSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC932D81AC913850025291B /* JHSearchBar.m */; };
 		7DCAD3AF1ACF75570035BDE6 /* JHComposePhotosView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCAD3AE1ACF75570035BDE6 /* JHComposePhotosView.m */; };
@@ -273,6 +275,10 @@
 		7DC71B811AD6239D00328D02 /* JHEmotion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHEmotion.m; sourceTree = "<group>"; };
 		7DC71B831AD6241300328D02 /* JHEmotionToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHEmotionToolbar.h; sourceTree = "<group>"; };
 		7DC71B841AD6241300328D02 /* JHEmotionToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHEmotionToolbar.m; sourceTree = "<group>"; };
+		7DC7BD501AD74A2F001F94BA /* JHEmotionGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHEmotionGridView.h; sourceTree = "<group>"; };
+		7DC7BD511AD74A2F001F94BA /* JHEmotionGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHEmotionGridView.m; sourceTree = "<group>"; };
+		7DC7BD531AD74BCF001F94BA /* NSString+Emoji.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Emoji.h"; sourceTree = "<group>"; };
+		7DC7BD541AD74BCF001F94BA /* NSString+Emoji.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Emoji.m"; sourceTree = "<group>"; };
 		7DC8D1171ACA669600A78DF6 /* JHTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHTabBar.h; sourceTree = "<group>"; };
 		7DC8D1181ACA669600A78DF6 /* JHTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHTabBar.m; sourceTree = "<group>"; };
 		7DC932D71AC913850025291B /* JHSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHSearchBar.h; sourceTree = "<group>"; };
@@ -694,6 +700,8 @@
 		7DC454381AC68CE900ED9410 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				7DC7BD531AD74BCF001F94BA /* NSString+Emoji.h */,
+				7DC7BD541AD74BCF001F94BA /* NSString+Emoji.m */,
 				7DC454611AC69F7D00ED9410 /* UIImage+Extension.h */,
 				7DC454621AC69F7D00ED9410 /* UIImage+Extension.m */,
 				7D672EB81AC78608004B5B4C /* UIBarButtonItem+Extension.h */,
@@ -826,6 +834,8 @@
 				7DC71B7E1AD6120D00328D02 /* JHEmotionListView.m */,
 				7DC71B831AD6241300328D02 /* JHEmotionToolbar.h */,
 				7DC71B841AD6241300328D02 /* JHEmotionToolbar.m */,
+				7DC7BD501AD74A2F001F94BA /* JHEmotionGridView.h */,
+				7DC7BD511AD74A2F001F94BA /* JHEmotionGridView.m */,
 			);
 			path = EmotionKeyboard;
 			sourceTree = "<group>";
@@ -1096,6 +1106,7 @@
 				7DC454561AC68F8600ED9410 /* JHHomeViewController.m in Sources */,
 				7DCBE4461ACE2C5000A9B039 /* MJFoundation.m in Sources */,
 				7DBE0FC81AD5697700587EC6 /* MJPhotoView.m in Sources */,
+				7DC7BD551AD74BCF001F94BA /* NSString+Emoji.m in Sources */,
 				7DCBE4481ACE2C5000A9B039 /* MJType.m in Sources */,
 				7DBB54501ACD4268003E39F6 /* SDWebImageManager.m in Sources */,
 				7DCBE42E1ACE1BFC00A9B039 /* JHUser.m in Sources */,
@@ -1187,6 +1198,7 @@
 				7DCBE4451ACE2C5000A9B039 /* MJConst.m in Sources */,
 				7DCB7E161AD21D36001650F4 /* JHBaseParam.m in Sources */,
 				7DCBE4491ACE2C5000A9B039 /* NSObject+MJCoding.m in Sources */,
+				7DC7BD521AD74A2F001F94BA /* JHEmotionGridView.m in Sources */,
 				7DBB54491ACD4268003E39F6 /* MKAnnotationView+WebCache.m in Sources */,
 				7DCB7E261AD28669001650F4 /* JHStatusOriginalView.m in Sources */,
 				7DCBE44E1ACE636D00A9B039 /* JHLoadMoreFooter.m in Sources */,

@@ -17,9 +17,6 @@
 
 + (void)save:(JHAccount *)account
 {
-    // 确定帐号的过期时间 ： 帐号创建时间 + 有效期
-    NSDate *now = [NSDate date];
-    account.expires_time = [now dateByAddingTimeInterval:account.expires_in.doubleValue];
     // 归档
     [NSKeyedArchiver archiveRootObject:account toFile:JHAccountFilepath];
 }

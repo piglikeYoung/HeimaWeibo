@@ -27,6 +27,4 @@
  */
 @property (nonatomic, copy) NSString *name;
 
-+ (instancetype)accountWithDict:(NSDictionary *)dict;
-
 @end

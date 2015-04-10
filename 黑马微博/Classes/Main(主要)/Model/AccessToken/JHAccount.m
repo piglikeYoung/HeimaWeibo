@@ -10,17 +10,12 @@
 
 @implementation JHAccount
 
-+ (instancetype)accountWithDict:(NSDictionary *)dict
+- (void)setExpires_in:(NSString *)expires_in
 {
-    JHAccount *account = [[self alloc] init];
-    account.access_token = dict[@"access_token"];
-    account.expires_in = dict[@"expires_in"];
-    account.uid = dict[@"uid"];
+    _expires_in = [expires_in copy];
     // 确定帐号的过期时间 ： 帐号创建时间 + 有效期
     NSDate *now = [NSDate date];
-    account.expires_time = [now dateByAddingTimeInterval:account.expires_in.doubleValue];
-    
-    return account;
+    self.expires_time = [now dateByAddingTimeInterval:expires_in.doubleValue];
 }
 
 /**

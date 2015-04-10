@@ -6,16 +6,11 @@
 //  Copyright (c) 2015年 jinheng. All rights reserved.
 //
 
-// 表情的最大行数
-#define JHEmotionMaxRows 3
-// 表情的最大列数
-#define JHEmotionMaxCols 7
-// 每页最多显示多少个表情
-#define JHEmotionMaxCountPerPage (JHEmotionMaxRows * JHEmotionMaxCols - 1)
 
 #import "JHEmotionListView.h"
+#import "JHEmotionGridView.h"
 
-@interface JHEmotionListView()
+@interface JHEmotionListView() <UIScrollViewDelegate>
 /** 显示所有表情的UIScrollView */
 @property (weak , nonatomic) UIScrollView *scrollView;
 /** 显示页码的UIPageControl */
@@ -32,7 +27,12 @@
         
         // 1.显示所有表情的UIScrollView
         UIScrollView *scrollView = [[UIScrollView alloc] init];
-        scrollView.backgroundColor = [UIColor redColor];
+        // 滚动条是UIScrollView的子控件
+        // 隐藏滚动条，可以屏蔽多余的子控件
+        scrollView.showsHorizontalScrollIndicator = NO;
+        scrollView.showsVerticalScrollIndicator = NO;
+        scrollView.pagingEnabled = YES;
+        scrollView.delegate = self;
         [self addSubview:scrollView];
         self.scrollView = scrollView;
         
@@ -50,9 +50,33 @@
 - (void)setEmotions:(NSArray *)emotions
 {
     _emotions = emotions;
-    JHLog(@"----%d", emotions.count);
     // 设置总页数
     self.pageControl.numberOfPages = (emotions.count + JHEmotionMaxCountPerPage - 1) / JHEmotionMaxCountPerPage;
+    self.pageControl.currentPage = 0;
+    
+    // 移除之前的表情
+    [self.scrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    
+    // 决定scrollView显示多少页表情
+    for (int i= 0; i < self.pageControl.numberOfPages; i++) {
+        JHEmotionGridView *gridView = [[JHEmotionGridView alloc] init];
+        int loc = i * JHEmotionMaxCountPerPage;
+        int len = JHEmotionMaxCountPerPage;
+        // 如果超过了总数，该页的显示表情数 = 表情总数 - 该页起始表情索引
+        if (loc + len > emotions.count) { // 对越界进行判断处理
+            len = emotions.count - loc;
+        }
+        NSRange gridViewEmotionsRange = NSMakeRange(loc, len);
+        NSArray *gridViewEmotions = [emotions subarrayWithRange:gridViewEmotionsRange];
+        gridView.emotions = gridViewEmotions;
+        [self.scrollView addSubview:gridView];
+    }
+    
+    // 重新布局子控件
+    [self setNeedsLayout];
+    
+    // 表情滚到最前面
+    self.scrollView.contentOffset = CGPointZero;
 }
 
 - (void)layoutSubviews
@@ -67,7 +91,25 @@
     // 2.UIScrollView的frame
     self.scrollView.width = self.width;
     self.scrollView.height = self.pageControl.y;
+    
+    // 3.设置UIScrollView内部控件的尺寸
+    int count = self.pageControl.numberOfPages;
+    CGFloat gridW = self.scrollView.width;
+    CGFloat gridH = self.scrollView.height;
+    self.scrollView.contentSize = CGSizeMake(count * gridW, 0);
+    for (int i = 0; i<count; i++) {
+        JHEmotionGridView *gridView = self.scrollView.subviews[i];
+        gridView.width = gridW;
+        gridView.height = gridH;
+        gridView.x = i * gridW;
+    }
 }
 
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    // 滑动显示的页码
+    self.pageControl.currentPage = (int)(scrollView.contentOffset.x / scrollView.width + 0.5);
+}
 
 @end
