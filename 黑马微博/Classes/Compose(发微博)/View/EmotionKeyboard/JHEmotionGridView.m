@@ -16,6 +16,7 @@
 @property (nonatomic, weak) UIButton *deleteButton;
 /** 存放每个表情按钮，方便排列表情， 否则利用subView取出排列的第一个button是删除按钮 */
 @property (nonatomic, strong) NSMutableArray *emotionViews;
+
 @property (strong , nonatomic) JHEmotionPopView *popView;
 
 @end
@@ -48,11 +49,60 @@
         UIButton *deleteButton = [[UIButton alloc] init];
         [deleteButton setImage:[UIImage imageWithName:@"compose_emotion_delete"] forState:UIControlStateNormal];
         [deleteButton setImage:[UIImage imageWithName:@"compose_emotion_delete_highlighted"] forState:UIControlStateHighlighted];
+        [deleteButton addTarget:self action:@selector(deleteClick) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:deleteButton];
         self.deleteButton = deleteButton;
+        
+        // 给自己添加一个长按手势识别器
+        UILongPressGestureRecognizer *recognizer = [[UILongPressGestureRecognizer alloc] init];
+        [recognizer addTarget:self action:@selector(longPress:)];
+        [self addGestureRecognizer:recognizer];
     }
     
     return self;
+}
+
+/**
+ *  根据触摸点返回对应的表情控件
+ */
+- (JHEmotionView *)emotionViewWithPoint:(CGPoint)point
+{
+    __block JHEmotionView *foundEmotionView = nil;
+    // 遍历数组里的每个元素
+    [self.emotionViews enumerateObjectsUsingBlock:^(JHEmotionView *emotionView, NSUInteger idx, BOOL *stop) {
+        // 判断在哪个JHEmotionView范围内
+        if (CGRectContainsPoint(emotionView.frame, point)) {
+            foundEmotionView = emotionView;
+            // 停止便利
+            *stop = YES;
+        }
+    }];
+    
+    return foundEmotionView;
+}
+
+
+/**
+ *  触发了长按手势
+ */
+- (void)longPress:(UILongPressGestureRecognizer *)recognizer
+{
+    // 1.获取触摸点
+    CGPoint point = [recognizer locationInView:recognizer.view];
+    
+    // 2.检测触摸点落到哪个表情上
+    JHEmotionView *emotionView = [self emotionViewWithPoint:point];
+    
+    if (recognizer.state == UIGestureRecognizerStateEnded) { // 手松开了
+        // 移除表情弹出控件
+        [self.popView dismiss];
+        
+        // 选中表情
+        [self selecteEmotion:emotionView.emotion];
+    } else { // 手没有松开
+        // 显示表情弹出控件
+        [self.popView showFromEmotionView:emotionView];
+    }
 }
 
 - (void)setEmotions:(NSArray *)emotions
@@ -98,6 +148,29 @@
         [self.popView dismiss];
     });
     
+    // 选中表情
+    [self selecteEmotion:emotionView.emotion];
+    
+}
+
+/**
+ *  选中表情
+ */
+- (void)selecteEmotion:(JHEmotion *)emotion
+{
+    if (emotion == nil) return;
+    
+    // 发出一个选中表情的通知，通知发微博控制器
+    [[NSNotificationCenter defaultCenter] postNotificationName:JHEmotionDidSelectedNotification object:nil userInfo:@{JHSelectedEmotion : emotion}];
+}
+
+/**
+ *  点击了删除按钮
+ */
+- (void)deleteClick
+{
+    // 发出一个选中表情的通知
+    [[NSNotificationCenter defaultCenter] postNotificationName:JHEmotionDidDeletedNotification object:nil userInfo:nil];
 }
 
 - (void)layoutSubviews

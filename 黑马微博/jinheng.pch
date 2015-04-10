@@ -76,4 +76,12 @@
 // 每页最多显示多少个表情
 #define JHEmotionMaxCountPerPage (JHEmotionMaxRows * JHEmotionMaxCols - 1)
 
+// 通知
+// 表情选中的通知
+#define JHEmotionDidSelectedNotification @"JHEmotionDidSelectedNotification"
+// 点击删除按钮的通知
+#define JHEmotionDidDeletedNotification @"JHEmotionDidDeletedNotification"
+// 通知里面取出表情用的key
+#define JHSelectedEmotion @"JHSelectedEmotion"
+
 #endif

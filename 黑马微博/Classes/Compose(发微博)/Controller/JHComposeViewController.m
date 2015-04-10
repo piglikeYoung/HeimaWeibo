@@ -16,6 +16,7 @@
 #import "JHStatusTool.h"
 #import "JHFormData.h"
 #import "JHEmotionKeyboard.h"
+#import "JHEmotion.h"
 
 @interface JHComposeViewController () <JHComposeToolbarDelegate, UITextViewDelegate, UINavigationControllerDelegate ,UIImagePickerControllerDelegate>
 
@@ -60,6 +61,11 @@
     
     // 添加显示图片的相册控件
     [self setupPhotosView];
+    
+    // 监听表情选中的通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(emotionDidSelected:) name:JHEmotionDidSelectedNotification object:nil];
+    // 监听删除按钮点击的通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(emotionDidDeleted:) name:JHEmotionDidDeletedNotification object:nil];
 
 }
 
@@ -353,6 +359,25 @@
         // 打开键盘
         [self.textView becomeFirstResponder];
     });
+}
+
+/**
+ *  当表情选中的时候调用
+ *
+ *  @param note 里面包含了选中的表情
+ */
+- (void)emotionDidSelected:(NSNotification *)note
+{
+    JHEmotion *emotion = note.userInfo[JHSelectedEmotion];
+    JHLog(@"%@ %@", emotion.chs, emotion.emoji);
+}
+
+/**
+ *  当点击表情键盘上的删除按钮时调用
+ */
+- (void)emotionDidDeleted:(NSNotification *)note
+{
+    JHLog(@"删除1个......");
 }
 
 #pragma mark - UIImagePickerControllerDelegate
