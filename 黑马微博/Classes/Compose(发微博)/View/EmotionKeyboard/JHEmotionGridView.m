@@ -9,16 +9,28 @@
 #import "JHEmotionGridView.h"
 #import "JHEmotion.h"
 #import "JHEmotionView.h"
+#import "JHEmotionPopView.h"
 
 @interface JHEmotionGridView()
 
 @property (nonatomic, weak) UIButton *deleteButton;
 /** 存放每个表情按钮，方便排列表情， 否则利用subView取出排列的第一个button是删除按钮 */
 @property (nonatomic, strong) NSMutableArray *emotionViews;
+@property (strong , nonatomic) JHEmotionPopView *popView;
 
 @end
 
 @implementation JHEmotionGridView
+
+
+-(JHEmotionPopView *)popView
+{
+    if (!_popView) {
+        self.popView = [JHEmotionPopView popView];
+    }
+    
+    return _popView;
+}
 
 - (NSMutableArray *)emotionViews
 {
@@ -55,7 +67,8 @@
         
         if (i >= currentEmotionViewCount) {// emotionView不够用
             emotionView = [[JHEmotionView alloc] init];
-            emotionView.backgroundColor = JHRandomColor;
+//            emotionView.backgroundColor = JHRandomColor;
+            [emotionView addTarget:self action:@selector(emotionClick:) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:emotionView];
             [self.emotionViews addObject:emotionView];
         } else {// emotionView够用
@@ -72,6 +85,18 @@
             emotionView.hidden = YES;
         }
     }
+    
+}
+
+/**
+ *  监听表情的单击
+ */
+- (void)emotionClick:(JHEmotionView *)emotionView
+{
+    [self.popView showFromEmotionView:emotionView];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.popView dismiss];
+    });
     
 }
 
