@@ -50,16 +50,26 @@
 - (void)setEmotions:(NSArray *)emotions
 {
     _emotions = emotions;
+    
     // 设置总页数
-    self.pageControl.numberOfPages = (emotions.count + JHEmotionMaxCountPerPage - 1) / JHEmotionMaxCountPerPage;
+    int totalPages = (emotions.count + JHEmotionMaxCountPerPage - 1) / JHEmotionMaxCountPerPage;
+    int currentGridViewCount = self.scrollView.subviews.count;
+    self.pageControl.numberOfPages = totalPages;
     self.pageControl.currentPage = 0;
     
-    // 移除之前的表情
-    [self.scrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    
     // 决定scrollView显示多少页表情
-    for (int i= 0; i < self.pageControl.numberOfPages; i++) {
-        JHEmotionGridView *gridView = [[JHEmotionGridView alloc] init];
+    for (int i= 0; i < totalPages; i++) {
+        
+        // 获得i位置对应的JHEmotionGridView
+        JHEmotionGridView *gridView = nil;
+        if (i >= currentGridViewCount) { // 说明JHEmotionGridView的个数不够
+            gridView = [[JHEmotionGridView alloc] init];
+            [self.scrollView addSubview:gridView];
+        } else { // 说明JHEmotionGridView的个数足够，从self.scrollView.subviews中取出JHEmotionGridView
+            gridView = self.scrollView.subviews[i];
+        }
+        
+        // 给JHEmotionGridView设置表情数据
         int loc = i * JHEmotionMaxCountPerPage;
         int len = JHEmotionMaxCountPerPage;
         // 如果超过了总数，该页的显示表情数 = 表情总数 - 该页起始表情索引
@@ -69,7 +79,13 @@
         NSRange gridViewEmotionsRange = NSMakeRange(loc, len);
         NSArray *gridViewEmotions = [emotions subarrayWithRange:gridViewEmotionsRange];
         gridView.emotions = gridViewEmotions;
-        [self.scrollView addSubview:gridView];
+        gridView.hidden = NO;
+    }
+    
+    // 隐藏后面的不需要用到的gridView
+    for (int i = totalPages; i < currentGridViewCount; i++) {
+        JHEmotionGridView *gridView = self.scrollView.subviews[i];
+        gridView.hidden = YES;
     }
     
     // 重新布局子控件
@@ -77,6 +93,7 @@
     
     // 表情滚到最前面
     self.scrollView.contentOffset = CGPointZero;
+    
 }
 
 - (void)layoutSubviews
