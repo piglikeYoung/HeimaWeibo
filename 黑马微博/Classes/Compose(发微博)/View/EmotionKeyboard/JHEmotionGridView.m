@@ -147,10 +147,10 @@
     [self.popView showFromEmotionView:emotionView];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self.popView dismiss];
+        
+        // 选中表情
+        [self selecteEmotion:emotionView.emotion];
     });
-    
-    // 选中表情
-    [self selecteEmotion:emotionView.emotion];
     
 }
 

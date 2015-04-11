@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7D0B9C911AD64AFA00B3D5A7 /* EmotionIcons in Resources */ = {isa = PBXBuildFile; fileRef = 7D0B9C901AD64AFA00B3D5A7 /* EmotionIcons */; };
+		7D2F47DA1AD8CE610000611F /* JHEmotionTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D2F47D91AD8CE610000611F /* JHEmotionTextView.m */; };
 		7D6265161AC664250075F1B6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D6265151AC664250075F1B6 /* Images.xcassets */; };
 		7D6265251AC664250075F1B6 /* ____Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D6265241AC664250075F1B6 /* ____Tests.m */; };
 		7D672EB71AC77B90004B5B4C /* JHNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D672EB61AC77B90004B5B4C /* JHNavigationController.m */; };
@@ -134,6 +135,8 @@
 
 /* Begin PBXFileReference section */
 		7D0B9C901AD64AFA00B3D5A7 /* EmotionIcons */ = {isa = PBXFileReference; lastKnownFileType = folder; path = EmotionIcons; sourceTree = "<group>"; };
+		7D2F47D81AD8CE610000611F /* JHEmotionTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHEmotionTextView.h; sourceTree = "<group>"; };
+		7D2F47D91AD8CE610000611F /* JHEmotionTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHEmotionTextView.m; sourceTree = "<group>"; };
 		7D6265051AC664240075F1B6 /* 黑马微博.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "黑马微博.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D6265091AC664240075F1B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7D6265151AC664250075F1B6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -852,6 +855,8 @@
 				7DC7BD591AD7B8BA001F94BA /* JHEmotionPopView.h */,
 				7DC7BD5A1AD7B8BA001F94BA /* JHEmotionPopView.m */,
 				7DC7BD5C1AD7B92A001F94BA /* JHEmotionPopView.xib */,
+				7D2F47D81AD8CE610000611F /* JHEmotionTextView.h */,
+				7D2F47D91AD8CE610000611F /* JHEmotionTextView.m */,
 			);
 			path = EmotionKeyboard;
 			sourceTree = "<group>";
@@ -1173,6 +1178,7 @@
 				7DCB7E0B1AD21BA6001650F4 /* JHSendStatusResult.m in Sources */,
 				7DCB7E201AD28600001650F4 /* JHStatusCell.m in Sources */,
 				7DCAD3AF1ACF75570035BDE6 /* JHComposePhotosView.m in Sources */,
+				7D2F47DA1AD8CE610000611F /* JHEmotionTextView.m in Sources */,
 				7DC71B821AD6239D00328D02 /* JHEmotion.m in Sources */,
 				7DC8D1191ACA669600A78DF6 /* JHTabBar.m in Sources */,
 				7DC7BD631AD7E65D001F94BA /* JHEmotionTool.m in Sources */,

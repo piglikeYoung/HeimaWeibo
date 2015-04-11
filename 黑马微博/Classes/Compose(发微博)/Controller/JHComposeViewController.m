@@ -7,7 +7,7 @@
 //
 
 #import "JHComposeViewController.h"
-#import "JHTextView.h"
+#import "JHEmotionTextView.h"
 #import "JHComposeToolbar.h"
 #import "JHComposePhotosView.h"
 #import "JHAccount.h"
@@ -20,7 +20,7 @@
 
 @interface JHComposeViewController () <JHComposeToolbarDelegate, UITextViewDelegate, UINavigationControllerDelegate ,UIImagePickerControllerDelegate>
 
-@property (nonatomic, weak) JHTextView *textView;
+@property (nonatomic, weak) JHEmotionTextView *textView;
 @property (nonatomic, weak) JHComposeToolbar *toolbar;
 @property (nonatomic, weak) JHComposePhotosView *photosView;
 @property (strong , nonatomic) JHEmotionKeyboard *kerboard;
@@ -111,7 +111,7 @@
 - (void)setupTextView
 {
     // 1.创建输入控件
-    JHTextView *textView = [[JHTextView alloc] init];
+    JHEmotionTextView *textView = [[JHEmotionTextView alloc] init];
     textView.frame = self.view.bounds;
     textView.alwaysBounceVertical = YES; // 垂直方向上拥有有弹簧效果
     textView.delegate = self;
@@ -141,7 +141,27 @@
 // 设置导航条内容
 - (void)setupNavBar
 {
-    self.title = @"发微博";
+    NSString *name = [JHAccountTool account].name;
+    if (name) {
+        // 构建文字
+        NSString *prefix = @"发微博";
+        NSString *text = [NSString stringWithFormat:@"%@\n%@", prefix, name];
+        NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:text];
+        [string addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:16] range:[text rangeOfString:prefix]];
+        [string addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:12] range:[text rangeOfString:name]];
+        
+        // 创建label
+        UILabel *titleLabel = [[UILabel alloc] init];
+        titleLabel.attributedText = string;
+        titleLabel.numberOfLines = 0;
+        titleLabel.textAlignment = NSTextAlignmentCenter;
+        titleLabel.width = 100;
+        titleLabel.height = 44;
+        self.navigationItem.titleView = titleLabel;
+    } else {
+        self.title = @"发微博";
+    }
+
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(cancel)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"发送" style:UIBarButtonItemStylePlain target:self action:@selector(send)];
@@ -273,7 +293,7 @@
 
 - (void) textViewDidChange:(UITextView *)textView
 {
-    self.navigationItem.rightBarButtonItem.enabled = textView.text.length != 0;
+    self.navigationItem.rightBarButtonItem.enabled = textView.attributedText.length != 0;
 }
 
 #pragma mark - HMComposeToolbarDelegate
@@ -370,7 +390,38 @@
 - (void)emotionDidSelected:(NSNotification *)note
 {
     JHEmotion *emotion = note.userInfo[JHSelectedEmotion];
-    JHLog(@"%@ %@", emotion.chs, emotion.emoji);
+    
+    // 1.拼接表情
+//    [self.textView appendEmotion:emotion];
+    
+    // 1.取出textView的富文本
+    NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithAttributedString:self.textView.attributedText];
+    
+    // 2.拼接表情
+    if (emotion.emoji) { // 拼接emoji字符
+        NSAttributedString *substr = [[NSAttributedString alloc] initWithString:emotion.emoji];
+        [attributedText appendAttributedString:substr];
+    } else {// 拼接图片表情
+        NSTextAttachment *attach = [[NSTextAttachment alloc] init];
+        attach.image = [UIImage imageWithName:[NSString stringWithFormat:@"%@/%@", emotion.directory, emotion.png]];
+        // 设置图片尺寸和字体大小一致
+        CGFloat imageW = self.textView.font.lineHeight;
+        CGFloat imageH = imageW;
+        attach.bounds = CGRectMake(0, -3, imageW, imageH);
+        NSAttributedString *substr = [NSAttributedString attributedStringWithAttachment:attach];
+        [attributedText appendAttributedString:substr];
+    }
+    
+    [attributedText addAttribute:NSFontAttributeName value:self.textView.font range:NSMakeRange(0, attributedText.length)];
+    
+    // text文字的大小由font属性决定
+    // attributedText文字的大小由- (void)addAttribute:(NSString *)name value:(id)value range:(NSRange)range;方法决定
+    
+    // 3.重新赋值
+    self.textView.attributedText = attributedText;
+    
+    // 2.检测文字长度
+    [self textViewDidChange:self.textView];
 }
 
 /**
@@ -378,7 +429,8 @@
  */
 - (void)emotionDidDeleted:(NSNotification *)note
 {
-    JHLog(@"删除1个......");
+    // 往回删
+    [self.textView deleteBackward];
 }
 
 #pragma mark - UIImagePickerControllerDelegate
