@@ -200,7 +200,7 @@
 {
     // 1.封装请求参数
     JHSendStatusParam *param = [JHSendStatusParam param];
-    param.status = self.textView.text;
+    param.status = self.textView.realText;
     
     // 2.封装文件参数
     NSMutableArray *formDataArray = [NSMutableArray array];
@@ -232,7 +232,7 @@
     
     // 1.封装请求参数
     JHSendStatusParam *param = [JHSendStatusParam param];
-    param.status = self.textView.text;
+    param.status = self.textView.realText;
     
     // 3.发送POST请求
     [JHStatusTool sendStatusWithParam:param success:^(JHSendStatusResult *result) {
@@ -293,7 +293,7 @@
 
 - (void) textViewDidChange:(UITextView *)textView
 {
-    self.navigationItem.rightBarButtonItem.enabled = textView.attributedText.length != 0;
+    self.navigationItem.rightBarButtonItem.enabled = textView.hasText;
 }
 
 #pragma mark - HMComposeToolbarDelegate
@@ -392,33 +392,7 @@
     JHEmotion *emotion = note.userInfo[JHSelectedEmotion];
     
     // 1.拼接表情
-//    [self.textView appendEmotion:emotion];
-    
-    // 1.取出textView的富文本
-    NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithAttributedString:self.textView.attributedText];
-    
-    // 2.拼接表情
-    if (emotion.emoji) { // 拼接emoji字符
-        NSAttributedString *substr = [[NSAttributedString alloc] initWithString:emotion.emoji];
-        [attributedText appendAttributedString:substr];
-    } else {// 拼接图片表情
-        NSTextAttachment *attach = [[NSTextAttachment alloc] init];
-        attach.image = [UIImage imageWithName:[NSString stringWithFormat:@"%@/%@", emotion.directory, emotion.png]];
-        // 设置图片尺寸和字体大小一致
-        CGFloat imageW = self.textView.font.lineHeight;
-        CGFloat imageH = imageW;
-        attach.bounds = CGRectMake(0, -3, imageW, imageH);
-        NSAttributedString *substr = [NSAttributedString attributedStringWithAttachment:attach];
-        [attributedText appendAttributedString:substr];
-    }
-    
-    [attributedText addAttribute:NSFontAttributeName value:self.textView.font range:NSMakeRange(0, attributedText.length)];
-    
-    // text文字的大小由font属性决定
-    // attributedText文字的大小由- (void)addAttribute:(NSString *)name value:(id)value range:(NSRange)range;方法决定
-    
-    // 3.重新赋值
-    self.textView.attributedText = attributedText;
+    [self.textView appendEmotion:emotion];
     
     // 2.检测文字长度
     [self textViewDidChange:self.textView];

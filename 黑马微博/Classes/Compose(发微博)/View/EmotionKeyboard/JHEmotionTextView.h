@@ -11,7 +11,13 @@
 
 @interface JHEmotionTextView : JHTextView
 /**
- *  拼接表情到最后面
+ *  拼接表情到attributedText
  */
 - (void)appendEmotion:(JHEmotion *)emotion;
+
+/**
+ *  富文本中真正内容，表情图片都转为字符串
+ */
+- (NSString *)realText;
+
 @end

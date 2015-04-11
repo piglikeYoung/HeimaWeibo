@@ -62,7 +62,7 @@
 {
     // text属性：只包括普通的文本字符串
     // attributedText：包括了显示在textView里面的所有内容（表情、text）
-    self.placehoderLabel.hidden = (self.attributedText.length != 0);
+    self.placehoderLabel.hidden = self.hasText;
 }
 
 
