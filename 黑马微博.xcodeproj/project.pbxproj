@@ -85,6 +85,7 @@
 		7DC7BD581AD7740F001F94BA /* JHEmotionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC7BD571AD7740F001F94BA /* JHEmotionView.m */; };
 		7DC7BD5B1AD7B8BA001F94BA /* JHEmotionPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC7BD5A1AD7B8BA001F94BA /* JHEmotionPopView.m */; };
 		7DC7BD5D1AD7B92A001F94BA /* JHEmotionPopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DC7BD5C1AD7B92A001F94BA /* JHEmotionPopView.xib */; };
+		7DC7BD631AD7E65D001F94BA /* JHEmotionTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC7BD621AD7E65D001F94BA /* JHEmotionTool.m */; };
 		7DC8D1191ACA669600A78DF6 /* JHTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC8D1181ACA669600A78DF6 /* JHTabBar.m */; };
 		7DC932D91AC913850025291B /* JHSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC932D81AC913850025291B /* JHSearchBar.m */; };
 		7DCAD3AF1ACF75570035BDE6 /* JHComposePhotosView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCAD3AE1ACF75570035BDE6 /* JHComposePhotosView.m */; };
@@ -287,6 +288,8 @@
 		7DC7BD591AD7B8BA001F94BA /* JHEmotionPopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHEmotionPopView.h; sourceTree = "<group>"; };
 		7DC7BD5A1AD7B8BA001F94BA /* JHEmotionPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHEmotionPopView.m; sourceTree = "<group>"; };
 		7DC7BD5C1AD7B92A001F94BA /* JHEmotionPopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JHEmotionPopView.xib; sourceTree = "<group>"; };
+		7DC7BD611AD7E65D001F94BA /* JHEmotionTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHEmotionTool.h; sourceTree = "<group>"; };
+		7DC7BD621AD7E65D001F94BA /* JHEmotionTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHEmotionTool.m; sourceTree = "<group>"; };
 		7DC8D1171ACA669600A78DF6 /* JHTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHTabBar.h; sourceTree = "<group>"; };
 		7DC8D1181ACA669600A78DF6 /* JHTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHTabBar.m; sourceTree = "<group>"; };
 		7DC932D71AC913850025291B /* JHSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHSearchBar.h; sourceTree = "<group>"; };
@@ -853,9 +856,19 @@
 			path = EmotionKeyboard;
 			sourceTree = "<group>";
 		};
+		7DC7BD601AD7E631001F94BA /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				7DC7BD611AD7E65D001F94BA /* JHEmotionTool.h */,
+				7DC7BD621AD7E65D001F94BA /* JHEmotionTool.m */,
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
 		7DCB26E21ACB956000B71AD2 /* Compose(发微博) */ = {
 			isa = PBXGroup;
 			children = (
+				7DC7BD601AD7E631001F94BA /* Tool */,
 				7DCB26E31ACB956000B71AD2 /* Controller */,
 				7DCB26E61ACB956000B71AD2 /* Model */,
 				7DCB26E71ACB956000B71AD2 /* View */,
@@ -1162,6 +1175,7 @@
 				7DCAD3AF1ACF75570035BDE6 /* JHComposePhotosView.m in Sources */,
 				7DC71B821AD6239D00328D02 /* JHEmotion.m in Sources */,
 				7DC8D1191ACA669600A78DF6 /* JHTabBar.m in Sources */,
+				7DC7BD631AD7E65D001F94BA /* JHEmotionTool.m in Sources */,
 				7DC454591AC68FBE00ED9410 /* JHMessageViewController.m in Sources */,
 				7DBE0FC61AD5697700587EC6 /* MJPhotoProgressView.m in Sources */,
 				7DCB7E291AD28683001650F4 /* JHStatusRetweetedView.m in Sources */,

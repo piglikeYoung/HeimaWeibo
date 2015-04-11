@@ -29,8 +29,28 @@
         [self setupButton:@"Emoji" tag:JHEmotionTypeEmoji];
         [self setupButton:@"浪小花" tag:JHEmotionTypeLxh];
         
+        // 2.监听表情选中的通知，更新最近选中表情列表
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(emotionDidSelected:) name:JHEmotionDidSelectedNotification object:nil];
+        
     }
     return self;
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+
+/**
+ *  最近按钮中表情选中
+ */
+- (void)emotionDidSelected:(NSNotification *)note
+{
+    // 如果当前选中按钮是最近按钮，再次刷新最近按钮表情列表
+    if (self.selectedButton.tag == JHEmotionTypeRecent) {
+        [self buttonClick:self.selectedButton];
+    }
 }
 
 

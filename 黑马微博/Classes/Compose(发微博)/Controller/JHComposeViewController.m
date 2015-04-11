@@ -230,11 +230,8 @@
 - (void)keyboardWillHide:(NSNotification *)note
 {
     // 切换表情键盘的时候，toolbar位置不变
-    if (self.isChangingKeyboard) {
-        self.changingKeyboard = NO;
-        return;
-    }
-        
+    if (self.isChangingKeyboard) return;
+    
     // 1.键盘弹出需要的时间
     CGFloat duration = [note.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
     
@@ -355,6 +352,10 @@
     
     // 关闭键盘
     [self.textView resignFirstResponder];
+    
+    // 切换完成，告诉toolbar可以回落了
+    self.changingKeyboard = NO;
+    
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         // 打开键盘
         [self.textView becomeFirstResponder];

@@ -10,7 +10,7 @@
 #import "JHEmotionListView.h"
 #import "JHEmotionToolbar.h"
 #import "MJExtension.h"
-#import "JHEmotion.h"
+#import "JHEmotionTool.h"
 
 
 @interface JHEmotionKeyboard() <JHEmotionToolbarDelegate>
@@ -20,46 +20,9 @@
 /** 表情工具条 */
 @property (nonatomic, weak) JHEmotionToolbar *toollbar;
 
-/** 默认表情 */
-@property (nonatomic, strong) NSArray *defaultEmotions;
-/** emoji表情 */
-@property (nonatomic, strong) NSArray *emojiEmotions;
-/** 浪小花表情 */
-@property (nonatomic, strong) NSArray *lxhEmotions;
-
 @end
 
 @implementation JHEmotionKeyboard
-
-- (NSArray *)defaultEmotions
-{
-    if (!_defaultEmotions) {
-        NSString *plist = [[NSBundle mainBundle] pathForResource:@"EmotionIcons/default/info.plist" ofType:nil];
-        self.defaultEmotions = [JHEmotion objectArrayWithFile:plist];
-        [self.defaultEmotions makeObjectsPerformSelector:@selector(setDirectory:) withObject:@"EmotionIcons/default"];
-    }
-    return _defaultEmotions;
-}
-
-- (NSArray *)emojiEmotions
-{
-    if (!_emojiEmotions) {
-        NSString *plist = [[NSBundle mainBundle] pathForResource:@"EmotionIcons/emoji/info.plist" ofType:nil];
-        self.emojiEmotions = [JHEmotion objectArrayWithFile:plist];
-        [self.emojiEmotions makeObjectsPerformSelector:@selector(setDirectory:) withObject:@"EmotionIcons/emoji"];
-    }
-    return _emojiEmotions;
-}
-
-- (NSArray *)lxhEmotions
-{
-    if (!_lxhEmotions) {
-        NSString *plist = [[NSBundle mainBundle] pathForResource:@"EmotionIcons/lxh/info.plist" ofType:nil];
-        self.lxhEmotions = [JHEmotion objectArrayWithFile:plist];
-        [self.lxhEmotions makeObjectsPerformSelector:@selector(setDirectory:) withObject:@"EmotionIcons/lxh"];
-    }
-    return _lxhEmotions;
-}
 
 + (instancetype)keyboard
 {
@@ -111,18 +74,19 @@
 {
     switch (emotionType) {
         case JHEmotionTypeDefault:// 默认
-            self.listView.emotions = self.defaultEmotions;
+            self.listView.emotions = [JHEmotionTool defaultEmotions];
             break;
             
         case JHEmotionTypeEmoji: // Emoji
-            self.listView.emotions = self.emojiEmotions;
+            self.listView.emotions = [JHEmotionTool emojiEmotions];
             break;
             
         case JHEmotionTypeLxh: // 浪小花
-            self.listView.emotions = self.lxhEmotions;
+            self.listView.emotions = [JHEmotionTool lxhEmotions];
             break;
             
-        default:
+        case JHEmotionTypeRecent:// 最近
+            self.listView.emotions = [JHEmotionTool recentEmotions];
             break;
     }
     

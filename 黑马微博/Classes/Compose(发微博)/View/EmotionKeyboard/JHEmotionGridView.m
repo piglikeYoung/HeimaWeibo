@@ -10,6 +10,7 @@
 #import "JHEmotion.h"
 #import "JHEmotionView.h"
 #import "JHEmotionPopView.h"
+#import "JHEmotionTool.h"
 
 @interface JHEmotionGridView()
 
@@ -159,6 +160,10 @@
 - (void)selecteEmotion:(JHEmotion *)emotion
 {
     if (emotion == nil) return;
+    
+#warning 注意：先添加使用的表情，再发通知，这样才能拿到最新的表情
+    // 保存使用记录
+    [JHEmotionTool addRecentEmotion:emotion];
     
     // 发出一个选中表情的通知，通知发微博控制器
     [[NSNotificationCenter defaultCenter] postNotificationName:JHEmotionDidSelectedNotification object:nil userInfo:@{JHSelectedEmotion : emotion}];

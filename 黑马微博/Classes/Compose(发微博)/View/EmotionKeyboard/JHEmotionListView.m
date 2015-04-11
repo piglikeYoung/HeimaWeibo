@@ -56,6 +56,7 @@
     int currentGridViewCount = self.scrollView.subviews.count;
     self.pageControl.numberOfPages = totalPages;
     self.pageControl.currentPage = 0;
+    self.pageControl.hidden = totalPages <=1;// 页数小于1不显示
     
     // 决定scrollView显示多少页表情
     for (int i= 0; i < totalPages; i++) {
