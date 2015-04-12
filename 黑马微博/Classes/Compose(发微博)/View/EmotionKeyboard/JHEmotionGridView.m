@@ -72,7 +72,7 @@
     // 遍历数组里的每个元素
     [self.emotionViews enumerateObjectsUsingBlock:^(JHEmotionView *emotionView, NSUInteger idx, BOOL *stop) {
         // 判断在哪个JHEmotionView范围内
-        if (CGRectContainsPoint(emotionView.frame, point)) {
+        if (CGRectContainsPoint(emotionView.frame, point) && emotionView.hidden == NO) {
             foundEmotionView = emotionView;
             // 停止便利
             *stop = YES;

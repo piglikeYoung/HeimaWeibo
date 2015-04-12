@@ -38,6 +38,7 @@
         
         // 2.显示页码的UIPageControl
         UIPageControl *pageControl = [[UIPageControl alloc] init];
+        pageControl.hidesForSinglePage = YES;
         [pageControl setValue:[UIImage imageWithName:@"compose_keyboard_dot_selected"] forKeyPath:@"_currentPageImage"];
         [pageControl setValue:[UIImage imageWithName:@"compose_keyboard_dot_normal"] forKeyPath:@"_pageImage"];
         [self addSubview:pageControl];
@@ -56,7 +57,6 @@
     int currentGridViewCount = self.scrollView.subviews.count;
     self.pageControl.numberOfPages = totalPages;
     self.pageControl.currentPage = 0;
-    self.pageControl.hidden = totalPages <=1;// 页数小于1不显示
     
     // 决定scrollView显示多少页表情
     for (int i= 0; i < totalPages; i++) {
