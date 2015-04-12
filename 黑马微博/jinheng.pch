@@ -69,7 +69,7 @@
 #define JHStatusRetweetedTextFont JHStatusOrginalTextFont
 
 // 富文本字体
-#define JHStatusRichTextFont [UIFont systemFontOfSize:13]
+#define JHStatusRichTextFont JHStatusOrginalTextFont
 // @、话题、超链接字体
 #define JHStatusHighTextColor JHColor(88, 161, 253)
 

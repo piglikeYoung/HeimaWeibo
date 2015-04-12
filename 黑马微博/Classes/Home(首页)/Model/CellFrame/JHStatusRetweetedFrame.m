@@ -18,19 +18,19 @@
     _retweetedStatus = retweetedStatus;
     
     // 1.呢称
-    CGFloat nameX = JHStatusCellInset;
-    CGFloat nameY = JHStatusCellInset * 0.5;
-    NSString *name = [NSString stringWithFormat:@"@%@", retweetedStatus.user.name];
-    CGSize nameSize = [name sizeWithFont:JHStatusRetweetedNameFont];
-    
-    self.nameFrame = (CGRect){{nameX , nameY}, nameSize};
+//    CGFloat nameX = JHStatusCellInset;
+//    CGFloat nameY = JHStatusCellInset * 0.5;
+//    NSString *name = [NSString stringWithFormat:@"@%@", retweetedStatus.user.name];
+//    CGSize nameSize = [name sizeWithFont:JHStatusRetweetedNameFont];
+//    
+//    self.nameFrame = (CGRect){{nameX , nameY}, nameSize};
     
     // 2.正文
-    CGFloat textX = nameX;
-    CGFloat textY = CGRectGetMaxY(self.nameFrame) + JHStatusCellInset * 0.5;
+    CGFloat textX = JHStatusCellInset;
+    CGFloat textY = JHStatusCellInset * 0.5;
     CGFloat maxW = JHScreenW - 2 * textX;
     CGSize maxSize = CGSizeMake(maxW, MAXFLOAT);
-    CGSize textSize = [retweetedStatus.text sizeWithFont:JHStatusRetweetedTextFont constrainedToSize:maxSize];
+    CGSize textSize = [retweetedStatus.attributedText boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin context:nil].size;
     self.textFrame = (CGRect){{textX, textY}, textSize};
     
     

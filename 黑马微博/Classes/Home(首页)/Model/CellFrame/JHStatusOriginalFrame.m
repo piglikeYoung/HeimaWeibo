@@ -58,7 +58,7 @@
     CGFloat textY = CGRectGetMaxY(self.iconFrame) + JHStatusCellInset;
     CGFloat maxW = JHScreenW - 2 * textX;
     CGSize maxSize = CGSizeMake(maxW, MAXFLOAT);
-    CGSize textSize = [status.text sizeWithFont:JHStatusOrginalTextFont constrainedToSize:maxSize];
+    CGSize textSize = [status.attributedText boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin context:nil].size;
     self.textFrame = (CGRect){{textX, textY}, textSize};
     
     // 6.配图相册

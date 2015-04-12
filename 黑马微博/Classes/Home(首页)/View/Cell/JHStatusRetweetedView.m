@@ -15,7 +15,7 @@
 @interface JHStatusRetweetedView()
 
 /**  昵称 */
-@property (nonatomic, weak) UILabel *nameLabel;
+//@property (nonatomic, weak) UILabel *nameLabel;
 /** 正文 */
 @property (nonatomic, weak) UILabel *textLabel;
 /** 配图相册 */
@@ -36,11 +36,11 @@
         self.highlightedImage=[UIImage resizedImage:@"timeline_retweet_background_highlighted"];
         
         // 1.呢称
-        UILabel *nameLabel = [[UILabel alloc] init];
-        nameLabel.font = JHStatusRetweetedNameFont;
-        nameLabel.textColor = JHStatusHighTextColor;
-        [self addSubview:nameLabel];
-        self.nameLabel = nameLabel;
+//        UILabel *nameLabel = [[UILabel alloc] init];
+//        nameLabel.font = JHStatusRetweetedNameFont;
+//        nameLabel.textColor = JHStatusHighTextColor;
+//        [self addSubview:nameLabel];
+//        self.nameLabel = nameLabel;
         
         // 2.正文（内容）
         UILabel *textLabel = [[UILabel alloc] init];
@@ -68,11 +68,11 @@
     // 取出微博数据
     JHStatus *retweetedStatus = retweetedFrame.retweetedStatus;
     // 取出用户数据
-    JHUser *user = retweetedStatus.user;
+//    JHUser *user = retweetedStatus.user;
     
     // 1.昵称
-    self.nameLabel.text = [NSString stringWithFormat:@"@%@", user.name];
-    self.nameLabel.frame = retweetedFrame.nameFrame;
+//    self.nameLabel.text = [NSString stringWithFormat:@"@%@", user.name];
+//    self.nameLabel.frame = retweetedFrame.nameFrame;
     
     // 2.正文（内容）
 //    self.textLabel.text = retweetedStatus.text;
