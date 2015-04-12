@@ -61,8 +61,32 @@
     
     // 获得用户信息
     [self setupUserInfo];
+    
+    // 监听链接选中的通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(linkDidSelected:) name:JHLinkDidSelectedNotification object:nil];
 
 }
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+/**
+ *  链接点中方法
+ */
+- (void)linkDidSelected:(NSNotification *)note
+{
+    NSString *linkText = note.userInfo[JHLinkText];
+    // 包含http打开浏览器
+    if ([linkText hasPrefix:@"http"]) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:linkText]];
+    } else {
+        // 跳转控制器
+        JHLog(@"选中了非HTTP链接---%@", note.userInfo[JHLinkText]);
+    }
+}
+
 
 /**
  *  获得用户信息
