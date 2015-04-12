@@ -112,7 +112,8 @@
     }
     
     // 2.正文（内容）
-    self.textLabel.text = status.text;
+//    self.textLabel.text = status.text;
+    self.textLabel.attributedText = status.attributedText;
     self.textLabel.frame = originalFrame.textFrame;
     
 #warning 需要时刻根据现在的时间字符串来计算时间label的frame

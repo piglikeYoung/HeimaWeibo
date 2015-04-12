@@ -31,4 +31,9 @@
  *  保存最近使用的表情
  */
 + (void)addRecentEmotion:(JHEmotion *)emotion;
+
+/**
+ *  根据表情的文字描述找出对应的表情对象
+ */
++ (JHEmotion *)emotionWithDesc:(NSString *)desc;
 @end

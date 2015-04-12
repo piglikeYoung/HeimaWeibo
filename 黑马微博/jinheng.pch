@@ -68,6 +68,11 @@
 // 转发微博正文字体
 #define JHStatusRetweetedTextFont JHStatusOrginalTextFont
 
+// 富文本字体
+#define JHStatusRichTextFont [UIFont systemFontOfSize:13]
+// @、话题、超链接字体
+#define JHStatusHighTextColor JHColor(88, 161, 253)
+
 /** 表情相关 */
 // 表情的最大行数
 #define JHEmotionMaxRows 3

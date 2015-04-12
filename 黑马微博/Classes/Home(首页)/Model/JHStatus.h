@@ -20,6 +20,8 @@
 
 /** 	string 	微博信息内容*/
 @property (nonatomic, copy) NSString *text;
+/** 	string 	微博信息内容的富文本，从text转化而来*/
+@property (nonatomic, copy) NSAttributedString *attributedText;
 
 /** 	string 	微博来源*/
 @property (nonatomic, copy) NSString *source;
