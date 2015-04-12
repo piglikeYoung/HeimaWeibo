@@ -12,13 +12,14 @@
 #import "JHUser.h"
 #import "UIImageView+WebCache.h"
 #import "JHStatusPhotosView.h"
+#import "JHStatusLabel.h"
 
 @interface JHStatusOriginalView()
 
 /** 昵称 */
 @property (nonatomic, weak) UILabel *nameLabel;
 /** 正文 */
-@property (nonatomic, weak) UILabel *textLabel;
+@property (nonatomic, weak) JHStatusLabel *textLabel;
 /** 来源 */
 @property (nonatomic, weak) UILabel *sourceLabel;
 /** 时间 */
@@ -46,9 +47,7 @@
         self.nameLabel = nameLabel;
         
         // 2.正文（内容）
-        UILabel *textLabel = [[UILabel alloc] init];
-        textLabel.font = JHStatusOrginalTextFont;
-        textLabel.numberOfLines = 0;
+        JHStatusLabel *textLabel = [[JHStatusLabel alloc] init];
         [self addSubview:textLabel];
         self.textLabel = textLabel;
         

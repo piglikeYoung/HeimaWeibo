@@ -89,4 +89,11 @@
 // 通知里面取出表情用的key
 #define JHSelectedEmotion @"JHSelectedEmotion"
 
+
+// 链接选中的通知
+#define JHLinkDidSelectedNotification @"JHLinkDidSelectedNotification"
+
+// 富文本里面出现的链接
+#define JHLinkText @"JHLinkText"
+
 #endif

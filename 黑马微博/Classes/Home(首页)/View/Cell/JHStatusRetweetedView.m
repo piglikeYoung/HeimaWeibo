@@ -11,13 +11,14 @@
 #import "JHStatus.h"
 #import "JHUser.h"
 #import "JHStatusPhotosView.h"
+#import "JHStatusLabel.h"
 
 @interface JHStatusRetweetedView()
 
 /**  昵称 */
 //@property (nonatomic, weak) UILabel *nameLabel;
 /** 正文 */
-@property (nonatomic, weak) UILabel *textLabel;
+@property (nonatomic, weak) JHStatusLabel *textLabel;
 /** 配图相册 */
 @property (nonatomic, weak) JHStatusPhotosView *photosView;
 
@@ -43,9 +44,7 @@
 //        self.nameLabel = nameLabel;
         
         // 2.正文（内容）
-        UILabel *textLabel = [[UILabel alloc] init];
-        textLabel.font = JHStatusRetweetedTextFont;
-        textLabel.numberOfLines = 0;
+        JHStatusLabel *textLabel = [[JHStatusLabel alloc] init];
         [self addSubview:textLabel];
         self.textLabel = textLabel;
         

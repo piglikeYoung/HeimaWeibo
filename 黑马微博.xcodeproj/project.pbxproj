@@ -18,6 +18,8 @@
 		7D672EBA1AC78608004B5B4C /* UIBarButtonItem+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D672EB91AC78608004B5B4C /* UIBarButtonItem+Extension.m */; };
 		7D672EBD1AC7871C004B5B4C /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D672EBC1AC7871C004B5B4C /* UIView+Extension.m */; };
 		7D6A412B1AD9F80C0040B35A /* JHRegexResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D6A412A1AD9F80C0040B35A /* JHRegexResult.m */; };
+		7D6A412E1ADA4C410040B35A /* JHStatusLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D6A412D1ADA4C410040B35A /* JHStatusLabel.m */; };
+		7D6A41311ADA4C950040B35A /* JHLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D6A41301ADA4C950040B35A /* JHLink.m */; };
 		7DBB53C31ACCD2C9003E39F6 /* JHOAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DBB53C21ACCD2C9003E39F6 /* JHOAuthViewController.m */; };
 		7DBB53CB1ACCD354003E39F6 /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DBB53C71ACCD354003E39F6 /* MBProgressHUD+MJ.m */; };
 		7DBB53CC1ACCD354003E39F6 /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7DBB53C81ACCD354003E39F6 /* MBProgressHUD.bundle */; };
@@ -160,6 +162,10 @@
 		7D672EBC1AC7871C004B5B4C /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 		7D6A41291AD9F80C0040B35A /* JHRegexResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHRegexResult.h; sourceTree = "<group>"; };
 		7D6A412A1AD9F80C0040B35A /* JHRegexResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHRegexResult.m; sourceTree = "<group>"; };
+		7D6A412C1ADA4C410040B35A /* JHStatusLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHStatusLabel.h; sourceTree = "<group>"; };
+		7D6A412D1ADA4C410040B35A /* JHStatusLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHStatusLabel.m; sourceTree = "<group>"; };
+		7D6A412F1ADA4C950040B35A /* JHLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHLink.h; sourceTree = "<group>"; };
+		7D6A41301ADA4C950040B35A /* JHLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHLink.m; sourceTree = "<group>"; };
 		7DBB53C11ACCD2C9003E39F6 /* JHOAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHOAuthViewController.h; sourceTree = "<group>"; };
 		7DBB53C21ACCD2C9003E39F6 /* JHOAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHOAuthViewController.m; sourceTree = "<group>"; };
 		7DBB53C61ACCD354003E39F6 /* MBProgressHUD+MJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+MJ.h"; sourceTree = "<group>"; };
@@ -618,6 +624,8 @@
 				7DC155C91AD361FB00193925 /* JHStatusOriginalFrame.m */,
 				7DC155CB1AD3620F00193925 /* JHStatusRetweetedFrame.h */,
 				7DC155CC1AD3620F00193925 /* JHStatusRetweetedFrame.m */,
+				7D6A412F1ADA4C950040B35A /* JHLink.h */,
+				7D6A41301ADA4C950040B35A /* JHLink.m */,
 			);
 			path = CellFrame;
 			sourceTree = "<group>";
@@ -1031,6 +1039,8 @@
 				7DBE0FAD1AD4E70C00587EC6 /* JHStatusPhotosView.m */,
 				7DBE0FAF1AD4E72900587EC6 /* JHStatusPhotoView.h */,
 				7DBE0FB01AD4E72900587EC6 /* JHStatusPhotoView.m */,
+				7D6A412C1ADA4C410040B35A /* JHStatusLabel.h */,
+				7D6A412D1ADA4C410040B35A /* JHStatusLabel.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1211,6 +1221,7 @@
 				7DC71B821AD6239D00328D02 /* JHEmotion.m in Sources */,
 				7DC8D1191ACA669600A78DF6 /* JHTabBar.m in Sources */,
 				7DC7BD631AD7E65D001F94BA /* JHEmotionTool.m in Sources */,
+				7D6A41311ADA4C950040B35A /* JHLink.m in Sources */,
 				7DC454591AC68FBE00ED9410 /* JHMessageViewController.m in Sources */,
 				7DBE0FC61AD5697700587EC6 /* MJPhotoProgressView.m in Sources */,
 				7DCB7E291AD28683001650F4 /* JHStatusRetweetedView.m in Sources */,
@@ -1233,6 +1244,7 @@
 				7DC65C981AD102F800BE37A0 /* JHUserTool.m in Sources */,
 				7DBB544F1ACD4268003E39F6 /* SDWebImageDownloaderOperation.m in Sources */,
 				7DC71B851AD6241300328D02 /* JHEmotionToolbar.m in Sources */,
+				7D6A412E1ADA4C410040B35A /* JHStatusLabel.m in Sources */,
 				7DCB7E011AD21B79001650F4 /* JHHomeStatusesResult.m in Sources */,
 				7DCB7E001AD21B79001650F4 /* JHHomeStatusesParam.m in Sources */,
 				7DBE0FB11AD4E72900587EC6 /* JHStatusPhotoView.m in Sources */,
