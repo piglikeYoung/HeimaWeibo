@@ -50,6 +50,7 @@
     
     // 设置tableView属性
     self.tableView.backgroundColor = JHGlobalBg;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.sectionFooterHeight = 0;
     self.tableView.sectionHeaderHeight = JHStatusCellInset;
     self.tableView.contentInset = UIEdgeInsetsMake(JHStatusCellInset - 35, 0, 0, 0);
@@ -63,8 +64,8 @@
 - (void)setupGroups
 {
     [self setupGroup0];
-    [self setupGroup2];
     [self setupGroup1];
+    [self setupGroup2];
 }
 
 - (void)setupGroup0
@@ -135,6 +136,8 @@
     JHCommonCell *cell = [JHCommonCell cellWithTableView:tableView];
     JHCommonGroup *group = self.groups[indexPath.section];
     cell.item = group.items[indexPath.row];
+    // 设置cell所处的行号 和 所处组的总行数
+    [cell setIndexPath:indexPath rowsInSection:group.items.count];
     return cell;
 }
 
