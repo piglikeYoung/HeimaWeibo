@@ -6,8 +6,8 @@
 //  Copyright (c) 2015年 jinheng. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "JHCommonViewController.h"
 
-@interface JHProfileViewController : UITableViewController
+@interface JHProfileViewController : JHCommonViewController
 
 @end

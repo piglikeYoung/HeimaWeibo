@@ -17,29 +17,8 @@
 #import "HMOneViewController.h"
 #import "HMTwoViewController.h"
 
-@interface JHDiscoverViewController ()
-
-@property (strong , nonatomic) NSMutableArray *groups;
-
-@end
 
 @implementation JHDiscoverViewController
-
-- (NSMutableArray *)groups
-{
-    if (_groups == nil) {
-        self.groups = [NSMutableArray array];
-    }
-    
-    return _groups;
-}
-
-/** 屏蔽tableView的样式 */
-- (id)init
-{
-    return [self initWithStyle:UITableViewStyleGrouped];
-}
-
 
 
 - (void)viewDidLoad {
@@ -50,15 +29,10 @@
     searchBar.width = 300;
     searchBar.height = 30;
     self.navigationItem.titleView = searchBar;
+    
+    
     // 初始化模型数据
     [self setupGroups];
-    
-    // 设置tableView属性
-    self.tableView.backgroundColor = JHGlobalBg;
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.tableView.sectionFooterHeight = 0;
-    self.tableView.sectionHeaderHeight = JHStatusCellInset;
-    self.tableView.contentInset = UIEdgeInsetsMake(JHStatusCellInset - 35, 0, 0, 0);
 }
 
 
@@ -138,46 +112,5 @@
     group.items = @[video, music, movie, cast, more];
 }
 
-
-#pragma mark - Table view data source
-- (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return self.groups.count;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    JHCommonGroup *group = self.groups[section];
-    return group.items.count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    JHCommonCell *cell = [JHCommonCell cellWithTableView:tableView];
-    JHCommonGroup *group = self.groups[indexPath.section];
-    cell.item = group.items[indexPath.row];
-    // 设置cell所处的行号 和 所处组的总行数
-    [cell setIndexPath:indexPath rowsInSection:group.items.count];
-    return cell;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    //1.取出这行对应的item模型
-    JHCommonGroup *group=self.groups[indexPath.section];
-    JHCommonItem *item=group.items[indexPath.row];
-    
-    //2.判断有无需要跳转的控制器
-    if (item.destVcClass) {
-        UIViewController *desrVc=[[item.destVcClass alloc]init];
-        desrVc.title=item.title;
-        [self.navigationController pushViewController:desrVc animated:YES];
-    }
-    
-    // 3.判断是否有执行的操作
-    if (item.operation) {
-        item.operation();
-    }
-}
 
 @end

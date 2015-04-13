@@ -138,6 +138,9 @@
 		7DE782F11ADBCB4800D492E6 /* HMOneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DE782EC1ADBCB4800D492E6 /* HMOneViewController.xib */; };
 		7DE782F21ADBCB4800D492E6 /* HMTwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE782EE1ADBCB4800D492E6 /* HMTwoViewController.m */; };
 		7DE782F31ADBCB4800D492E6 /* HMTwoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DE782EF1ADBCB4800D492E6 /* HMTwoViewController.xib */; };
+		7DE782F61ADBD48800D492E6 /* JHCommonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE782F51ADBD48800D492E6 /* JHCommonViewController.m */; };
+		7DE782F91ADBD8D700D492E6 /* JHSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE782F81ADBD8D700D492E6 /* JHSettingViewController.m */; };
+		7DE782FC1ADBD96800D492E6 /* JHGeneralSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE782FB1ADBD96800D492E6 /* JHGeneralSettingViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -409,6 +412,12 @@
 		7DE782ED1ADBCB4800D492E6 /* HMTwoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMTwoViewController.h; sourceTree = "<group>"; };
 		7DE782EE1ADBCB4800D492E6 /* HMTwoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMTwoViewController.m; sourceTree = "<group>"; };
 		7DE782EF1ADBCB4800D492E6 /* HMTwoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMTwoViewController.xib; sourceTree = "<group>"; };
+		7DE782F41ADBD48800D492E6 /* JHCommonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHCommonViewController.h; sourceTree = "<group>"; };
+		7DE782F51ADBD48800D492E6 /* JHCommonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHCommonViewController.m; sourceTree = "<group>"; };
+		7DE782F71ADBD8D700D492E6 /* JHSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHSettingViewController.h; sourceTree = "<group>"; };
+		7DE782F81ADBD8D700D492E6 /* JHSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHSettingViewController.m; sourceTree = "<group>"; };
+		7DE782FA1ADBD96800D492E6 /* JHGeneralSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHGeneralSettingViewController.h; sourceTree = "<group>"; };
+		7DE782FB1ADBD96800D492E6 /* JHGeneralSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHGeneralSettingViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -801,6 +810,8 @@
 				7DC4544F1AC68EF200ED9410 /* JHTabBarViewController.m */,
 				7D672EB51AC77B90004B5B4C /* JHNavigationController.h */,
 				7D672EB61AC77B90004B5B4C /* JHNavigationController.m */,
+				7DE782F41ADBD48800D492E6 /* JHCommonViewController.h */,
+				7DE782F51ADBD48800D492E6 /* JHCommonViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -905,6 +916,10 @@
 			children = (
 				7DC4545A1AC68FDF00ED9410 /* JHProfileViewController.h */,
 				7DC4545B1AC68FDF00ED9410 /* JHProfileViewController.m */,
+				7DE782F71ADBD8D700D492E6 /* JHSettingViewController.h */,
+				7DE782F81ADBD8D700D492E6 /* JHSettingViewController.m */,
+				7DE782FA1ADBD96800D492E6 /* JHGeneralSettingViewController.h */,
+				7DE782FB1ADBD96800D492E6 /* JHGeneralSettingViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1276,6 +1291,7 @@
 				7DC7BD5B1AD7B8BA001F94BA /* JHEmotionPopView.m in Sources */,
 				7DBB54511ACD4268003E39F6 /* SDWebImagePrefetcher.m in Sources */,
 				7DCBE4311ACE1C7900A9B039 /* JHPhoto.m in Sources */,
+				7DE782F61ADBD48800D492E6 /* JHCommonViewController.m in Sources */,
 				7DBB53E21ACCE42A003E39F6 /* AFHTTPRequestOperation.m in Sources */,
 				7DCB7E0A1AD21BA6001650F4 /* JHSendStatusParam.m in Sources */,
 				7D2F47DD1AD91EE40000611F /* JHEmotionAttachment.m in Sources */,
@@ -1330,6 +1346,7 @@
 				7DBE0FC21AD5697700587EC6 /* MJPhoto.m in Sources */,
 				7DBB544A1ACD4268003E39F6 /* NSData+ImageContentType.m in Sources */,
 				7DBE0FC51AD5697700587EC6 /* MJPhotoLoadingView.m in Sources */,
+				7DE782FC1ADBD96800D492E6 /* JHGeneralSettingViewController.m in Sources */,
 				7DC012281ACE9D340006D8F6 /* JHComposeToolbar.m in Sources */,
 				7DBB53E31ACCE42A003E39F6 /* AFHTTPRequestOperationManager.m in Sources */,
 				7D672EB71AC77B90004B5B4C /* JHNavigationController.m in Sources */,
@@ -1355,6 +1372,7 @@
 				7DCB7E161AD21D36001650F4 /* JHBaseParam.m in Sources */,
 				7DCBE4491ACE2C5000A9B039 /* NSObject+MJCoding.m in Sources */,
 				7DC7BD521AD74A2F001F94BA /* JHEmotionGridView.m in Sources */,
+				7DE782F91ADBD8D700D492E6 /* JHSettingViewController.m in Sources */,
 				7DBB54491ACD4268003E39F6 /* MKAnnotationView+WebCache.m in Sources */,
 				7DCB7E261AD28669001650F4 /* JHStatusOriginalView.m in Sources */,
 				7DCBE44E1ACE636D00A9B039 /* JHLoadMoreFooter.m in Sources */,
