@@ -130,6 +130,10 @@
 		7DE782D61ADB431900D492E6 /* JHCommonGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE782D51ADB431900D492E6 /* JHCommonGroup.m */; };
 		7DE782D91ADB436500D492E6 /* JHCommonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE782D81ADB436500D492E6 /* JHCommonItem.m */; };
 		7DE782DC1ADB4D0E00D492E6 /* JHCommonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE782DB1ADB4D0E00D492E6 /* JHCommonCell.m */; };
+		7DE782DF1ADB945500D492E6 /* JHCommonArrowItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE782DE1ADB945500D492E6 /* JHCommonArrowItem.m */; };
+		7DE782E21ADB947A00D492E6 /* JHCommonLabelItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE782E11ADB947A00D492E6 /* JHCommonLabelItem.m */; };
+		7DE782E51ADB949D00D492E6 /* JHCommonSwitchItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE782E41ADB949D00D492E6 /* JHCommonSwitchItem.m */; };
+		7DE782E81ADB971900D492E6 /* JHBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE782E71ADB971900D492E6 /* JHBadgeView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -387,6 +391,14 @@
 		7DE782D81ADB436500D492E6 /* JHCommonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHCommonItem.m; sourceTree = "<group>"; };
 		7DE782DA1ADB4D0E00D492E6 /* JHCommonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHCommonCell.h; sourceTree = "<group>"; };
 		7DE782DB1ADB4D0E00D492E6 /* JHCommonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHCommonCell.m; sourceTree = "<group>"; };
+		7DE782DD1ADB945500D492E6 /* JHCommonArrowItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHCommonArrowItem.h; sourceTree = "<group>"; };
+		7DE782DE1ADB945500D492E6 /* JHCommonArrowItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHCommonArrowItem.m; sourceTree = "<group>"; };
+		7DE782E01ADB947A00D492E6 /* JHCommonLabelItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHCommonLabelItem.h; sourceTree = "<group>"; };
+		7DE782E11ADB947A00D492E6 /* JHCommonLabelItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHCommonLabelItem.m; sourceTree = "<group>"; };
+		7DE782E31ADB949D00D492E6 /* JHCommonSwitchItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHCommonSwitchItem.h; sourceTree = "<group>"; };
+		7DE782E41ADB949D00D492E6 /* JHCommonSwitchItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHCommonSwitchItem.m; sourceTree = "<group>"; };
+		7DE782E61ADB971900D492E6 /* JHBadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHBadgeView.h; sourceTree = "<group>"; };
+		7DE782E71ADB971900D492E6 /* JHBadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHBadgeView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -814,6 +826,8 @@
 				7DC8D1181ACA669600A78DF6 /* JHTabBar.m */,
 				7DE782DA1ADB4D0E00D492E6 /* JHCommonCell.h */,
 				7DE782DB1ADB4D0E00D492E6 /* JHCommonCell.m */,
+				7DE782E61ADB971900D492E6 /* JHBadgeView.h */,
+				7DE782E71ADB971900D492E6 /* JHBadgeView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1086,6 +1100,12 @@
 				7DE782D51ADB431900D492E6 /* JHCommonGroup.m */,
 				7DE782D71ADB436500D492E6 /* JHCommonItem.h */,
 				7DE782D81ADB436500D492E6 /* JHCommonItem.m */,
+				7DE782DD1ADB945500D492E6 /* JHCommonArrowItem.h */,
+				7DE782DE1ADB945500D492E6 /* JHCommonArrowItem.m */,
+				7DE782E01ADB947A00D492E6 /* JHCommonLabelItem.h */,
+				7DE782E11ADB947A00D492E6 /* JHCommonLabelItem.m */,
+				7DE782E31ADB949D00D492E6 /* JHCommonSwitchItem.h */,
+				7DE782E41ADB949D00D492E6 /* JHCommonSwitchItem.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1198,6 +1218,7 @@
 				7DC454561AC68F8600ED9410 /* JHHomeViewController.m in Sources */,
 				7DCBE4461ACE2C5000A9B039 /* MJFoundation.m in Sources */,
 				7DBE0FC81AD5697700587EC6 /* MJPhotoView.m in Sources */,
+				7DE782E51ADB949D00D492E6 /* JHCommonSwitchItem.m in Sources */,
 				7D2F47E11AD922600000611F /* RegexKitLite.m in Sources */,
 				7DC7BD551AD74BCF001F94BA /* NSString+Emoji.m in Sources */,
 				7DCBE4481ACE2C5000A9B039 /* MJType.m in Sources */,
@@ -1208,6 +1229,7 @@
 				7DC634161AC9443B00F64008 /* JHTitleButton.m in Sources */,
 				7DBB54541ACD4268003E39F6 /* UIImage+MultiFormat.m in Sources */,
 				7DBB53EA1ACCE42A003E39F6 /* AFURLSessionManager.m in Sources */,
+				7DE782DF1ADB945500D492E6 /* JHCommonArrowItem.m in Sources */,
 				7DBB544E1ACD4268003E39F6 /* SDWebImageDownloader.m in Sources */,
 				7DC454501AC68EF200ED9410 /* JHTabBarViewController.m in Sources */,
 				7DBB54551ACD4268003E39F6 /* UIImage+WebP.m in Sources */,
@@ -1218,6 +1240,7 @@
 				7DC155CA1AD361FB00193925 /* JHStatusOriginalFrame.m in Sources */,
 				7D672EBD1AC7871C004B5B4C /* UIView+Extension.m in Sources */,
 				7DBB53E61ACCE42A003E39F6 /* AFSecurityPolicy.m in Sources */,
+				7DE782E81ADB971900D492E6 /* JHBadgeView.m in Sources */,
 				7DCB7E131AD21BBB001650F4 /* JHUserInfoResult.m in Sources */,
 				7DC155C71AD361E000193925 /* JHStatusDetailFrame.m in Sources */,
 				7DBE0FC91AD5697700587EC6 /* SDWebImageManager+MJ.m in Sources */,
@@ -1293,6 +1316,7 @@
 				7DCB7E1C1AD22E74001650F4 /* JHUnreadCountResult.m in Sources */,
 				7DCB7E191AD22E47001650F4 /* JHUnreadCountParam.m in Sources */,
 				7DCB26F61ACBA71900B71AD2 /* JHNewfeatureViewController.m in Sources */,
+				7DE782E21ADB947A00D492E6 /* JHCommonLabelItem.m in Sources */,
 				7DCB7E231AD28646001650F4 /* JHStatusDetailView.m in Sources */,
 				7DBB53E51ACCE42A003E39F6 /* AFNetworkReachabilityManager.m in Sources */,
 				7DC65C7A1AD0C0BE00BE37A0 /* JHHttpTool.m in Sources */,

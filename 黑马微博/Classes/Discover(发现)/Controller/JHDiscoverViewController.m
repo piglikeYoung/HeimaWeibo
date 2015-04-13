@@ -11,6 +11,9 @@
 #import "JHCommonGroup.h"
 #import "JHCommonItem.h"
 #import "JHCommonCell.h"
+#import "JHCommonLabelItem.h"
+#import "JHCommonSwitchItem.h"
+#import "JHCommonArrowItem.h"
 
 @interface JHDiscoverViewController ()
 
@@ -79,10 +82,11 @@
     group.footer = @"第0组尾部的详细信息";
     
     // 3.设置组的所有行数据
-    JHCommonItem *hotStatus = [JHCommonItem itemWithTitle:@"热门微博" icon:@"hot_status"];
+    JHCommonArrowItem *hotStatus = [JHCommonArrowItem itemWithTitle:@"热门微博" icon:@"hot_status"];
     hotStatus.subtitle = @"笑话，娱乐，神最右都搬到这啦";
     
-    JHCommonItem *findPeople = [JHCommonItem itemWithTitle:@"找人" icon:@"find_people"];
+    JHCommonArrowItem *findPeople = [JHCommonArrowItem itemWithTitle:@"找人" icon:@"find_people"];
+    findPeople.badgeValue = @"N";
     findPeople.subtitle = @"名人、有意思的人尽在这里";
     
     group.items = @[hotStatus, findPeople];
@@ -96,8 +100,10 @@
     
     // 2.设置组的所有行数据
     JHCommonItem *gameCenter = [JHCommonItem itemWithTitle:@"游戏中心" icon:@"game_center"];
-    JHCommonItem *near = [JHCommonItem itemWithTitle:@"周边" icon:@"near"];
+    JHCommonLabelItem *near = [JHCommonLabelItem itemWithTitle:@"周边" icon:@"near"];
+    near.text = @"测试文字";
     JHCommonItem *app = [JHCommonItem itemWithTitle:@"应用" icon:@"app"];
+    app.badgeValue = @"10";
     
     group.items = @[gameCenter, near, app];
 }
@@ -109,11 +115,14 @@
     [self.groups addObject:group];
     
     // 2.设置组的所有行数据
-    JHCommonItem *video = [JHCommonItem itemWithTitle:@"视频" icon:@"video"];
-    JHCommonItem *music = [JHCommonItem itemWithTitle:@"音乐" icon:@"music"];
+    JHCommonSwitchItem *video = [JHCommonSwitchItem itemWithTitle:@"视频" icon:@"video"];
+    JHCommonSwitchItem *music = [JHCommonSwitchItem itemWithTitle:@"音乐" icon:@"music"];
     JHCommonItem *movie = [JHCommonItem itemWithTitle:@"电影" icon:@"movie"];
-    JHCommonItem *cast = [JHCommonItem itemWithTitle:@"播客" icon:@"cast"];
-    JHCommonItem *more = [JHCommonItem itemWithTitle:@"更多" icon:@"more"];
+    JHCommonLabelItem *cast = [JHCommonLabelItem itemWithTitle:@"播客" icon:@"cast"];
+    cast.badgeValue = @"500";
+    cast.subtitle = @"(10)";
+    cast.text = @"axxxx";
+    JHCommonArrowItem *more = [JHCommonArrowItem itemWithTitle:@"更多" icon:@"more"];
     
     group.items = @[video, music, movie, cast, more];
 }

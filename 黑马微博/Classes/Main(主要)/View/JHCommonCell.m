@@ -8,8 +8,67 @@
 
 #import "JHCommonCell.h"
 #import "JHCommonItem.h"
+#import "JHCommonArrowItem.h"
+#import "JHCommonSwitchItem.h"
+#import "JHCommonLabelItem.h"
+#import "JHBadgeView.h"
+
+@interface JHCommonCell()
+/**
+ *  箭头
+ */
+@property (strong, nonatomic) UIImageView *rightArrow;
+/**
+ *  开关
+ */
+@property (strong, nonatomic) UISwitch *rightSwitch;
+/**
+ *  标签
+ */
+@property (strong, nonatomic) UILabel *rightLabel;
+/**
+ *  提醒数字
+ */
+@property (strong, nonatomic) JHBadgeView *bageView;
+
+@end
 
 @implementation JHCommonCell
+
+#pragma mark - 懒加载右边的view
+- (UIImageView *)rightArrow
+{
+    if (_rightArrow == nil) {
+        self.rightArrow = [[UIImageView alloc] initWithImage:[UIImage imageWithName:@"common_icon_arrow"]];
+    }
+    return _rightArrow;
+}
+
+- (UISwitch *)rightSwitch
+{
+    if (_rightSwitch == nil) {
+        self.rightSwitch = [[UISwitch alloc] init];
+    }
+    return _rightSwitch;
+}
+
+- (UILabel *)rightLabel
+{
+    if (_rightLabel == nil) {
+        self.rightLabel = [[UILabel alloc] init];
+        self.rightLabel.textColor = [UIColor lightGrayColor];
+        self.rightLabel.font = [UIFont systemFontOfSize:13];
+    }
+    return _rightLabel;
+}
+
+- (JHBadgeView *)bageView
+{
+    if (_bageView == nil) {
+        self.bageView = [[JHBadgeView alloc] init];
+    }
+    return _bageView;
+}
 
 + (instancetype)cellWithTableView:(UITableView *)tableView
 {
@@ -45,7 +104,7 @@
     [super layoutSubviews];
     
     // 调整子标题的x
-    self.detailTextLabel.x = CGRectGetMaxX(self.textLabel.frame) + 10;
+    self.detailTextLabel.x = CGRectGetMaxX(self.textLabel.frame) + 3;
 }
 
 #pragma mark - setter
@@ -84,6 +143,25 @@
     self.imageView.image = [UIImage imageWithName:item.icon];
     self.textLabel.text = item.title;
     self.detailTextLabel.text = item.subtitle;
+    
+    // 2.设置右边的内容
+    if (item.badgeValue) { // 紧急情况：右边有提醒数字
+        self.bageView.badgeValue = item.badgeValue;
+        self.accessoryView = self.bageView;
+    }else if ([item isKindOfClass:[JHCommonArrowItem class]]) {
+        self.accessoryView = self.rightArrow;
+    } else if ([item isKindOfClass:[JHCommonSwitchItem class]]) {
+        self.accessoryView = self.rightSwitch;
+    } else if ([item isKindOfClass:[JHCommonLabelItem class]]) {
+        JHCommonLabelItem *labelItem = (JHCommonLabelItem *)item;
+        // 设置文字
+        self.rightLabel.text = labelItem.text;
+        // 根据文字计算尺寸
+        self.rightLabel.size = [labelItem.text sizeWithFont:self.rightLabel.font];
+        self.accessoryView = self.rightLabel;
+    } else { // 取消右边的内容
+        self.accessoryView = nil;
+    }
 }
 
 @end
