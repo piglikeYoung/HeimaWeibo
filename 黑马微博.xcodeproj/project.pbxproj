@@ -127,6 +127,9 @@
 		7DCBE44B1ACE2C5000A9B039 /* NSObject+MJKeyValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCBE4441ACE2C5000A9B039 /* NSObject+MJKeyValue.m */; };
 		7DCBE44E1ACE636D00A9B039 /* JHLoadMoreFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCBE44D1ACE636D00A9B039 /* JHLoadMoreFooter.m */; };
 		7DCBE4501ACE638100A9B039 /* JHLoadMoreFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DCBE44F1ACE638100A9B039 /* JHLoadMoreFooter.xib */; };
+		7DE782D61ADB431900D492E6 /* JHCommonGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE782D51ADB431900D492E6 /* JHCommonGroup.m */; };
+		7DE782D91ADB436500D492E6 /* JHCommonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE782D81ADB436500D492E6 /* JHCommonItem.m */; };
+		7DE782DC1ADB4D0E00D492E6 /* JHCommonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE782DB1ADB4D0E00D492E6 /* JHCommonCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -378,6 +381,12 @@
 		7DCBE44C1ACE636D00A9B039 /* JHLoadMoreFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHLoadMoreFooter.h; sourceTree = "<group>"; };
 		7DCBE44D1ACE636D00A9B039 /* JHLoadMoreFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHLoadMoreFooter.m; sourceTree = "<group>"; };
 		7DCBE44F1ACE638100A9B039 /* JHLoadMoreFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JHLoadMoreFooter.xib; sourceTree = "<group>"; };
+		7DE782D41ADB431900D492E6 /* JHCommonGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHCommonGroup.h; sourceTree = "<group>"; };
+		7DE782D51ADB431900D492E6 /* JHCommonGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHCommonGroup.m; sourceTree = "<group>"; };
+		7DE782D71ADB436500D492E6 /* JHCommonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHCommonItem.h; sourceTree = "<group>"; };
+		7DE782D81ADB436500D492E6 /* JHCommonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHCommonItem.m; sourceTree = "<group>"; };
+		7DE782DA1ADB4D0E00D492E6 /* JHCommonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHCommonCell.h; sourceTree = "<group>"; };
+		7DE782DB1ADB4D0E00D492E6 /* JHCommonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHCommonCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -776,6 +785,7 @@
 		7DC4543A1AC68CE900ED9410 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7DE782D31ADB42DA00D492E6 /* Common */,
 				7DCB7E0D1AD21BBB001650F4 /* UserInfo */,
 				7DCB7E0C1AD21BB3001650F4 /* UnreadCount */,
 				7DCB7E021AD21BA6001650F4 /* SendStatus */,
@@ -802,6 +812,8 @@
 			children = (
 				7DC8D1171ACA669600A78DF6 /* JHTabBar.h */,
 				7DC8D1181ACA669600A78DF6 /* JHTabBar.m */,
+				7DE782DA1ADB4D0E00D492E6 /* JHCommonCell.h */,
+				7DE782DB1ADB4D0E00D492E6 /* JHCommonCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1067,6 +1079,17 @@
 			path = MJExtension;
 			sourceTree = "<group>";
 		};
+		7DE782D31ADB42DA00D492E6 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				7DE782D41ADB431900D492E6 /* JHCommonGroup.h */,
+				7DE782D51ADB431900D492E6 /* JHCommonGroup.m */,
+				7DE782D71ADB436500D492E6 /* JHCommonItem.h */,
+				7DE782D81ADB436500D492E6 /* JHCommonItem.m */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1191,6 +1214,7 @@
 				7DCB7E2C1AD28697001650F4 /* JHStatusToolbar.m in Sources */,
 				7DBB53C31ACCD2C9003E39F6 /* JHOAuthViewController.m in Sources */,
 				7DBB53F71ACD3E57003E39F6 /* Foundation+Log.m in Sources */,
+				7DE782DC1ADB4D0E00D492E6 /* JHCommonCell.m in Sources */,
 				7DC155CA1AD361FB00193925 /* JHStatusOriginalFrame.m in Sources */,
 				7D672EBD1AC7871C004B5B4C /* UIView+Extension.m in Sources */,
 				7DBB53E61ACCE42A003E39F6 /* AFSecurityPolicy.m in Sources */,
@@ -1213,6 +1237,7 @@
 				7DBB53CD1ACCD354003E39F6 /* MBProgressHUD.m in Sources */,
 				7DCBE44A1ACE2C5000A9B039 /* NSObject+MJIvar.m in Sources */,
 				7DCB7E121AD21BBB001650F4 /* JHUserInfoParam.m in Sources */,
+				7DE782D91ADB436500D492E6 /* JHCommonItem.m in Sources */,
 				7DC932D91AC913850025291B /* JHSearchBar.m in Sources */,
 				7DCB7E0B1AD21BA6001650F4 /* JHSendStatusResult.m in Sources */,
 				7DCB7E201AD28600001650F4 /* JHStatusCell.m in Sources */,
@@ -1261,6 +1286,7 @@
 				7D672EB71AC77B90004B5B4C /* JHNavigationController.m in Sources */,
 				7DCBE44B1ACE2C5000A9B039 /* NSObject+MJKeyValue.m in Sources */,
 				7DC634191AC9461A00F64008 /* JHPopMenu.m in Sources */,
+				7DE782D61ADB431900D492E6 /* JHCommonGroup.m in Sources */,
 				7DCBE4471ACE2C5000A9B039 /* MJIvar.m in Sources */,
 				7DBB54521ACD4268003E39F6 /* UIButton+WebCache.m in Sources */,
 				7DCB26E81ACB956000B71AD2 /* JHComposeViewController.m in Sources */,
