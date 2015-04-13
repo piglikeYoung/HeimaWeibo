@@ -134,6 +134,10 @@
 		7DE782E21ADB947A00D492E6 /* JHCommonLabelItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE782E11ADB947A00D492E6 /* JHCommonLabelItem.m */; };
 		7DE782E51ADB949D00D492E6 /* JHCommonSwitchItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE782E41ADB949D00D492E6 /* JHCommonSwitchItem.m */; };
 		7DE782E81ADB971900D492E6 /* JHBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE782E71ADB971900D492E6 /* JHBadgeView.m */; };
+		7DE782F01ADBCB4800D492E6 /* HMOneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE782EB1ADBCB4800D492E6 /* HMOneViewController.m */; };
+		7DE782F11ADBCB4800D492E6 /* HMOneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DE782EC1ADBCB4800D492E6 /* HMOneViewController.xib */; };
+		7DE782F21ADBCB4800D492E6 /* HMTwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE782EE1ADBCB4800D492E6 /* HMTwoViewController.m */; };
+		7DE782F31ADBCB4800D492E6 /* HMTwoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DE782EF1ADBCB4800D492E6 /* HMTwoViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -399,6 +403,12 @@
 		7DE782E41ADB949D00D492E6 /* JHCommonSwitchItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHCommonSwitchItem.m; sourceTree = "<group>"; };
 		7DE782E61ADB971900D492E6 /* JHBadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHBadgeView.h; sourceTree = "<group>"; };
 		7DE782E71ADB971900D492E6 /* JHBadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHBadgeView.m; sourceTree = "<group>"; };
+		7DE782EA1ADBCB4800D492E6 /* HMOneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMOneViewController.h; sourceTree = "<group>"; };
+		7DE782EB1ADBCB4800D492E6 /* HMOneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMOneViewController.m; sourceTree = "<group>"; };
+		7DE782EC1ADBCB4800D492E6 /* HMOneViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMOneViewController.xib; sourceTree = "<group>"; };
+		7DE782ED1ADBCB4800D492E6 /* HMTwoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMTwoViewController.h; sourceTree = "<group>"; };
+		7DE782EE1ADBCB4800D492E6 /* HMTwoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMTwoViewController.m; sourceTree = "<group>"; };
+		7DE782EF1ADBCB4800D492E6 /* HMTwoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMTwoViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -654,6 +664,7 @@
 		7DC4542E1AC68CE900ED9410 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				7DE782E91ADBCB3600D492E6 /* Temp */,
 				7DBB53BF1ACCD2C9003E39F6 /* OAuth(授权) */,
 				7DCB26EF1ACBA6EB00B71AD2 /* Newfeature(新特性) */,
 				7DCB26E21ACB956000B71AD2 /* Compose(发微博) */,
@@ -1110,6 +1121,19 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		7DE782E91ADBCB3600D492E6 /* Temp */ = {
+			isa = PBXGroup;
+			children = (
+				7DE782EA1ADBCB4800D492E6 /* HMOneViewController.h */,
+				7DE782EB1ADBCB4800D492E6 /* HMOneViewController.m */,
+				7DE782EC1ADBCB4800D492E6 /* HMOneViewController.xib */,
+				7DE782ED1ADBCB4800D492E6 /* HMTwoViewController.h */,
+				7DE782EE1ADBCB4800D492E6 /* HMTwoViewController.m */,
+				7DE782EF1ADBCB4800D492E6 /* HMTwoViewController.xib */,
+			);
+			name = Temp;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1195,6 +1219,8 @@
 				7DC7BD5D1AD7B92A001F94BA /* JHEmotionPopView.xib in Resources */,
 				7DBB53CC1ACCD354003E39F6 /* MBProgressHUD.bundle in Resources */,
 				7DBE0FC31AD5697700587EC6 /* MJPhotoBrowser.bundle in Resources */,
+				7DE782F11ADBCB4800D492E6 /* HMOneViewController.xib in Resources */,
+				7DE782F31ADBCB4800D492E6 /* HMTwoViewController.xib in Resources */,
 				7DCBE4501ACE638100A9B039 /* JHLoadMoreFooter.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1309,12 +1335,14 @@
 				7D672EB71AC77B90004B5B4C /* JHNavigationController.m in Sources */,
 				7DCBE44B1ACE2C5000A9B039 /* NSObject+MJKeyValue.m in Sources */,
 				7DC634191AC9461A00F64008 /* JHPopMenu.m in Sources */,
+				7DE782F21ADBCB4800D492E6 /* HMTwoViewController.m in Sources */,
 				7DE782D61ADB431900D492E6 /* JHCommonGroup.m in Sources */,
 				7DCBE4471ACE2C5000A9B039 /* MJIvar.m in Sources */,
 				7DBB54521ACD4268003E39F6 /* UIButton+WebCache.m in Sources */,
 				7DCB26E81ACB956000B71AD2 /* JHComposeViewController.m in Sources */,
 				7DCB7E1C1AD22E74001650F4 /* JHUnreadCountResult.m in Sources */,
 				7DCB7E191AD22E47001650F4 /* JHUnreadCountParam.m in Sources */,
+				7DE782F01ADBCB4800D492E6 /* HMOneViewController.m in Sources */,
 				7DCB26F61ACBA71900B71AD2 /* JHNewfeatureViewController.m in Sources */,
 				7DE782E21ADB947A00D492E6 /* JHCommonLabelItem.m in Sources */,
 				7DCB7E231AD28646001650F4 /* JHStatusDetailView.m in Sources */,

@@ -14,6 +14,8 @@
 #import "JHCommonLabelItem.h"
 #import "JHCommonSwitchItem.h"
 #import "JHCommonArrowItem.h"
+#import "HMOneViewController.h"
+#import "HMTwoViewController.h"
 
 @interface JHDiscoverViewController ()
 
@@ -116,9 +118,18 @@
     
     // 2.设置组的所有行数据
     JHCommonSwitchItem *video = [JHCommonSwitchItem itemWithTitle:@"视频" icon:@"video"];
+    video.operation = ^{
+        JHLog(@"----点击了视频---");
+    };
     JHCommonSwitchItem *music = [JHCommonSwitchItem itemWithTitle:@"音乐" icon:@"music"];
+    music.operation = ^{
+        JHLog(@"----点击了音乐---");
+    };
+
     JHCommonItem *movie = [JHCommonItem itemWithTitle:@"电影" icon:@"movie"];
+    movie.destVcClass = [HMOneViewController class];
     JHCommonLabelItem *cast = [JHCommonLabelItem itemWithTitle:@"播客" icon:@"cast"];
+    cast.destVcClass = [HMTwoViewController class];
     cast.badgeValue = @"500";
     cast.subtitle = @"(10)";
     cast.text = @"axxxx";
@@ -148,6 +159,25 @@
     // 设置cell所处的行号 和 所处组的总行数
     [cell setIndexPath:indexPath rowsInSection:group.items.count];
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    //1.取出这行对应的item模型
+    JHCommonGroup *group=self.groups[indexPath.section];
+    JHCommonItem *item=group.items[indexPath.row];
+    
+    //2.判断有无需要跳转的控制器
+    if (item.destVcClass) {
+        UIViewController *desrVc=[[item.destVcClass alloc]init];
+        desrVc.title=item.title;
+        [self.navigationController pushViewController:desrVc animated:YES];
+    }
+    
+    // 3.判断是否有执行的操作
+    if (item.operation) {
+        item.operation();
+    }
 }
 
 @end
