@@ -188,4 +188,29 @@
     }
 }
 
+/**
+ *  所有的点击事件都先调用这个方法
+ *  这个方法会返回能够处理事件的控件
+ *  这个方法可以用来拦截所有触摸事件
+ *  @param point 触摸点
+ */
+- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event
+{
+    // 触摸点在链接上的本类处理，不在链接上的本类不处理
+    if ([self touchingLinkWithPoint:point]) {
+        return self;
+    }
+    return nil;
+}
+
+
+//// 这个方法优先于hitTest被调用，它询问点是否在它身上，yes表示在，no表示不在
+//- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event
+//{
+//    if ([self touchingLinkWithPoint:point]) {
+//        return YES;
+//    }
+//    return NO;
+//}
+
 @end

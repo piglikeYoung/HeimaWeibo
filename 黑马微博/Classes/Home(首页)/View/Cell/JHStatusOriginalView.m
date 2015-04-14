@@ -112,7 +112,17 @@
     
     // 2.正文（内容）
 //    self.textLabel.text = status.text;
-    self.textLabel.attributedText = status.attributedText;
+    // 如果是转发微博的正文，不显示用户名
+    // 隐藏最前面的昵称
+    if (status.isRetweeted){
+        NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithAttributedString:status.attributedText];
+        int len = user.name.length + 4;// 有2个空格和一个:
+        [text deleteCharactersInRange:NSMakeRange(0, len)];
+        self.textLabel.attributedText = text;
+    } else {
+        self.textLabel.attributedText = status.attributedText;
+    }
+
     self.textLabel.frame = originalFrame.textFrame;
     
 #warning 需要时刻根据现在的时间字符串来计算时间label的frame

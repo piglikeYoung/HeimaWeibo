@@ -29,6 +29,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // 清空弹出手势的代理，就可以恢复弹出手势
+    self.interactivePopGestureRecognizer.delegate = nil;
 }
 
 /**

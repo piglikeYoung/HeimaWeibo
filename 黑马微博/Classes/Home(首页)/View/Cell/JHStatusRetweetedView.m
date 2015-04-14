@@ -13,6 +13,7 @@
 #import "JHStatusPhotosView.h"
 #import "JHStatusLabel.h"
 #import "JHStatusRetweetedToolbar.h"
+#import "JHStatusDetailViewController.h"
 
 @interface JHStatusRetweetedView()
 
@@ -103,6 +104,20 @@
     } else {
         self.toolbar.hidden = YES;
     }
+}
+
+// 添加手势监听器
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    // 跳转控制器
+    UITabBarController *tabbarVc = (UITabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
+    // 当前选中的导航控制器
+    UINavigationController *nav = (UINavigationController *)tabbarVc.selectedViewController;
+    
+    // push微博详情控制器
+    JHStatusDetailViewController *detailVc = [[JHStatusDetailViewController alloc] init];
+    detailVc.status = self.retweetedFrame.retweetedStatus;
+    [nav pushViewController:detailVc animated:YES];
 }
 
 //- (void)setFrame:(CGRect)frame
