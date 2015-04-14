@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 @class JHStatus;
 
-@interface JHStatusDetailViewController : UITableViewController
+@interface JHStatusDetailViewController : UIViewController
 @property (nonatomic, strong) JHStatus *status;
 @end
