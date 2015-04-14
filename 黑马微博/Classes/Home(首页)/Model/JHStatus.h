@@ -46,4 +46,7 @@
 
 /** 	 BOOL 	是否转发微博*/
 @property (nonatomic, assign, getter = isRetweeted) BOOL retweeted;
+
+/** BOOL 是否展示JHStatusRetweetedToolbar工具条在转发微博下面 */
+@property (nonatomic, assign, getter = isDetail) BOOL detail;
 @end

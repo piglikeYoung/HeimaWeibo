@@ -26,6 +26,7 @@
 //    self.nameFrame = (CGRect){{nameX , nameY}, nameSize};
     
     // 2.正文
+    CGFloat h = 0;
     CGFloat textX = JHStatusCellInset;
     CGFloat textY = JHStatusCellInset * 0.5;
     CGFloat maxW = JHScreenW - 2 * textX;
@@ -33,31 +34,38 @@
     CGSize textSize = [retweetedStatus.attributedText boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin context:nil].size;
     self.textFrame = (CGRect){{textX, textY}, textSize};
     
+    h = CGRectGetMaxY(self.textFrame) + JHStatusCellInset;
     
     // 3.配图相册
-    CGFloat toolbarY = 0;
     if (retweetedStatus.pic_urls.count) {
         CGFloat photosX = textX;
         CGFloat photosY = CGRectGetMaxY(self.textFrame) + JHStatusCellInset;
         CGSize photosSize = [JHStatusPhotosView sizeWithPhotosCount:retweetedStatus.pic_urls.count];
         self.photosFrame = (CGRect){{photosX, photosY}, photosSize};
         
-        toolbarY = CGRectGetMaxY(self.photosFrame) + JHStatusCellInset;
-    } else {
-        toolbarY = CGRectGetMaxY(self.textFrame) + JHStatusCellInset;
+        h = CGRectGetMaxY(self.photosFrame) + JHStatusCellInset;
     }
     
+    
     // 4.工具条
-    CGFloat toolbarW = 200;
-    CGFloat toolbarX = JHScreenW - toolbarW;
-    CGFloat toolbarH = 20;
-    self.toolbarFrame = CGRectMake(toolbarX, toolbarY, toolbarW, toolbarH);
+    if (retweetedStatus.isDetail) {// 展示在微博正文里面， 需要显示toolbar
+        CGFloat toolbarY = 0;
+        CGFloat toolbarW = 200;
+        CGFloat toolbarX = JHScreenW - toolbarW;
+        CGFloat toolbarH = 20;
+        if (retweetedStatus.pic_urls.count) {
+            toolbarY = CGRectGetMaxY(self.photosFrame) + JHStatusCellInset;
+        } else {
+            toolbarY = CGRectGetMaxY(self.textFrame) + JHStatusCellInset;
+        }
+        self.toolbarFrame = CGRectMake(toolbarX, toolbarY, toolbarW, toolbarH);
+        h = CGRectGetMaxY(self.toolbarFrame) + JHStatusCellInset;
+    }
     
     // 自己
     CGFloat x = 0;
     CGFloat y = 0; // 高度 = 原创微博最大的Y值
     CGFloat w = JHScreenW;
-    CGFloat h = CGRectGetMaxY(self.toolbarFrame) + JHStatusCellInset;
     self.frame = CGRectMake(x, y, w, h);
 }
 

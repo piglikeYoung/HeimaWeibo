@@ -96,8 +96,13 @@
     }
     
     // 4.工具条
-    self.toolbar.frame = retweetedFrame.toolbarFrame;
-    self.toolbar.status = retweetedFrame.retweetedStatus;
+    if (retweetedStatus.detail) {
+        self.toolbar.frame = retweetedFrame.toolbarFrame;
+        self.toolbar.status = retweetedFrame.retweetedStatus;
+        self.toolbar.hidden = NO;
+    } else {
+        self.toolbar.hidden = YES;
+    }
 }
 
 //- (void)setFrame:(CGRect)frame
