@@ -25,4 +25,9 @@
     [self postWithUrl:@"https://upload.api.weibo.com/2/statuses/upload.json" param:param formDataArray:formDataArray resultClass:[JHSendStatusResult class] success:success failure:failure];
 }
 
++ (void)commentsWithParam:(id)param success:(void (^)(JHCommentsResult *))success failure:(void (^)(NSError *))failure
+{
+    [self getWithUrl:@"https://api.weibo.com/2/comments/show.json" param:param resultClass:[JHCommentsResult class] success:success failure:failure];
+}
+
 @end

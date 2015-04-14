@@ -133,6 +133,9 @@
 		7DE148D91ADCC5DC0013028A /* JHStatusDetailBottomToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE148D81ADCC5DC0013028A /* JHStatusDetailBottomToolbar.m */; };
 		7DE148DC1ADCC64E0013028A /* JHStatusRetweetedToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE148DB1ADCC64E0013028A /* JHStatusRetweetedToolbar.m */; };
 		7DE148DE1ADCE1E60013028A /* JHStatusDetailTopToolbar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DE148DD1ADCE1E60013028A /* JHStatusDetailTopToolbar.xib */; };
+		7DE148E11ADCFE120013028A /* JHComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE148E01ADCFE120013028A /* JHComment.m */; };
+		7DE148E51ADD0A630013028A /* JHCommentsParam.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE148E41ADD0A630013028A /* JHCommentsParam.m */; };
+		7DE148E81ADD0A9C0013028A /* JHCommentsResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE148E71ADD0A9C0013028A /* JHCommentsResult.m */; };
 		7DE782D61ADB431900D492E6 /* JHCommonGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE782D51ADB431900D492E6 /* JHCommonGroup.m */; };
 		7DE782D91ADB436500D492E6 /* JHCommonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE782D81ADB436500D492E6 /* JHCommonItem.m */; };
 		7DE782DC1ADB4D0E00D492E6 /* JHCommonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE782DB1ADB4D0E00D492E6 /* JHCommonCell.m */; };
@@ -409,6 +412,12 @@
 		7DE148DA1ADCC64E0013028A /* JHStatusRetweetedToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHStatusRetweetedToolbar.h; sourceTree = "<group>"; };
 		7DE148DB1ADCC64E0013028A /* JHStatusRetweetedToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHStatusRetweetedToolbar.m; sourceTree = "<group>"; };
 		7DE148DD1ADCE1E60013028A /* JHStatusDetailTopToolbar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JHStatusDetailTopToolbar.xib; sourceTree = "<group>"; };
+		7DE148DF1ADCFE120013028A /* JHComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHComment.h; sourceTree = "<group>"; };
+		7DE148E01ADCFE120013028A /* JHComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHComment.m; sourceTree = "<group>"; };
+		7DE148E31ADD0A630013028A /* JHCommentsParam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHCommentsParam.h; sourceTree = "<group>"; };
+		7DE148E41ADD0A630013028A /* JHCommentsParam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHCommentsParam.m; sourceTree = "<group>"; };
+		7DE148E61ADD0A9C0013028A /* JHCommentsResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHCommentsResult.h; sourceTree = "<group>"; };
+		7DE148E71ADD0A9C0013028A /* JHCommentsResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHCommentsResult.m; sourceTree = "<group>"; };
 		7DE782D41ADB431900D492E6 /* JHCommonGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHCommonGroup.h; sourceTree = "<group>"; };
 		7DE782D51ADB431900D492E6 /* JHCommonGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHCommonGroup.m; sourceTree = "<group>"; };
 		7DE782D71ADB436500D492E6 /* JHCommonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHCommonItem.h; sourceTree = "<group>"; };
@@ -771,6 +780,8 @@
 				7DCBE4331ACE1CA300A9B039 /* JHStatus.m */,
 				7D6A41291AD9F80C0040B35A /* JHRegexResult.h */,
 				7D6A412A1AD9F80C0040B35A /* JHRegexResult.m */,
+				7DE148DF1ADCFE120013028A /* JHComment.h */,
+				7DE148E01ADCFE120013028A /* JHComment.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -838,6 +849,7 @@
 		7DC4543A1AC68CE900ED9410 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7DE148E21ADD0A330013028A /* Comments */,
 				7DE782D31ADB42DA00D492E6 /* Common */,
 				7DCB7E0D1AD21BBB001650F4 /* UserInfo */,
 				7DCB7E0C1AD21BB3001650F4 /* UnreadCount */,
@@ -1163,6 +1175,17 @@
 			path = Detail;
 			sourceTree = "<group>";
 		};
+		7DE148E21ADD0A330013028A /* Comments */ = {
+			isa = PBXGroup;
+			children = (
+				7DE148E31ADD0A630013028A /* JHCommentsParam.h */,
+				7DE148E41ADD0A630013028A /* JHCommentsParam.m */,
+				7DE148E61ADD0A9C0013028A /* JHCommentsResult.h */,
+				7DE148E71ADD0A9C0013028A /* JHCommentsResult.m */,
+			);
+			path = Comments;
+			sourceTree = "<group>";
+		};
 		7DE782D31ADB42DA00D492E6 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -1343,6 +1366,7 @@
 				7DCB7E0A1AD21BA6001650F4 /* JHSendStatusParam.m in Sources */,
 				7D2F47DD1AD91EE40000611F /* JHEmotionAttachment.m in Sources */,
 				7DCB7E091AD21BA6001650F4 /* JHFormData.m in Sources */,
+				7DE148E81ADD0A9C0013028A /* JHCommentsResult.m in Sources */,
 				7DC454531AC68F5F00ED9410 /* JHDiscoverViewController.m in Sources */,
 				7DC71B7C1AD611CF00328D02 /* JHEmotionKeyboard.m in Sources */,
 				7DC71B7F1AD6120D00328D02 /* JHEmotionListView.m in Sources */,
@@ -1352,6 +1376,7 @@
 				7DE782D91ADB436500D492E6 /* JHCommonItem.m in Sources */,
 				7DC932D91AC913850025291B /* JHSearchBar.m in Sources */,
 				7DCB7E0B1AD21BA6001650F4 /* JHSendStatusResult.m in Sources */,
+				7DE148E11ADCFE120013028A /* JHComment.m in Sources */,
 				7DCB7E201AD28600001650F4 /* JHStatusCell.m in Sources */,
 				7DCAD3AF1ACF75570035BDE6 /* JHComposePhotosView.m in Sources */,
 				7D2F47DA1AD8CE610000611F /* JHEmotionTextView.m in Sources */,
@@ -1416,6 +1441,7 @@
 				7DC65C7A1AD0C0BE00BE37A0 /* JHHttpTool.m in Sources */,
 				7DBB54581ACD4268003E39F6 /* UIView+WebCacheOperation.m in Sources */,
 				7DC012251ACE86C50006D8F6 /* JHTextView.m in Sources */,
+				7DE148E51ADD0A630013028A /* JHCommentsParam.m in Sources */,
 				7DCB7DFA1AD21B6F001650F4 /* JHAccount.m in Sources */,
 				7DCBE4451ACE2C5000A9B039 /* MJConst.m in Sources */,
 				7DCB7E161AD21D36001650F4 /* JHBaseParam.m in Sources */,

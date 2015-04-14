@@ -11,14 +11,36 @@
 #import "JHStatusDetailFrame.h"
 #import "JHStatus.h"
 #import "JHStatusDetailBottomToolbar.h"
+#import "JHStatusTool.h"
+#import "JHComment.h"
+#import "JHStatusDetailTopToolbar.h"
 
-@interface JHStatusDetailViewController ()
+@interface JHStatusDetailViewController ()<UITableViewDataSource, UITableViewDelegate, JHStatusDetailTopToolbarDelegate>
 @property (nonatomic, weak) UITableView *tableView;
-@property (nonatomic, weak) JHStatusDetailBottomToolbar *toolbar;
+@property (nonatomic, strong) JHStatusDetailTopToolbar *topToolbar;
+@property (nonatomic, strong) NSMutableArray *comments;
 @end
 
 @implementation JHStatusDetailViewController
 
+- (NSMutableArray *)comments
+{
+    if (_comments == nil) {
+        self.comments = [NSMutableArray array];
+    }
+    return _comments;
+}
+
+
+- (JHStatusDetailTopToolbar *)topToolbar
+{
+    if (!_topToolbar) {
+        self.topToolbar = [JHStatusDetailTopToolbar toolbar];
+        self.topToolbar.status = self.status;
+        self.topToolbar.delegate = self;
+    }
+    return _topToolbar;
+}
 
 
 - (void)viewDidLoad
@@ -35,7 +57,7 @@
     [self setupDetailView];
     
     // 创建底部工具条
-    [self setupToolbar];
+    [self setupBottomToolbar];
     
     
 }
@@ -43,14 +65,13 @@
 /**
  *  创建底部工具条
  */
-- (void)setupToolbar
+- (void)setupBottomToolbar
 {
-    JHStatusDetailBottomToolbar *toolbar = [[JHStatusDetailBottomToolbar alloc] init];
-    toolbar.y = CGRectGetMaxY(self.tableView.frame);
-    toolbar.width = self.view.width;
-    toolbar.height = self.view.height - self.tableView.height;
-    [self.view addSubview:toolbar];
-    self.toolbar = toolbar;
+    JHStatusDetailBottomToolbar *bottomToolbar = [[JHStatusDetailBottomToolbar alloc] init];
+    bottomToolbar.y = CGRectGetMaxY(self.tableView.frame);
+    bottomToolbar.width = self.view.width;
+    bottomToolbar.height = self.view.height - self.tableView.height;
+    [self.view addSubview:bottomToolbar];
 
 }
 
@@ -84,14 +105,90 @@
     UITableView *tableView = [[UITableView alloc] init];
     tableView.width = self.view.width;
     tableView.height = self.view.height - 35;
-    [self.view addSubview:tableView];
-    self.tableView = tableView;
+    tableView.delegate = self;
+    tableView.dataSource = self;
     self.tableView.backgroundColor = JHGlobalBg;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView = tableView;
+    [self.view addSubview:tableView];
 }
 
 
+#pragma mark - Table view data source
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.comments.count;
+}
 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *ID = @"cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
+    }
+    
+    JHComment *cmt = self.comments[indexPath.row];
+    cell.textLabel.text = cmt.text;
+    return cell;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    return self.topToolbar;
+}
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return self.topToolbar.height;
+}
+
+#pragma mark - 顶部工具条的代理
+- (void)topToolbar:(JHStatusDetailTopToolbar *)topToolbar didSelectedButton:(JHStatusDetailTopToolbarButtonType)buttonType
+{
+    switch (buttonType) {
+        case JHStatusDetailTopToolbarButtonTypeComment: // 评论
+            [self loadComments];
+            break;
+            
+        case JHStatusDetailTopToolbarButtonTypeRetweeted: // 转发
+            [self loadRetweeteds];
+            break;
+    }
+}
+
+/**
+ *  加载评论数据
+ */
+- (void)loadComments
+{
+    JHCommentsParam *param = [JHCommentsParam param];
+    param.id = self.status.idstr;
+    JHComment *cmt = [self.comments firstObject];
+    param.since_id = cmt.idstr;
+    
+    [JHStatusTool commentsWithParam:param success:^(JHCommentsResult *result) {
+        // 评论
+        self.status.comments_count = result.total_number;
+        self.topToolbar.status = self.status;
+        
+        // 累加评论数据
+        NSIndexSet *set = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, result.comments.count)];
+        [self.comments insertObjects:result.comments atIndexes:set];
+        [self.tableView reloadData];
+    } failure:^(NSError *error) {
+        JHLog(@"fsadfsad");
+    }];
+}
+
+/**
+ *  加载转发数据
+ */
+- (void)loadRetweeteds
+{
+    JHLog(@"loadRetweeteds");
+}
 
 
 @end

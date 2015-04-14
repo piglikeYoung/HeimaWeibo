@@ -11,6 +11,8 @@
 #import "JHHomeStatusesResult.h"
 #import "JHSendStatusParam.h"
 #import "JHSendStatusResult.h"
+#import "JHCommentsParam.h"
+#import "JHCommentsResult.h"
 #import "JHBaseTool.h"
 
 @interface JHStatusTool : JHBaseTool
@@ -43,5 +45,11 @@
  *  @param failure 请求失败后的回调（请将请求失败后想做的事情写到这个block中）
  */
 + (void)sendStatusWithParam:(JHSendStatusParam *)param formDataArray:(NSArray *)formDataArray  success:(void (^)(JHSendStatusResult *result))success failure:(void (^)(NSError *error))failure;
+
+
+/**
+ *  加载评论数据
+ */
++ (void)commentsWithParam:(JHCommentsParam *)param success:(void (^)(JHCommentsResult *result))success failure:(void (^)(NSError *error))failure;
 
 @end
