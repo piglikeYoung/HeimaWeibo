@@ -14,11 +14,13 @@
 #import "JHStatusTool.h"
 #import "JHComment.h"
 #import "JHStatusDetailTopToolbar.h"
+#import "MBProgressHUD+MJ.h"
 
 @interface JHStatusDetailViewController ()<UITableViewDataSource, UITableViewDelegate, JHStatusDetailTopToolbarDelegate>
 @property (nonatomic, weak) UITableView *tableView;
 @property (nonatomic, strong) JHStatusDetailTopToolbar *topToolbar;
 @property (nonatomic, strong) NSMutableArray *comments;
+@property (nonatomic, strong) NSMutableArray *reposts;
 @end
 
 @implementation JHStatusDetailViewController
@@ -30,6 +32,15 @@
     }
     return _comments;
 }
+
+- (NSMutableArray *)reposts
+{
+    if (_reposts == nil) {
+        self.reposts = [NSMutableArray array];
+    }
+    return _reposts;
+}
+
 
 
 - (JHStatusDetailTopToolbar *)topToolbar
@@ -117,7 +128,11 @@
 #pragma mark - Table view data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.comments.count;
+    if (self.topToolbar.selectedButtonType == JHStatusDetailTopToolbarButtonTypeComment) {
+        return self.comments.count;
+    } else {
+        return self.reposts.count;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -128,8 +143,14 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
     }
     
-    JHComment *cmt = self.comments[indexPath.row];
-    cell.textLabel.text = cmt.text;
+    if (self.topToolbar.selectedButtonType == JHStatusDetailTopToolbarButtonTypeComment) {
+        JHComment *cmt = self.comments[indexPath.row];
+        cell.textLabel.text = cmt.text;
+    } else {
+        JHStatus *status = self.reposts[indexPath.row];
+        cell.textLabel.text = status.text;
+    }
+    
     return cell;
 }
 
@@ -147,6 +168,8 @@
 #pragma mark - 顶部工具条的代理
 - (void)topToolbar:(JHStatusDetailTopToolbar *)topToolbar didSelectedButton:(JHStatusDetailTopToolbarButtonType)buttonType
 {
+    // 刷新数据
+    [self.tableView reloadData];
     switch (buttonType) {
         case JHStatusDetailTopToolbarButtonTypeComment: // 评论
             [self loadComments];
@@ -178,7 +201,7 @@
         [self.comments insertObjects:result.comments atIndexes:set];
         [self.tableView reloadData];
     } failure:^(NSError *error) {
-        JHLog(@"fsadfsad");
+        [MBProgressHUD showError:@"请求失败"];
     }];
 }
 
@@ -187,7 +210,23 @@
  */
 - (void)loadRetweeteds
 {
-    JHLog(@"loadRetweeteds");
+    JHRepostsParam *param = [JHRepostsParam param];
+    param.id = self.status.idstr;
+    JHStatus *status = [self.reposts firstObject];
+    param.since_id = status.idstr;
+    
+    [JHStatusTool repostsWithParam:param success:^(JHRepostsResult *result) {
+        // 转发总数
+        self.status.reposts_count = result.total_number;
+        self.topToolbar.status = self.status;
+        
+        // 累加评论数据
+        NSIndexSet *set = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, result.reposts.count)];
+        [self.reposts insertObjects:result.reposts atIndexes:set];
+        [self.tableView reloadData];
+    } failure:^(NSError *error) {
+        [MBProgressHUD showError:@"请求失败"];
+    }];
 }
 
 

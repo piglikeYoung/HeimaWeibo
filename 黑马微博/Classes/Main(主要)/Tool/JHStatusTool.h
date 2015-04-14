@@ -13,6 +13,8 @@
 #import "JHSendStatusResult.h"
 #import "JHCommentsParam.h"
 #import "JHCommentsResult.h"
+#import "JHRepostsParam.h"
+#import "JHRepostsResult.h"
 #import "JHBaseTool.h"
 
 @interface JHStatusTool : JHBaseTool
@@ -52,4 +54,8 @@
  */
 + (void)commentsWithParam:(JHCommentsParam *)param success:(void (^)(JHCommentsResult *result))success failure:(void (^)(NSError *error))failure;
 
+/**
+ *  加载转发数据
+ */
++ (void)repostsWithParam:(JHRepostsParam *)param success:(void (^)(JHRepostsResult *result))success failure:(void (^)(NSError *error))failure;
 @end

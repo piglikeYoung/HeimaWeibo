@@ -30,4 +30,9 @@
     [self getWithUrl:@"https://api.weibo.com/2/comments/show.json" param:param resultClass:[JHCommentsResult class] success:success failure:failure];
 }
 
++ (void)repostsWithParam:(JHRepostsParam *)param success:(void (^)(JHRepostsResult *))success failure:(void (^)(NSError *))failure
+{
+    [self getWithUrl:@"https://api.weibo.com/2/statuses/repost_timeline.json" param:param resultClass:[JHRepostsResult class] success:success failure:failure];
+}
+
 @end

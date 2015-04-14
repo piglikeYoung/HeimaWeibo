@@ -136,6 +136,8 @@
 		7DE148E11ADCFE120013028A /* JHComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE148E01ADCFE120013028A /* JHComment.m */; };
 		7DE148E51ADD0A630013028A /* JHCommentsParam.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE148E41ADD0A630013028A /* JHCommentsParam.m */; };
 		7DE148E81ADD0A9C0013028A /* JHCommentsResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE148E71ADD0A9C0013028A /* JHCommentsResult.m */; };
+		7DE148EC1ADD19610013028A /* JHRepostsParam.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE148EB1ADD19610013028A /* JHRepostsParam.m */; };
+		7DE148EF1ADD198A0013028A /* JHRepostsResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE148EE1ADD198A0013028A /* JHRepostsResult.m */; };
 		7DE782D61ADB431900D492E6 /* JHCommonGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE782D51ADB431900D492E6 /* JHCommonGroup.m */; };
 		7DE782D91ADB436500D492E6 /* JHCommonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE782D81ADB436500D492E6 /* JHCommonItem.m */; };
 		7DE782DC1ADB4D0E00D492E6 /* JHCommonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE782DB1ADB4D0E00D492E6 /* JHCommonCell.m */; };
@@ -418,6 +420,10 @@
 		7DE148E41ADD0A630013028A /* JHCommentsParam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHCommentsParam.m; sourceTree = "<group>"; };
 		7DE148E61ADD0A9C0013028A /* JHCommentsResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHCommentsResult.h; sourceTree = "<group>"; };
 		7DE148E71ADD0A9C0013028A /* JHCommentsResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHCommentsResult.m; sourceTree = "<group>"; };
+		7DE148EA1ADD19610013028A /* JHRepostsParam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHRepostsParam.h; sourceTree = "<group>"; };
+		7DE148EB1ADD19610013028A /* JHRepostsParam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHRepostsParam.m; sourceTree = "<group>"; };
+		7DE148ED1ADD198A0013028A /* JHRepostsResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHRepostsResult.h; sourceTree = "<group>"; };
+		7DE148EE1ADD198A0013028A /* JHRepostsResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHRepostsResult.m; sourceTree = "<group>"; };
 		7DE782D41ADB431900D492E6 /* JHCommonGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHCommonGroup.h; sourceTree = "<group>"; };
 		7DE782D51ADB431900D492E6 /* JHCommonGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHCommonGroup.m; sourceTree = "<group>"; };
 		7DE782D71ADB436500D492E6 /* JHCommonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHCommonItem.h; sourceTree = "<group>"; };
@@ -849,6 +855,7 @@
 		7DC4543A1AC68CE900ED9410 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7DE148E91ADD193F0013028A /* Reposts */,
 				7DE148E21ADD0A330013028A /* Comments */,
 				7DE782D31ADB42DA00D492E6 /* Common */,
 				7DCB7E0D1AD21BBB001650F4 /* UserInfo */,
@@ -1186,6 +1193,17 @@
 			path = Comments;
 			sourceTree = "<group>";
 		};
+		7DE148E91ADD193F0013028A /* Reposts */ = {
+			isa = PBXGroup;
+			children = (
+				7DE148EA1ADD19610013028A /* JHRepostsParam.h */,
+				7DE148EB1ADD19610013028A /* JHRepostsParam.m */,
+				7DE148ED1ADD198A0013028A /* JHRepostsResult.h */,
+				7DE148EE1ADD198A0013028A /* JHRepostsResult.m */,
+			);
+			path = Reposts;
+			sourceTree = "<group>";
+		};
 		7DE782D31ADB42DA00D492E6 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -1389,6 +1407,7 @@
 				7DCB7E291AD28683001650F4 /* JHStatusRetweetedView.m in Sources */,
 				7DC155D31AD3FD5800193925 /* NSDate+JH.m in Sources */,
 				7DBB54531ACD4268003E39F6 /* UIImage+GIF.m in Sources */,
+				7DE148EC1ADD19610013028A /* JHRepostsParam.m in Sources */,
 				7DBB54571ACD4268003E39F6 /* UIImageView+WebCache.m in Sources */,
 				7DBB53F01ACD0165003E39F6 /* JHAccountTool.m in Sources */,
 				7DBB544B1ACD4268003E39F6 /* SDImageCache.m in Sources */,
@@ -1414,6 +1433,7 @@
 				7DC454631AC69F7D00ED9410 /* UIImage+Extension.m in Sources */,
 				7DC4544B1AC68CE900ED9410 /* main.m in Sources */,
 				7D6A412B1AD9F80C0040B35A /* JHRegexResult.m in Sources */,
+				7DE148EF1ADD198A0013028A /* JHRepostsResult.m in Sources */,
 				7DBB544C1ACD4268003E39F6 /* SDWebImageCompat.m in Sources */,
 				7DCB7DF91AD21B6F001650F4 /* JHAccessTokenParam.m in Sources */,
 				7DBE0FC21AD5697700587EC6 /* MJPhoto.m in Sources */,

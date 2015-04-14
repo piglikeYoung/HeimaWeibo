@@ -68,10 +68,15 @@
  *  监听按钮点击
  */
 - (IBAction)buttonClick:(UIButton *)button {
+    
+    
+    
     // 1.控制按钮状态
     self.selectedButton.selected = NO;
     button.selected = YES;
     self.selectedButton = button;
+    // 设置选中按钮样式
+    self.selectedButtonType = button.tag;
     
     // 2.控制箭头的位置
     [UIView animateWithDuration:0.25 animations:^{
@@ -80,7 +85,7 @@
     
     // 3.通知代理
     if ([self.delegate respondsToSelector:@selector(topToolbar:didSelectedButton:)]) {
-        [self.delegate topToolbar:self didSelectedButton:button.tag];
+        [self.delegate topToolbar:self didSelectedButton:self.selectedButtonType];
     }
 }
 
@@ -103,5 +108,6 @@
         defaultTitle = [NSString stringWithFormat:@"0 %@", defaultTitle];
     }
     [button setTitle:defaultTitle forState:UIControlStateNormal];
+    [button setTitle:defaultTitle forState:UIControlStateHighlighted];
 }
 @end
