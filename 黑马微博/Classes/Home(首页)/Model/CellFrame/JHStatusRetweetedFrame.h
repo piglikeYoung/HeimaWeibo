@@ -17,6 +17,8 @@
 @property (nonatomic, assign) CGRect textFrame;
 /** 配图相册  */
 @property (nonatomic, assign) CGRect photosFrame;
+/** 工具条  */
+@property (nonatomic, assign) CGRect toolbarFrame;
 
 /** 自己的frame */
 @property (nonatomic, assign) CGRect frame;

@@ -12,6 +12,7 @@
 #import "JHUser.h"
 #import "JHStatusPhotosView.h"
 #import "JHStatusLabel.h"
+#import "JHStatusRetweetedToolbar.h"
 
 @interface JHStatusRetweetedView()
 
@@ -21,6 +22,8 @@
 @property (nonatomic, weak) JHStatusLabel *textLabel;
 /** 配图相册 */
 @property (nonatomic, weak) JHStatusPhotosView *photosView;
+/** 工具条 */
+@property (nonatomic, weak) JHStatusRetweetedToolbar *toolbar;
 
 @end
 
@@ -52,6 +55,11 @@
         JHStatusPhotosView *photosView = [[JHStatusPhotosView alloc] init];
         [self addSubview:photosView];
         self.photosView = photosView;
+        
+        // 4.工具条
+        JHStatusRetweetedToolbar *toolbar = [[JHStatusRetweetedToolbar alloc] init];
+        [self addSubview:toolbar];
+        self.toolbar = toolbar;
     }
     
     return self;
@@ -86,6 +94,10 @@
     } else {
         self.photosView.hidden = YES;
     }
+    
+    // 4.工具条
+    self.toolbar.frame = retweetedFrame.toolbarFrame;
+    self.toolbar.status = retweetedFrame.retweetedStatus;
 }
 
 //- (void)setFrame:(CGRect)frame

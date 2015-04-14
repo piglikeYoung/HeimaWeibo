@@ -20,6 +20,7 @@
 #import "JHUserTool.h"
 #import "JHStatusCell.h"
 #import "JHStatusFrame.h"
+#import "JHStatusDetailViewController.h"
 
 @interface JHHomeViewController () <JHPopMenuDelegate>
 
@@ -435,10 +436,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UIViewController *newVc = [[UIViewController alloc] init];
-    newVc.view.backgroundColor = [UIColor redColor];
-    newVc.title = @"新控制器";
-    [self.navigationController pushViewController:newVc animated:YES];
+    JHStatusDetailViewController *detail = [[JHStatusDetailViewController alloc] init];
+    JHStatusFrame *frame = self.statusFrames[indexPath.row];
+    detail.status = frame.status;
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

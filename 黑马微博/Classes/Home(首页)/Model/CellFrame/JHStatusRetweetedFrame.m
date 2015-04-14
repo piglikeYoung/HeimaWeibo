@@ -35,22 +35,29 @@
     
     
     // 3.配图相册
-    CGFloat h = 0;
+    CGFloat toolbarY = 0;
     if (retweetedStatus.pic_urls.count) {
         CGFloat photosX = textX;
         CGFloat photosY = CGRectGetMaxY(self.textFrame) + JHStatusCellInset;
         CGSize photosSize = [JHStatusPhotosView sizeWithPhotosCount:retweetedStatus.pic_urls.count];
         self.photosFrame = (CGRect){{photosX, photosY}, photosSize};
         
-        h = CGRectGetMaxY(self.photosFrame) + JHStatusCellInset;
+        toolbarY = CGRectGetMaxY(self.photosFrame) + JHStatusCellInset;
     } else {
-        h = CGRectGetMaxY(self.textFrame) + JHStatusCellInset;
+        toolbarY = CGRectGetMaxY(self.textFrame) + JHStatusCellInset;
     }
+    
+    // 4.工具条
+    CGFloat toolbarW = 200;
+    CGFloat toolbarX = JHScreenW - toolbarW;
+    CGFloat toolbarH = 20;
+    self.toolbarFrame = CGRectMake(toolbarX, toolbarY, toolbarW, toolbarH);
     
     // 自己
     CGFloat x = 0;
     CGFloat y = 0; // 高度 = 原创微博最大的Y值
     CGFloat w = JHScreenW;
+    CGFloat h = CGRectGetMaxY(self.toolbarFrame) + JHStatusCellInset;
     self.frame = CGRectMake(x, y, w, h);
 }
 

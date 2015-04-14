@@ -1,28 +1,24 @@
 //
-//  JHStatusToolbar.m
+//  JHBaseToolbar.m
 //  黑马微博
 //
-//  Created by piglikeyoung on 15/4/6.
+//  Created by piglikeyoung on 15/4/14.
 //  Copyright (c) 2015年 jinheng. All rights reserved.
 //
 
-#import "JHStatusToolbar.h"
+#import "JHBaseToolbar.h"
 #import "JHStatus.h"
 
-@interface JHStatusToolbar()
+@interface JHBaseToolbar()
 
-/** 用来保存三个按钮 */
 @property (nonatomic, strong) NSMutableArray *btns;
-/** 用来保存两条竖线 */
-@property (nonatomic, strong) NSMutableArray *dividers;
-
-@property (strong , nonatomic) UIButton *commentBtn;
-@property (strong , nonatomic) UIButton *repostsBtn;
-@property (strong , nonatomic) UIButton *attitudesBtn;
+@property (nonatomic, weak) UIButton *repostsBtn;
+@property (nonatomic, weak) UIButton *commentsBtn;
+@property (nonatomic, weak) UIButton *attitudesBtn;
 
 @end
 
-@implementation JHStatusToolbar
+@implementation JHBaseToolbar
 
 - (NSMutableArray *)btns
 {
@@ -32,43 +28,15 @@
     return _btns;
 }
 
-- (NSMutableArray *)dividers
-{
-    if (_dividers == nil) {
-        self.dividers = [NSMutableArray array];
-    }
-    return _dividers;
-}
-
-
 - (instancetype)initWithFrame:(CGRect)frame
 {
-    self = [super initWithFrame:frame];
-    if (self) {
-        self.userInteractionEnabled = YES;
-        self.image = [UIImage resizedImage:@"timeline_card_bottom_background"];
-        
+    if (self = [super initWithFrame:frame]) {
+        self.backgroundColor = [UIColor clearColor];
         self.repostsBtn = [self setupBtnWithIcon:@"timeline_icon_retweet" title:@"转发"];
-        self.commentBtn = [self setupBtnWithIcon:@"timeline_icon_comment" title:@"评论"];
-        self.attitudesBtn = [self setupBtnWithIcon:@"timeline_icon_unlike" title:@"赞"];
-        
-        [self setupDivider];
-        [self setupDivider];
+        self.commentsBtn = [self setupBtnWithIcon:@"timeline_icon_comment" title:@"评论"];
+        self.attitudesBtn =[self setupBtnWithIcon:@"timeline_icon_unlike" title:@"赞"];
     }
     return self;
-}
-
-/**
- *  分割线
- */
-- (void)setupDivider
-{
-    UIImageView *divider = [[UIImageView alloc] init];
-    divider.image = [UIImage imageWithName:@"timeline_card_bottom_line"];
-    divider.contentMode = UIViewContentModeCenter;
-    [self addSubview:divider];
-    
-    [self.dividers addObject:divider];
 }
 
 /**
@@ -87,8 +55,6 @@
     
     // 设置高亮时的背景
     [btn setBackgroundImage:[UIImage resizedImage:@"common_card_bottom_background_highlighted"] forState:UIControlStateHighlighted];
-    
-    // 高亮不调整图标
     btn.adjustsImageWhenHighlighted = NO;
     
     // 设置间距
@@ -107,26 +73,15 @@
     
     // 设置按钮的frame
     int btnCount = self.btns.count;
-    CGFloat btnW = self.width / btnCount;
     CGFloat btnH = self.height;
-    for (int i = 0; i<btnCount; i++) {
+    CGFloat btnW = self.width / btnCount;
+    for (int i = 0; i < btnCount; i++) {
         UIButton *btn = self.btns[i];
         btn.width = btnW;
         btn.height = btnH;
         btn.y = 0;
         btn.x = i * btnW;
     }
-    
-    // 设置分割线的frame
-    int dividerCount = self.dividers.count;
-    for (int i = 0; i<dividerCount; i++) {
-        UIImageView *divider = self.dividers[i];
-        divider.width = 4;
-        divider.height = btnH;
-        divider.centerX = (i + 1) * btnW;
-        divider.centerY = btnH * 0.5;
-    }
-
 }
 
 
@@ -135,12 +90,12 @@
     _status = status;
     
     
-//        status.reposts_count = 1060000;
-//        status.comments_count = 1060;
-//        status.attitudes_count = 785698;
+    //        status.reposts_count = 1060000;
+    //        status.comments_count = 1060;
+    //        status.attitudes_count = 785698;
     
     [self setupBtnTitle:self.repostsBtn count:status.reposts_count defaultTitle:@"转发"];
-    [self setupBtnTitle:self.commentBtn count:status.comments_count defaultTitle:@"评论"];
+    [self setupBtnTitle:self.commentsBtn count:status.comments_count defaultTitle:@"评论"];
     [self setupBtnTitle:self.attitudesBtn count:status.attitudes_count defaultTitle:@"赞"];
 }
 
@@ -168,10 +123,9 @@
      2.大于等于1W：xx.x万，比如78985，就显示7.9万
      3.整W：xx万，比如800365，就显示80万
      */
-
+    
     
 }
-
 
 
 
