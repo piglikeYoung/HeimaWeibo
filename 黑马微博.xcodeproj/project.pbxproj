@@ -138,6 +138,12 @@
 		7DE148E81ADD0A9C0013028A /* JHCommentsResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE148E71ADD0A9C0013028A /* JHCommentsResult.m */; };
 		7DE148EC1ADD19610013028A /* JHRepostsParam.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE148EB1ADD19610013028A /* JHRepostsParam.m */; };
 		7DE148EF1ADD198A0013028A /* JHRepostsResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE148EE1ADD198A0013028A /* JHRepostsResult.m */; };
+		7DE14CF71ADF38D600E10C07 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE14CED1ADF38D600E10C07 /* FMDatabase.m */; };
+		7DE14CF81ADF38D600E10C07 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE14CEF1ADF38D600E10C07 /* FMDatabaseAdditions.m */; };
+		7DE14CF91ADF38D600E10C07 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE14CF11ADF38D600E10C07 /* FMDatabasePool.m */; };
+		7DE14CFA1ADF38D600E10C07 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE14CF31ADF38D600E10C07 /* FMDatabaseQueue.m */; };
+		7DE14CFB1ADF38D600E10C07 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE14CF61ADF38D600E10C07 /* FMResultSet.m */; };
+		7DE14CFD1ADF3F8800E10C07 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DE14CFC1ADF3F8800E10C07 /* libsqlite3.dylib */; };
 		7DE782D61ADB431900D492E6 /* JHCommonGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE782D51ADB431900D492E6 /* JHCommonGroup.m */; };
 		7DE782D91ADB436500D492E6 /* JHCommonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE782D81ADB436500D492E6 /* JHCommonItem.m */; };
 		7DE782DC1ADB4D0E00D492E6 /* JHCommonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE782DB1ADB4D0E00D492E6 /* JHCommonCell.m */; };
@@ -424,6 +430,18 @@
 		7DE148EB1ADD19610013028A /* JHRepostsParam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHRepostsParam.m; sourceTree = "<group>"; };
 		7DE148ED1ADD198A0013028A /* JHRepostsResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHRepostsResult.h; sourceTree = "<group>"; };
 		7DE148EE1ADD198A0013028A /* JHRepostsResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHRepostsResult.m; sourceTree = "<group>"; };
+		7DE14CEC1ADF38D600E10C07 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		7DE14CED1ADF38D600E10C07 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		7DE14CEE1ADF38D600E10C07 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		7DE14CEF1ADF38D600E10C07 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		7DE14CF01ADF38D600E10C07 /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		7DE14CF11ADF38D600E10C07 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		7DE14CF21ADF38D600E10C07 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		7DE14CF31ADF38D600E10C07 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		7DE14CF41ADF38D600E10C07 /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
+		7DE14CF51ADF38D600E10C07 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		7DE14CF61ADF38D600E10C07 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		7DE14CFC1ADF3F8800E10C07 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		7DE782D41ADB431900D492E6 /* JHCommonGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHCommonGroup.h; sourceTree = "<group>"; };
 		7DE782D51ADB431900D492E6 /* JHCommonGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHCommonGroup.m; sourceTree = "<group>"; };
 		7DE782D71ADB436500D492E6 /* JHCommonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHCommonItem.h; sourceTree = "<group>"; };
@@ -457,6 +475,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DE14CFD1ADF3F8800E10C07 /* libsqlite3.dylib in Frameworks */,
 				7D2F47E31AD923040000611F /* libicucore.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -483,6 +502,7 @@
 		7D6264FC1AC664240075F1B6 = {
 			isa = PBXGroup;
 			children = (
+				7DE14CFC1ADF3F8800E10C07 /* libsqlite3.dylib */,
 				7D2F47E21AD923040000611F /* libicucore.dylib */,
 				7D6265071AC664240075F1B6 /* 黑马微博 */,
 				7D6265211AC664250075F1B6 /* 黑马微博Tests */,
@@ -556,6 +576,7 @@
 		7DBB53C41ACCD354003E39F6 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				7DE14CEB1ADF38D600E10C07 /* fmdb */,
 				7D2F47DE1AD922600000611F /* RegexKitLite */,
 				7DBE0FB21AD5697700587EC6 /* MJPhotoBrowser */,
 				7DCBE4351ACE2C5000A9B039 /* MJExtension */,
@@ -1204,6 +1225,24 @@
 			path = Reposts;
 			sourceTree = "<group>";
 		};
+		7DE14CEB1ADF38D600E10C07 /* fmdb */ = {
+			isa = PBXGroup;
+			children = (
+				7DE14CEC1ADF38D600E10C07 /* FMDatabase.h */,
+				7DE14CED1ADF38D600E10C07 /* FMDatabase.m */,
+				7DE14CEE1ADF38D600E10C07 /* FMDatabaseAdditions.h */,
+				7DE14CEF1ADF38D600E10C07 /* FMDatabaseAdditions.m */,
+				7DE14CF01ADF38D600E10C07 /* FMDatabasePool.h */,
+				7DE14CF11ADF38D600E10C07 /* FMDatabasePool.m */,
+				7DE14CF21ADF38D600E10C07 /* FMDatabaseQueue.h */,
+				7DE14CF31ADF38D600E10C07 /* FMDatabaseQueue.m */,
+				7DE14CF41ADF38D600E10C07 /* FMDB.h */,
+				7DE14CF51ADF38D600E10C07 /* FMResultSet.h */,
+				7DE14CF61ADF38D600E10C07 /* FMResultSet.m */,
+			);
+			path = fmdb;
+			sourceTree = "<group>";
+		};
 		7DE782D31ADB42DA00D492E6 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -1375,6 +1414,7 @@
 				7DC155CD1AD3620F00193925 /* JHStatusRetweetedFrame.m in Sources */,
 				7DBB54561ACD4268003E39F6 /* UIImageView+HighlightedWebCache.m in Sources */,
 				7DBB544D1ACD4268003E39F6 /* SDWebImageDecoder.m in Sources */,
+				7DE14CFA1ADF38D600E10C07 /* FMDatabaseQueue.m in Sources */,
 				7DC7BD5B1AD7B8BA001F94BA /* JHEmotionPopView.m in Sources */,
 				7DBB54511ACD4268003E39F6 /* SDWebImagePrefetcher.m in Sources */,
 				7DE148D61ADCC5AE0013028A /* JHStatusDetailTopToolbar.m in Sources */,
@@ -1395,6 +1435,7 @@
 				7DC932D91AC913850025291B /* JHSearchBar.m in Sources */,
 				7DCB7E0B1AD21BA6001650F4 /* JHSendStatusResult.m in Sources */,
 				7DE148E11ADCFE120013028A /* JHComment.m in Sources */,
+				7DE14CF81ADF38D600E10C07 /* FMDatabaseAdditions.m in Sources */,
 				7DCB7E201AD28600001650F4 /* JHStatusCell.m in Sources */,
 				7DCAD3AF1ACF75570035BDE6 /* JHComposePhotosView.m in Sources */,
 				7D2F47DA1AD8CE610000611F /* JHEmotionTextView.m in Sources */,
@@ -1403,6 +1444,7 @@
 				7DC7BD631AD7E65D001F94BA /* JHEmotionTool.m in Sources */,
 				7D6A41311ADA4C950040B35A /* JHLink.m in Sources */,
 				7DC454591AC68FBE00ED9410 /* JHMessageViewController.m in Sources */,
+				7DE14CF91ADF38D600E10C07 /* FMDatabasePool.m in Sources */,
 				7DBE0FC61AD5697700587EC6 /* MJPhotoProgressView.m in Sources */,
 				7DCB7E291AD28683001650F4 /* JHStatusRetweetedView.m in Sources */,
 				7DC155D31AD3FD5800193925 /* NSDate+JH.m in Sources */,
@@ -1433,6 +1475,7 @@
 				7DC454631AC69F7D00ED9410 /* UIImage+Extension.m in Sources */,
 				7DC4544B1AC68CE900ED9410 /* main.m in Sources */,
 				7D6A412B1AD9F80C0040B35A /* JHRegexResult.m in Sources */,
+				7DE14CF71ADF38D600E10C07 /* FMDatabase.m in Sources */,
 				7DE148EF1ADD198A0013028A /* JHRepostsResult.m in Sources */,
 				7DBB544C1ACD4268003E39F6 /* SDWebImageCompat.m in Sources */,
 				7DCB7DF91AD21B6F001650F4 /* JHAccessTokenParam.m in Sources */,
@@ -1454,6 +1497,7 @@
 				7DCB7E1C1AD22E74001650F4 /* JHUnreadCountResult.m in Sources */,
 				7DCB7E191AD22E47001650F4 /* JHUnreadCountParam.m in Sources */,
 				7DE782F01ADBCB4800D492E6 /* HMOneViewController.m in Sources */,
+				7DE14CFB1ADF38D600E10C07 /* FMResultSet.m in Sources */,
 				7DCB26F61ACBA71900B71AD2 /* JHNewfeatureViewController.m in Sources */,
 				7DE782E21ADB947A00D492E6 /* JHCommonLabelItem.m in Sources */,
 				7DCB7E231AD28646001650F4 /* JHStatusDetailView.m in Sources */,
