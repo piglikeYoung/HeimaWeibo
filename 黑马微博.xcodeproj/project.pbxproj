@@ -144,6 +144,7 @@
 		7DE14CFA1ADF38D600E10C07 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE14CF31ADF38D600E10C07 /* FMDatabaseQueue.m */; };
 		7DE14CFB1ADF38D600E10C07 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE14CF61ADF38D600E10C07 /* FMResultSet.m */; };
 		7DE14CFD1ADF3F8800E10C07 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DE14CFC1ADF3F8800E10C07 /* libsqlite3.dylib */; };
+		7DE14D001ADF5EB400E10C07 /* NSString+File.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE14CFF1ADF5EB400E10C07 /* NSString+File.m */; };
 		7DE782D61ADB431900D492E6 /* JHCommonGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE782D51ADB431900D492E6 /* JHCommonGroup.m */; };
 		7DE782D91ADB436500D492E6 /* JHCommonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE782D81ADB436500D492E6 /* JHCommonItem.m */; };
 		7DE782DC1ADB4D0E00D492E6 /* JHCommonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE782DB1ADB4D0E00D492E6 /* JHCommonCell.m */; };
@@ -442,6 +443,8 @@
 		7DE14CF51ADF38D600E10C07 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
 		7DE14CF61ADF38D600E10C07 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
 		7DE14CFC1ADF3F8800E10C07 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		7DE14CFE1ADF5EB400E10C07 /* NSString+File.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+File.h"; sourceTree = "<group>"; };
+		7DE14CFF1ADF5EB400E10C07 /* NSString+File.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+File.m"; sourceTree = "<group>"; };
 		7DE782D41ADB431900D492E6 /* JHCommonGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHCommonGroup.h; sourceTree = "<group>"; };
 		7DE782D51ADB431900D492E6 /* JHCommonGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHCommonGroup.m; sourceTree = "<group>"; };
 		7DE782D71ADB436500D492E6 /* JHCommonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHCommonItem.h; sourceTree = "<group>"; };
@@ -856,6 +859,8 @@
 				7DBB53F61ACD3E57003E39F6 /* Foundation+Log.m */,
 				7DC155D11AD3FD5800193925 /* NSDate+JH.h */,
 				7DC155D21AD3FD5800193925 /* NSDate+JH.m */,
+				7DE14CFE1ADF5EB400E10C07 /* NSString+File.h */,
+				7DE14CFF1ADF5EB400E10C07 /* NSString+File.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -1396,6 +1401,7 @@
 				7DBB53CB1ACCD354003E39F6 /* MBProgressHUD+MJ.m in Sources */,
 				7DC634161AC9443B00F64008 /* JHTitleButton.m in Sources */,
 				7DBB54541ACD4268003E39F6 /* UIImage+MultiFormat.m in Sources */,
+				7DE14D001ADF5EB400E10C07 /* NSString+File.m in Sources */,
 				7DBB53EA1ACCE42A003E39F6 /* AFURLSessionManager.m in Sources */,
 				7DE782DF1ADB945500D492E6 /* JHCommonArrowItem.m in Sources */,
 				7DBB544E1ACD4268003E39F6 /* SDWebImageDownloader.m in Sources */,
